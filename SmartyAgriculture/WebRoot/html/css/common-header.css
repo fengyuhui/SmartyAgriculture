@@ -1,0 +1,244 @@
+/*-------------------------------------------------------------------
+Create by xiaoming
+
+2016-5-26
+
+common css start
+
+----------------------------------------------------------------------*/
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+    /*Change to any value and the whole template will adjust to it :) */
+    position: relative;
+}
+
+#container {
+    width: 100%;
+    /* if you want  boxed version change the value to the value of .container (940px by default) + some value (for example 80px more, they represent margins on the left and right) so it would be 1020px*/
+    margin: 0px auto;
+}
+
+#header-links {
+    width: 100%;
+    float: left;
+    background: #393939;
+    border-bottom: 1px solid #393939;
+    margin-bottom: 40px;
+    padding: 0px 0;
+}
+
+ul {
+    list-style: none
+}
+a:hover{
+   text-decoration: none;
+}
+
+ul.contact-links {
+    float: left;
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+    color:#ffffff;
+}
+
+ul.contact-links li {
+    float: left;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+input.search-field {
+    float: right;
+    position: relative;
+}
+.top-search {
+    float: right;
+    margin-top: 5px;
+    display: block;
+}
+
+.top-search input {
+    width: 220px;
+    font-size: 11px;
+    color: #888;
+    border: 1px solid #e6e9ee!important;
+    vertical-align: middle;
+}
+.search-btn {
+    float: right;
+    position: relative;
+    padding: 0;
+    top: 0;
+    right: 0px;
+    margin: 0px 0 0 -40px;
+    background: #ccd0d9 url(../images/search-bg.png) center center no-repeat;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: none;
+    z-index: 100;
+    box-shadow: none;
+    border-radius: 0px 4px 4px 0px;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+input[type="text"]{
+    border: 1px solid #ccd0d9;
+    padding: 7px 10px;
+    outline: none;
+    font-size: 13px;
+    color: #aab3bc;
+    margin: 0;
+    max-width: 100%;
+    display: block;
+    background: #fff;
+    border-radius: 4px;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -ms-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+
+/*--------------------------------------------------------------------------------------*/
+
+
+/*                     3 - GRID                                                        */
+
+
+/*-------------------------------------------------------------------------------------*/
+
+.one,
+.one-half,
+.two-third,
+.one-third,
+.one-fourth,
+.one-fifth,
+.one-sixth,
+.three-fourth {
+    float: left;
+    position: relative;
+    margin-right: 2.21%;
+}
+
+.one {
+    width: 100%;
+    margin-right: 0!important;
+}
+
+.one-half {
+    width: 48.895%;
+}
+
+.two-third {
+    width: 65.93%;
+}
+
+.one-third {
+    width: 31.86%;
+}
+
+.one-fourth {
+    width: 23.34%;
+}
+
+.three-fourth {
+    width: 74.44%;
+}
+
+.one-fifth {
+    width: 18.23%;
+}
+
+.one-sixth {
+    width: 14.82%;
+}
+
+.one-half:nth-child(2n),
+.one-third:nth-child(3n),
+.one-fourth:nth-child(4n),
+.one-fifth:nth-child(5n),
+.one-sixth:nth-child(6n) {
+    margin-right: 0!important;
+}
+
+.horizontal-line {
+    width: 100%;
+    margin: 40px 0;
+    float: left;
+    border-top: 1px solid #e3e3e3;
+}
+
+.container .one-fourth:last-child {
+    margin-right: 0!important;
+}
+
+.container .one-third:last-child {
+    margin-right: 0!important;
+}
+
+.container .three-fourth:last-child {
+    margin-right: 0!important;
+}
+
+.container .two-third:last-child {
+    margin-right: 0!important;
+}
+
+.one .one-fourth:last-child {
+    margin-right: 0!important;
+}
+
+.one .two-third:last-child {
+    margin-right: 0!important;
+}
+
+#copyrights {
+    width: 100%;
+    padding: 30px 0 10px 0;
+    float: left;
+    position: relative;
+    background: #292f38;
+    height: auto;
+    color: #ffffff;
+    font-size: 12px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+.copyright_links {float: right; }
+.copyright_links li {
+    display: inline;
+    float: left;
+}
+.copyright_links li a {
+    float: left;
+    padding: 0px 11px 0px 10px;
+    color:#ffffff;
+   
+}
+
+.copyright_links li.last a,
+.copyright_links ul li:last-child a { background: none}
+.copyright_links li a:hover {text-decoration: none}
+
+
+
+
+/*-------------------------------------------------------------------
+
+
+                    common css end
+
+
+
+
+----------------------------------------------------------------------*/

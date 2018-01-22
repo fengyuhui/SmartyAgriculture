@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<head>
+    <!--<meta name="renderer" content="ie-stand" />-->
+    <meta charset="utf-8">
+    <title>中远农庄</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen" />
+    <!-- DEFAULT BLUE COLOR CSS FILE -->
+    <link rel="stylesheet" href="css/layer-slider.css" media="screen" />
+    <!-- LAYER SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/flexslider.css" media="screen" />
+    <!-- FLEX SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/revolution-slider.css" media="screen" />
+    <link rel="stylesheet" href="css/index.css" media="screen">
+    <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- CUSTOM JAVASCRIPT JS FILE -->
+    <!--<link rel="stylesheet" href="css/pro-detail.css" media="screen">-->
+    <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- JQUERY JS FILE -->
+    <link rel="stylesheet" href="css/indexkefu.css" media="screen" />
+    <script type="text/javascript" src="js/indexkefu.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/flex-slider.min.js"></script>
+    <!-- FLEX SLIDER JS FILE -->
+    <script type="text/javascript" src="js/navigation.min.js"></script>
+    <!-- MAIN NAVIGATION JS FILE -->
+    <script type="text/javascript" src="js/jquery.layerslider.js"></script>
+    <!-- LAYER SLIDER JS FILE -->
+    <script type="text/javascript" src="js/layerslider.transitions.js"></script>
+    <!-- LAYER SLIDER TRANSITIONS JS FILE -->
+    <!-- GOOGLE MAP JS FILE -->
+    <script type="text/javascript" src="js/jquery.theme.plugins.min.js"></script>
+    <!-- REVOLUTION SLIDER PLUGINS JS FILE -->
+    <script type="text/javascript" src="js/prettyPhoto.min.js"></script>
+    <!-- PRETTYPHOTO JS FILE -->
+    <script type="text/javascript" src="js/jquery.tooltips.min.js"></script>
+    <!-- TOOLTIPS JS FILE -->
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <!-- SCROLL TO TOP JS PLUGIN -->
+    <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+    <!-- TRANSITION JS FILE -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <!--各功能模块JS by Web Team.-->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/hotsale.js"></script>
+</head>
+
+<body onload="inedexOnload()">
+    <div id="container">
+        <!-- main container starts-->
+        <div id="wrapp">
+            <!-- main wrapp starts-->
+            <div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        </p>
+                        <ul class="user-menu">
+                            <li>
+                                <a href="personInfo/infoIndex.html" title="个人消息">
+                                    <img src="images/icon/message.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a a href="shoppingCart.html" title="购物车">
+                                    <img src="images/icon/shoppingCart.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a a href="personInfo/myCollection.html" title="收藏">
+                                    <img src="images/icon/collection.png"></img>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <!--<a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>-->
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <a href="search.html"><button class="search-btn" onclick="setSearchinfo()"></button></a>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                            </nav>
+                        </div>
+
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="#" id="current">首页</a></li>
+                            <li><a href="classification/goods_and_buy.html" id="product">产品及订购</a></li>
+                            <li><a href="brandHomePage.html" id="brand">农场推荐</a></li>
+                            <li><a href="ecologyHomePage.html" id="ecology">生态技术</a></li>
+                            <li><a href="visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="health.html" id="health">营养与健康</a></li>
+                            <li><a href="game.html" id="game">游戏奖励</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <!-- header ends-->
+            <div id="layerslider">
+                <!--layer slider starts-->
+                <div class="slider-shadow-top">
+                </div>
+                <div class="slider-shadow-bottom">
+                </div>
+
+                <div class="ls-layer" style="slidedirection: top; slidedelay: 6000; durationin: 1500; durationout: 1500; delayout: 500;">
+
+                    <img src="images/slider/layer/1/plant-base3.jpg" class="ls-bg" alt="">
+                    <!--<img src="images/slider/layer/1/slide0-1.png" class="ls-s6" alt="" style="top: 10px; left: -15px; slidedirection : bottom; slideoutdirection : bottom; durationin : 1500; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 600;">-->
+                    <h1 class="ls-s3 ls_large_text_01" style="position: absolute; top:60px; left: 630px; slidedirection : top; slideoutdirection : top; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInBack; delayin : 1000;">
+                        环境优美，产品放心!<br/>
+                    </h1>
+
+                    <!--<a class="button huge color round ls-s8" href="#" style="position: absolute; top:170px; left: 490px; slidedirection : bottom; slideoutdirection : bottom; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 1100;">
+                    关于我们</a>-->
+                </div>
+                <div class="ls-layer" style="slidedirection: right; slidedelay: 5000; durationin: 1500; durationout: 1500;">
+                    <img src="images/slider/layer/2/air-plane.jpg" class="ls-bg" alt="">
+                    <!--<img src="images/slider/layer/2/item-01.png" class="ls-s6" alt="" style="top: 15px; left: 480px; slidedirection : bottom; slideoutdirection : bottom; durationin : 1500; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 600;">-->
+                    <h1 class="ls-s3 ls_large_text_01" style="position: absolute; font-family:Arial; top:100px; left: 0px; slidedirection : right; slideoutdirection : left; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInBack; delayin : 400;">
+                        快速配送，一键溯源!</h1>
+
+                    <!--<a class="button huge color round ls-s8" href="trace-file/trace-index.html" style="position: absolute; top:210px; left: 0px; slidedirection : bottom; slideoutdirection : bottom; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 0;">
+                    一键溯源</a>-->
+                </div>
+                <div class="ls-layer" style="slidedirection: right; slideoutdirection : top; slidedelay: 5000; durationin: 1500; durationout: 1500; delayout: 500;">
+                    <img src="images/slider/layer/3/on-sale2.jpg" class="ls-bg" alt="">
+                    <h1 class="ls-s3 ls_large_text_01" style="position: absolute; top:50px; left: 700px; slidedirection : top; slideoutdirection : top; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInBack; delayin : 600;">
+                        限时活动，一降到底！</h1>
+                    <!--<a class="button huge color round ls-s8" href="#" onclick="getHotProduct(0)" style="position: absolute; top:100px; left: 700px; slidedirection : bottom; slideoutdirection : bottom; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 800;">
+                    限时抢购</a>-->
+                </div>
+                <div class="ls-layer" style="slidedirection: top; slideoutdirection : top; slidedelay: 5000; durationin: 1500; durationout: 1500; delayout: 500;">
+                    <img src="images/slider/layer/4/best-feeling.png" class="ls-bg" alt="">
+                    <h1 class="ls-s3 ls_large_text_01" style="position: absolute; top:100px; left: 0px; slidedirection : top; slideoutdirection : top; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInBack; delayin : 500;">
+                        把满意带走，把意见留下</h1>
+                    <!--<a class="button huge color round ls-s8" href="#" style="position: absolute; top:210px; left: 0px; slidedirection : bottom; slideoutdirection : bottom; durationin : 3000; durationout : 750; easingin : easeInOutQuint; easingout : easeInOutQuint; delayin : 700;">
+                    联系客服</a>-->
+                </div>
+            </div>
+            <!--layer slider ends-->
+            <div class="container">
+                <div class="line1">
+                    <a href="farmintruction.html">
+                        <div class="line1-left">
+                            <div class="line1-left-bottom-font">
+                                <span>中远农庄</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="brandHomePage.html">
+                        <div class="line1-right">
+                            <div class="line1-right-bottom-font">
+                                <span>珍品推荐</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <a onclick="enterSaleProduct(2)">
+                    <div class="line2">
+                        <div class="line2-bottom-font">
+                            <span>农场蔬菜</span>
+                        </div>
+                    </div>
+                </a>
+                <a onclick="enterSaleProduct(1)">
+                    <div class="line3">
+                        <div class="line3-bottom-font">
+                            <span>农场水果</span>
+                        </div>
+                    </div>
+                </a>
+                <a onclick="enterSaleProduct(26)">
+                    <div class="line4">
+                        <div class="line4-bottom-font">
+                            <span>农场谷物</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <section id="copyrights">
+                <section class="container">
+                    <div class="one-half">
+                        <p>
+                            Copyright &copy; 2016.Company name All rights reserved.
+                        </p>
+                    </div>
+                    <div class="one-half">
+                        <ul class="copyright_links">
+                            <li><a href="#" title="首页">首页</a></li>
+                            <li><a href="#" title="企业文化">企业文化</a></li>
+                            <li><a href="#" title="关于我们">关于我们</a></li>
+                            <li><a href="#" title="回到顶部">回到顶部</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <!-- main wrapp starts-->
+    </div>
+    <!-- main container ends-->
+    <!--
+    	作者：yantingyong86@163.com
+    	时间：2016-11-30
+    	描述：在线客服
+    -->
+    <div class="lanren">
+        <div class="slide_min">
+            <img src="images/slide_min.jpg" />
+        </div>
+        <div class="slide_box">
+            <h2>
+                <img src="images/slide_box.jpg" />
+            </h2>
+            <p>
+                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2220117450&amp;site=www.cactussoft.cn&amp;menu=yes" target="_blank">
+                    <img src="images/pa.gif">
+                </a>
+            </p>
+            <p>
+                <img src="images/erweima.png" class="weixin" /><br />
+                <b>客户服务热线</b><br /> 888-8888-8888
+            </p>
+            <!--<span><a href="#">给我们留言</a></span>-->
+        </div>
+    </div>
+</body>
+
+</html>

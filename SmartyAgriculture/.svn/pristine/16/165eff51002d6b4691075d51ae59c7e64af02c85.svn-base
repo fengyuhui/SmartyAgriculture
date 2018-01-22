@@ -1,0 +1,32 @@
+
+body {
+	padding-bottom: 0;
+	<!--background-color: #e4e6e9;-->
+	min-height: 100%;
+	font-family: 'Open Sans';
+	font-size: 20px !important;
+	color: #393939;
+	line-height: 1.5
+}
+
+.profile-info-value {
+	padding: 6px 4px 6px 6px;
+	margin-left: 0px !important;
+	border-top: 0px !important;
+}
+.profile-user-info-striped {
+	border: 0px !important;
+}
+
+.page-header {
+	margin: 0 0 12px;
+	border-bottom: 0px !important;
+	padding-bottom: 16px;
+	padding-top: 7px
+}
+
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 0px !important;
+}

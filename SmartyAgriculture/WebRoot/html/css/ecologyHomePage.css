@@ -1,0 +1,61 @@
+/*-------------------------------
+
+    created by zhangqiang
+    Date:2016.10.19
+
+--------------------------------*/
+
+#content {
+    position: relative;
+/*    height: 1000px;*/
+    width: 100%;
+}
+
+.line {
+    position: relative;
+    height: auto;
+    width: 1170px;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.line div {
+    width: 100%;
+    height: 100%;
+}
+
+.line div img {
+    width: auto;
+    height: auto;
+}
+
+.footer {
+    position: fixed;
+    clear: both;
+    height: 68px;
+    width: 100%;
+    bottom: 0px !important;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    border: 10x solid #1abc9c !important;
+    color: #1abc9c;
+}
+
+#ecology {
+    border-bottom: 2px solid #fff;
+}
+.iframe{
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+#innerpage{
+    width: 100% ;
+}

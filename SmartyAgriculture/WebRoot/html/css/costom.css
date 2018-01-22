@@ -1,0 +1,37 @@
+       *{margin:0;
+         padding:0;
+        }
+        .custom-wrap{
+            width: 100%;
+            margin: 0 auto;
+            font-size: 12px;
+           
+        }
+
+        .custom-wrap .tab{
+            font-size: 14px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        	height: 30px;
+        }
+      .custom-wrap .tab span{
+        display: block;
+        width: 50%;
+        height: 30px;
+        float: left;
+        background: #f6f6f6;
+        color: #9b9b9b;
+        line-height: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .custom-wrap .tab .active{
+        background: #fff;
+        color: #dc2a2e;
+      }
+        .custom-wrap a{
+            display: block;
+            color: #ff6d71;
+            line-height: 15px;
+            text-decoration:none;
+        }

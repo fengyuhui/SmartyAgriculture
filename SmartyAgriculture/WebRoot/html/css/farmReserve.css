@@ -1,0 +1,375 @@
+/*------------------------------------
+
+    created by zhangqiang
+    date:2016 10 25
+
+------------------------------------*/
+li{
+	list-style-type: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapp {
+    background: #fff;
+}
+
+bady {
+    background: #ffffff;
+}
+
+#content {
+    padding: 20px 0px 0px 0px !important;
+}
+
+.top {
+    position: relative;
+    height: 40px;
+    width: 100%;
+}
+
+.goback {
+    width: 1170px;
+    height: 100%;
+    margin: 0 auto;
+    /*float:left;*/
+}
+
+.left {
+    float: left;
+}
+
+.backText {
+    font-size: 20px;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+}
+.left-top span{
+	/*margin-left: 0%;*/
+	text-align: center;
+	font-weight: 600;
+}
+/*.left-top{
+    border: 1px solid #dedede;
+    width: 50px;
+    height: 36px;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 5px;
+}*/
+.right {
+    float: right;
+    padding-right: 40px;
+}
+
+.goback img {
+    width: 50%;
+    height: 50%;
+}
+
+.main-content {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    /*border-top: 1px solid red;*/
+}
+
+.main-content-div {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.contentLeft {
+    width: 53%;
+    float: left;
+}
+
+.contentLeft img {
+    display: block;
+}
+
+.main-image img {
+    padding: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.thumbnails {
+    height: 63px;
+    margin: 15px 0 0 -15px;
+    list-style-type: none;
+}
+
+.thumbnails li {
+    float: left;
+    margin-left: 15px;
+    display: inline;
+}
+
+.thumbnails img {
+    padding: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.contentRight {
+    float: left;
+    ;
+    width: 47%;
+    height: 472px;
+    background: #fafafa;
+}
+
+.contentRightDiv {
+    padding: 4px 0 0 20px;
+    width: 100%;
+}
+
+.title {
+    font-size: 22px;
+    text-indent: 5px;
+    color: #626262;
+    font-weight: bold;
+}
+
+.address {
+    font-size: 16px;
+    color: #888888;
+    margin-top: 10px !important;
+    text-indent: 5px;
+}
+
+.infoReserve {
+    width: 100%;
+    padding: 30px 0 0 15px;
+}
+
+.price {
+    /*margin-top:10px !important;*/
+    font-size: 18px;
+    color: #888888;
+}
+
+.price span {
+    color: #fab319;
+}
+
+.date {
+    margin-top: 20px !important;
+    font-size: 18px;
+    color: #888888;
+    height: auto;
+}
+
+.date span {
+    color: #838383 !important;
+    font-size: 16px !important;
+    border: 1px solid #fab319;
+    border-radius: 5px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.classification {
+    margin-top: 20px !important;
+    font-size: 18px;
+    color: #888888;
+    
+}
+.classifications {
+    margin-top: 20px !important;
+    font-size: 18px;
+    color: #888888;
+}
+.classifications a{
+    margin-top: 20px !important;
+    font-size: 10px;
+    color: #686868;
+}
+.classificationss{
+	margin-left: 20%;
+	margin-top: -5%;
+}
+.xiangmu {
+    display: inline-block;
+    width: 39px;
+    font-size: 11px;
+    border: 1px solid #cacaca;
+    padding: 3px 0px;
+    border-radius: 10px;
+    margin-right: 2px;
+    text-align: center;
+    /*background-image: url(images/personInfo/farmReserve/selected.png);*/
+    cursor: pointer;
+}
+.left-top {
+    display: inline-block;
+    width: 90px;
+    font-size: 11px;
+    border: 1px solid #cacaca;
+    padding: 5px 0px;
+    border-radius: 6px;
+    margin-right: 10px;
+    text-align: center;
+    /*background-image: url(images/personInfo/farmReserve/selected.png);*/
+    cursor: pointer;
+}
+.projectChooses{
+	margin-left: 20%;
+	margin-top: -5%;
+}
+.projectChoosexiangmu{
+	margin-top: 10%;
+}
+.meatInhalfday {
+    background: #61ca8b;
+    color: #fff;
+}
+
+.meatNotInhalfday {
+    background: #fff;
+    color: #626262;
+}
+
+.meatInallday {
+    background: #fff;
+    color: #626262;
+}
+
+.allService {
+    background: #fff;
+    color: #626262;
+}
+
+.allday {
+    margin-top: 15px !important;
+    padding-left: 129px;
+}
+
+.visitNum {
+    margin-top: 20px !important;
+    font-size: 18px;
+    color: #888888;
+}
+
+.visitNum span {
+    display: inline-block;
+    margin: 0 5px 0 5px;
+    font-size: 15px;
+    color: #838383;
+}
+
+.visitNum span img {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.allNum {
+    font-size: 15px;
+}
+
+.allPrice {
+    color: #fab319 !important;
+    font-size: 16px !important;
+}
+
+.rightButton {
+    margin-top: 15px;
+    float: right;
+    width: 51%;
+    font-family: "微软雅黑";
+    font-weight: 400;
+}
+
+.rightButton span {
+    display: inline-block;
+    width: 80px;
+    border: 1px solid #fab419;
+    padding: 6px;
+    border-radius: 3px;
+    color: #fff;
+    background: #fab419;
+    text-align: center;
+    cursor: pointer;
+}
+
+.infoIntroduce {
+    position: relative;
+    top: 12px;
+    bottom: 0px;
+    width: 100%;
+    height: auto !important;
+    clear: both;
+    /*border:1px solid red;*/
+}
+
+.infoIntroduceContent {
+    width: 1170px;
+    margin: 0 auto;
+    height: 100%;
+    /*border:1px solid blue;*/
+}
+
+.titleIntroduce {
+    width: 100%;
+    height: 24px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #626262;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.info {
+    width: 100%;
+    margin-top: 20px !important;
+    padding-bottom: 100px;
+    font-size: 18px;
+    color: #626262;
+    line-height: 30px;
+    text-indent: 38px;
+}
+
+.minus-number,
+.pluse-number {
+    width: 18px;
+    height: 18px;
+    vertical-align: -5px;
+}
+
+.visitor-number {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.footer {
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+#visit {
+    border-bottom: 2px solid #fff;
+}
+
+.share {
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.collect {
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.visitNum img {
+    cursor: pointer;
+}

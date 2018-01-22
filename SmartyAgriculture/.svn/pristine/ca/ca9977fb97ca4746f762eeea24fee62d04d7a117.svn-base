@@ -1,0 +1,40 @@
+package cn.bupt.smartyagl.controller.inf;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import cn.bupt.smartyagl.constant.Constants;
+import cn.bupt.smartyagl.entity.autogenerate.Addition;
+import cn.bupt.smartyagl.service.IAdditionService;
+import cn.bupt.smartyagl.util.NetDataAccessUtil;
+
+@Controller
+@RequestMapping("/interface/addition")
+public class AdditionInterfaceController {
+	@Autowired
+	IAdditionService additionService;
+	@RequestMapping("/additionMessage")
+	@ResponseBody
+	public Object getAdditionMessage(@RequestParam String id,HttpServletRequest request){
+
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		nau.setResult(1);
+		nau.setResultDesp("ok");
+		nau.setContent("http://"+request.getLocalAddr()+":"+request.getLocalPort()+"/SmartyAgriculture"+"/interface/addition/additionHtml?id="+id);
+		return nau;
+	}
+	/**
+	 * 附属信息的html页面
+	 */
+	@RequestMapping("/additionHtml")
+	public ModelAndView additionHtml(int id) {
+		ModelAndView mv = new ModelAndView(Constants.ADD_MESSAGE);
+		Addition add = additionService.getAdditionById(id);
+		mv.addObject("item", add);
+		return mv;
+	}
+}

@@ -1,0 +1,9 @@
+package cn.bupt.smartyagl.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import cn.bupt.smartyagl.service.IQRCodeService;
+@Service
+public class QRCodeServiceImpl implements IQRCodeService {
+
+}

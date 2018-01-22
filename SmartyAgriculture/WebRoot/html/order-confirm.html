@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>确认订单-</title>
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <link rel="stylesheet" href="css/temp.css" media="screen" />
+    <link rel="stylesheet" href="css/responsive.css" media="screen" />
+    <!-- RESPONSIVE CSS FILE -->
+    <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen" />
+    <!-- DEFAULT BLUE COLOR CSS FILE -->
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.min.css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="css/pro-detail.css" media="screen" />
+    <link rel="stylesheet" href="css/index.css" media="screen" />
+    <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- JQUERY JS FILE -->
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <!-- SCROLL TO TOP JS PLUGIN -->
+    <script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+    <!-- EASY PIE JS FILE -->
+    <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
+    <!-- TRANSITION JS FILE -->
+	<script type="text/javascript" src="js/hotsale.js"></script><!--专题活动（热卖、限时抢购等JS）-->
+	<script type="text/javascript" src="js/pro-detail.js"></script><!--商品详情JS-->
+<!--	<script type="text/javascript" src="js/detail-buy.js"></script>-->
+    <!--商品详情JS-->
+    <script type="text/javascript" src="js/orderConfirm.js"></script><!--商品订单JS-->
+    <script type="text/javascript" src="js/pay/alipay.js"></script><!--Alipay JS file-->
+	<script type="text/javascript" src="js/productType.js"></script>
+	<script type="text/javascript" src="js/search-result.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body onload="orderOnload()">
+    <div id="container">
+       <div class="wrapp">
+        	<div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        </p>
+                        <ul class="user-menu">
+                            <li><a href="#" title="个人消息"><i class="icon-userMessages"></i></a></li>
+                            <li><a a href="#" title="购物车"><i class="icon-shoppingCart"></i></a></li>
+                            <li><a a href="#" title="收藏"><i class="icon-collection"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <!--<a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>-->
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <form action="search-result.html" method="get">
+                                    <button class="search-btn" onclick="search_btn_click_outsidein()"></button>
+                                    <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                                </form>
+                            </nav>
+                        </div>
+
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html" id="current">首页</a></li>
+                            <li><a href="classification/goods_and_buy.html" id="product">产品及订购</a></li>
+                            <li><a href="brandHomePage.html" id="brand" onclick="getHotProduct(0)">农场推荐</a></li>
+                            <li><a href="ecologyHomePage.html" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="health.html" id="health">营养与健康</a></li>
+                            <li><a href="game.html" id="game">游戏奖励</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+        <!--页面内容开始 ↓-->
+        <div class="confirm-content">
+            <!--地址栏开始-->
+            <form >
+                <h2>确认收货地址
+                	<span class="addr-manage">
+                		<a class="makePoint" href="personInfo/addressInfo.html" title="管理收货地址">管理收货地址</a>
+                	</span>
+                </h2>
+                
+                <!--地址列表开始-->
+                <ul class="addr-list">
+                </ul>
+                <div class="add-address">
+                    <span>添加新地址</span>
+                    <a id="new-address" href="javascript:void(0)" onclick="openpop()"><img src="images/icon/addressAdd.png"></a>
+                </div>
+            </form>
+            <!--订单详情栏开始-->
+            <div class="addr-order">
+                <!--地址栏与订单栏之间的空白-->
+            </div>
+            <h2 class="title-name">确认订单信息</h2>
+            <div class="order-meta">
+                <table class="grid-bundle" id="">
+                    <thead>
+                        <tr>
+                            <th class="tube-title">
+                                <span class="" id="">农场：A蔬菜基地</span>
+                            </th>
+                            <th class="tube-price">单价（元）</th>
+                            <th class="tube-amount">数量</th>
+                            <th class="tube-promo">优惠（元）</th>
+                            <th class="tube-sum">小计(元)</th>
+<!--                            <th class="tube-postage">配送方式</th> -->
+                        </tr>
+                        <tr class="row-border">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+<!--                            <td class="tube-postage"></td>-->
+                        </tr>
+                    </thead>
+                    <tbody class="orderInfo-body">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                           <td class="tube-annex" colspan="4">
+                              <div class="memo">
+                                <label class="hd" for="">买家留言:</label>
+                                <div class="memo-message">
+                                    <textarea class="memo-text" id="123" placeholder="(选填)不超过200字"></textarea>
+                                </div>
+                              </div>
+                           </td>
+                           <td class="tube-bill" id="" colspan="2">
+                               <div class="orderBuy">
+                                   店铺合计
+                                   <span class="" >（含运费）：</span>
+                                   <span class="rmb-icon">￥</span>
+                                   <strong></strong>
+                               </div>
+                           </td>  
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="checkbar" id="">
+                    <div class="checkbar-main">
+                            <div class="realPay" id="">
+                                <p class="">
+                                    <span class="hd">实付款：</span>
+                                    <span class="bd">
+                                        <span class="rmb-icon">￥</span>
+                                        <strong id="real-pay"></strong>
+                                    </span>
+                                </p>
+                     </div>
+            </div>
+            <div class="action" id="">
+                 <div class="">
+                      <a href="javascript:void(0)" onclick="orderSubmit()" id="" role="button" class="go-btn" title="提交订单">
+                            提交订单
+                      </a>
+                 </div>
+            </div>
+                </div>
+        </div>
+        <div class="pops-address">
+            <div class="close">
+                <a class="h-close" href="javascript:void(0)" onclick="closepop()"></a>
+            </div>
+            <div class="form-title">添加新地址</div>
+            <div class="form-body">
+                <div class="gap">
+                    <label class="input-label">用户名</label>
+                    <input id="name" class="user-name input-area" type="text" placeholder="请输入联系人(必填)">
+                </div>
+                <div class="gap">
+                    <label class="input-label">联系电话</label>
+                    <input class="user-phone input-area" type="tel" placeholder="请输入手机号(必填)">
+<!--                    <input class="user-phone input-area" type="tel" placeholder="请输入联系人电话">-->
+                </div>
+                <div class="gap">
+                    <label for="address">地址:</label>
+                    <select class="form-control select" id="s_province" name="province"></select>
+                    <select class="form-control select" id="s_city" name="city" ></select>
+                    <select class="form-control select" id="s_county" name="county" class="form-control"></select>
+                    <script  type="text/javascript" src="js/area.js"></script>
+                    <script type="text/javascript">_init_area();</script>
+                </div>
+                <div class="gap">
+                    <label class="input-label">详细地址</label>
+                    <input type="text" id="detail-address" class="user-contact-detail input-area" placeholder="请填写详细收货地址" >
+                </div>
+                <div class="gap">
+                    <label class="input-label">是否添加为默认地址</label>
+<!--                    <input class="" name="isDefault" type="radio">-->
+                    <select id="isdefault" class="form-control isdefault" name="default">
+                        <option value="yes">是</option>
+                        <option value="no">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-foot">
+                <button  class="add-address-button">添加</button>
+            </div>
+        </div>
+        <div id="areaMask" class="mask">   
+        </div>
+        <section id="copyrights">
+                <section class="container">
+                    <div class="one-half">
+                        <p>
+                            Copyright &copy; 2016.Company name All rights reserved.
+                        </p>
+                    </div>
+                    <div class="one-half">
+                        <ul class="copyright_links">
+                            <li><a href="#" title="首页">首页</a></li>
+                            <li><a href="#" title="企业文化">企业文化</a></li>
+                            <li><a href="#" title="关于我们">关于我们</a></li>
+                            <li><a href="#" title="回到顶部">回到顶部</a></li>
+                        </ul>
+                    </div>
+                </section>
+         </section>
+        </div>
+    </div>
+</body>
+</html>

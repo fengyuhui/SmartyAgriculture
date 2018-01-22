@@ -1,0 +1,31 @@
+package cn.bupt.smartyagl.controller.inf;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cn.bupt.smartyagl.service.IRecentSearchService;
+import cn.bupt.smartyagl.util.NetDataAccessUtil;
+
+@Controller
+@RequestMapping("/interface/recentSearch")
+public class RecentSearchController {
+	@Autowired
+	IRecentSearchService recentSearchService;
+	@RequestMapping("/getRecentSearch")
+	@ResponseBody
+	public Object getRecentSearch(HttpServletRequest request) {
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		Integer userId = (Integer)request.getAttribute("userId");
+		if(userId == null) {
+			nau.setResult(0);
+			nau.setResultDesp("未登录下无法获取搜索记录，请先登陆");	
+			return nau;
+		}
+		nau.setContent(recentSearchService.getRecentSearchRecord(userId));
+		nau.setResult(1);
+		nau.setResultDesp("获取最近搜索记录成功");
+		return nau;		
+	}
+}

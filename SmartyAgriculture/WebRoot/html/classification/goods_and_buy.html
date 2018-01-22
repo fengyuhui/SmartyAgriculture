@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>产品与订购</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../css/index.css" media="screen">
+    <link rel="stylesheet" href="../css/style.css" media="screen" />
+    <link href="../js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/classification/goods_and_buy.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <!-- MAIN  JS  FILE -->
+    <script src="../js/jquery-2.0.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/goods_and_buy.js"></script>
+    <script type="text/javascript" src="../js/isotope.min.js"></script>
+    <script type="text/javascript" src="../js/scrolltopcontrol.js"></script>
+    <!-- MAIN JS FILE END -->
+    <link rel="stylesheet" href="miaov_style.css" />
+    <script src="miaov.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/bootbox.min.js"></script>
+    <script src="../js/jqPaginator.js" type="text/javascript"></script>
+</head>
+
+<body onload="loaded()">
+    <div id="container">
+        <!-- main container starts-->
+        <div id="wrapp">
+            <!-- main wrapp starts-->
+            <div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        </p>
+                        <ul class="user-menu">
+                            <li>
+                                <a href="../personInfo/infoIndex.html" title="个人消息">
+                                    <img src="../images/icon/message.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a a href="../shoppingCart.html" title="购物车">
+                                    <img src="../images/icon/shoppingCart.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a a href="../personInfo/myCollection.html" title="收藏">
+                                    <img src="../images/icon/collection.png"></img>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="../images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <!--<a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>-->
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <a href="../search.html"><button class="search-btn" onclick="setSearchinfo()"></button></a>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                            </nav>
+                        </div>
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="../index.html" id="current">首页</a></li>
+                            <li><a href="#" id="product">产品及订购</a></li>
+                            <li><a href="../brandHomePage.html" id="brand" onclick="getHotProduct(0)">农场推荐</a></li>
+                            <li><a href="../ecologyHomePage.html" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="../visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="../organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="../health.html" id="health">营养与健康</a></li>
+                            <li><a href="../game.html" id="game">积分奖励</a></li>
+                        </ul>
+                        <!-- main navigation ends-->
+                        <!--<div class="after-nav-info">
+                            <h4>联系电话: +987 654 321  000</h4>
+                        </div>-->
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <!-- header ends-->
+            <!-- content 内容部分开始 -->
+            <div class="info_content_div">
+                <!-- 产品分类开始 -->
+                <!--<div id="content-icon-table">-->
+                <div id="content">
+                    <div class="roll" id="roll">
+                        <a href="javascript:void(0);" class="btn_left"></a>
+                        <a href="javascript:void(0);" class="btn_right"></a>
+                        <div class="content-icon-tabname wrap">
+                            <ul class="content-icon-tabname-body ">
+                                <li class="tabimg_div" onclick="Vegetablelist()">
+                                    <div class="img_Div"> <img id="vegetable_img" class="vegetable_image" src="../images/productType/vegetables.png"></img>
+                                    </div>
+                                    <p class="productName"><a><span>蔬菜</span></a></p>
+                                </li>
+                                <li class="tabimg_div" onclick="Fruitlist()">
+                                    <div class="img_Div"> <img id="fruit_img" src="../images/productType/fruit.png"></img>
+                                    </div>
+                                    <p class="productName"><a><span>水果</span></a></p>
+                                </li>
+                                <li class="tabimg_div" onclick="Meatlist()">
+                                    <div class="img_Div"><img id="meat_img" src="../images/productType/meat.png"></img>
+                                    </div>
+                                    <p class="productName"><a><span>肉类</span></a></p>
+                                </li>
+                                <li class="tabimg_div" onclick="Oillist()">
+                                    <div class="img_Div"><img id="oil_img" src="../images/productType/liangyou.png"></img>
+                                    </div>
+                                    <p class="productName"><a><span>粮油</span></a></p>
+                                </li>
+                                <!--<li class="tabimg_div" onclick="flourlist()">
+                                    <div class="img_Div"><img id="flour_img" src="../images/productType/flour.png"></img>
+                                    </div>
+                                    <p class="productName"><a><span>面粉</span></a></p>
+                                </li>
+                                <li class="tabimg_div" onclick="juhualist()">
+                                    <div class="img_Div"><img id="juhua_img" src="../images/productType/juhua.png"></img>
+                                    </div>
+                                    <p class="productName"><a><span>菊花</span></a></p>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-product-div">
+                    <div id="contentDetailInfo_div">
+                        <ul id="contentDetailInfo" class="meatlist">
+                        </ul>
+                        <ul id="contentDetailInfo" class="fruitlist">
+                        </ul>
+                        <ul id="contentDetailInfo" class="vegetablelist">
+                        </ul>
+                        <ul id="contentDetailInfo" class="oillist">
+                        </ul>
+                    </div>
+                    <div id="page">
+                        <div class="pagebar">
+                            <ul class="pagination">
+                                <li class="first disabled" jp-role="first" jp-data="1"><a href="javascript:;">首页</a></li>
+                                <li class="prev disabled" jp-role="prev" jp-data="0"><a href="javascript:;">上一页</a></li>
+                                <li class="page active" jp-role="page" jp-data="1"><a href="javascript:;">1</a></li>
+                                <li class="page" jp-role="page" jp-data="2"><a href="javascript:;">2</a></li>
+                                <li class="page" jp-role="page" jp-data="3"><a href="javascript:;">3</a></li>
+                                <li class="next" jp-role="next" jp-data="2"><a href="javascript:;">下一页</a></li>
+                                <li class="last" jp-role="last" jp-data="3"><a href="javascript:;">尾页</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <section id="copyrights">
+                        <section class="container">
+                            <div class="one-half">
+                                <p>
+                                    Copyright &copy; 2016.Company name All rights reserved.
+                                </p>
+                            </div>
+                            <div class="one-half">|
+                                <ul class="copyright_links">
+                                    <li><a href="../index.html" title="首页">首页</a></li>
+                                    <li><a href="#" title="企业文化">企业文化</a></li>
+                                    <li><a href="#" title="关于我们">关于我们</a></li>
+                                    <li><a href="#" title="回到顶部">回到顶部</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+                <!--</div>-->
+                <!-- 产品分类结束 -->
+            </div>
+            <!-- content 内容部分结束 -->
+        </div>
+        <!-- main container end-->
+    </div>
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+    
+/********************************
+
+
+    created  by  zhangqiang
+    Date:2016-9-25
+
+
+********************************/
+//bootbox.setDefaults("locale", "zh_CN");//设置bootbox弹出框显示中文格式信息
+
+//tab标题栏的下方border的自适应改变
+$(function() {
+$("#current").css("border-bottom", "0px solid #fff");
+$("#brand").css("border-bottom", "0px solid #fff");
+$("#ecology").css("border-bottom", "0px solid #fff");
+$("#visit").css("border-bottom", "0px solid #fff");
+$("#life").css("border-bottom", "0px solid #fff");
+$("#health").css("border-bottom", "0px solid #fff");
+$("#game").css("border-bottom", "0px solid #fff");
+$("#product").show();
+})
+
+
+/**
+* 获取搜索信息
+*/
+function setSearchinfo() {
+var search_info = jQuery(".search-field").val();
+if (search_info == "搜索") {
+    return 0;
+}
+localStorage.setItem("search_info", search_info);
+}
+
+
+/**
+* 回车键事件 
+* 绑定键盘按下事件 
+*/
+$(document).keypress(function(e) {
+// 回车键事件  
+if (e.which == 13) {
+    jQuery(".search-btn").click();
+}
+});
+
+
+
+/**
+* 获取用户信息
+*/
+function setUserInfo() {
+getPersonInfo();
+var token = getToken();
+var data = getUserInfo(token);
+jQuery("#edit_username").val(data['content']['name']);
+jQuery(".portrait").attr("src", data['content']['portrait']);
+}
+
+
+/**
+* 返回token
+*/
+function getToken() {
+var token = localStorage.getItem("token");
+//如果没有获取到token，则跳转到登陆界面
+if (jQuery.trim(token) != "") {
+    return token;
+}
+}
+
+/**
+* 获取个人信息
+*/
+function getUserInfo(token) {
+var dataInfo;
+jQuery.ajax({
+    type: "POST",
+    async: false,
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/user/userInfo",
+    data: {
+        token: token,
+    },
+    dataType: "json",
+    success: function(data) {
+        if (data['result'] == 1) {
+            dataInfo = data;
+        }
+    }
+});
+return dataInfo;
+}
+
+function getPersonInfo() {
+var token = getToken();
+var data = getUserInfo(token);
+jQuery("#username").text(data['content']['name']);
+jQuery("#score").text(data['content']['phone']);
+jQuery("#person_portrait").attr("src", data['content']['portrait']);
+//设置header中的用户名
+jQuery("#header_username").text(data['content']['name']);
+}
+
+/*----------------------------------
+--------判断是否登陆，显示适当navigation-
+-----------------------------------*/
+
+function navigationJudge() {
+var token = localStorage.getItem("token");
+console.log("Token:" + token);
+if (token == null) {
+    var navString = '<a href="#"><i class="icon-user"></i></a><a href="../login.html"><span>登录</span></a><span>&nbsp;/&nbsp;</span><a href="../register.html"><span>注册</span></a>';
+    jQuery('.login-info').append(navString);
+
+} else {
+
+    jQuery.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8080/SmartyAgriculture/interface/user/userInfo",
+        data: {
+            token: token,
+        },
+        dataType: "JSON",
+        success: function(data) {
+            if (data.result == 1) {
+                localStorage.setItem("userInfo", data.content)
+
+                var navString = '<span class="login-success"><a>欢迎您!&nbsp;</a>' +
+                    '<a href="../personInfo/editUserInfo.html" class="user-name user-nick">' + data.content.name +
+                    '</a></span><span class="logon-success">' +
+                    '<a href="javascript:void(0)" class="login-out" onclick="signOut()">退出</a></span>';
+                jQuery('.login-info').append(navString);
+
+            } else {
+                var navString = '<a href="#"><i class="icon-user"></i></a><a href="../login.html"><span>登录</span></a><span>&nbsp;/&nbsp;</span><a href="../register.html"><span>注册</span></a>';
+                jQuery('.login-info').append(navString);
+            }
+        }
+    });
+}
+}
+
+
+
+
+//自加载时 加载的第二级分类的商品数据（蔬菜、水果等第一级商品的类别分类） 函数
+function createListOnload(id, data) {
+// console.log(data);
+alert(data);
+localStorage.setItem("productID", id);
+var i = 0;
+var length = data.content.albumList.length;
+if (1 < length < 5) {
+    jQuery("#contentDetailInfo_div").height(520);
+}
+// console.log("传输长度：" + length);
+var string = "";
+for (i = 0; i < length; i++) {
+    string += "<li onclick='getSubChildType(" + data.content.albumList[i].id + "," + id + ")'> <div  id='imgDiv'><img src='" + data.content.albumList[i].picture + "' class='productImg' /></div>";
+    string += "<p id ='productInfo'><span id = 'productInfo_span'> " + data.content.albumList[i].name + "</span></p>";
+    string += " </li>";
+}
+if (id == 2 || id == 0) {
+    jQuery(".vegetablelist").append(string);
+}
+if (id == 1) {
+    jQuery(".fruitlist").append(string);
+}
+if (id == 26) {
+    jQuery(".oillist").append(string);
+}
+setUserInfo();
+}
+
+
+/* 处理分页js */
+function setProductPage(id, pageNum) {
+console.log("编号为 ：" + id);
+console.log("分页长度:" + pageNum);
+jQuery('.pagination').jqPaginator({
+    totalPages: Number(pageNum),
+    visiblePages: 4,
+    currentPage: 1,
+    onPageChange: function(num, type) {
+        jQuery.ajax({
+            type: "POST",
+            url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+            data: {
+                "parentId": id,
+                "pageNum": num,
+                "pageSize": 20
+            },
+            dataType: "json",
+            success: function(data) {
+            	var s=JSON.stringify(data);
+                console.log("新加载页面：" +s);
+                var string = "";
+               
+                console.log("length"+data.content.childTypeList.length);
+                for (var i = 0; i < data.content.childTypeList.length; i++) {
+                    string += "<li onclick='getSubChildType(" + data.content.childTypeList[i].id + "," + id + ")'> <div  id='imgDiv'><img src='" + data.content.childTypeList[i].picture + "' class='productImg' /></div>";
+                    string += "<p id ='productInfo'><span id = 'productInfo_span'> " + data.content.childTypeList[i].name + "</span></p>";
+                    string += " </li>";
+                }
+                // jQuery("#contentDetailInfo_div").append(string);
+                if (id == 2 || id == 0 || id == 188) {
+                    jQuery(".vegetablelist").empty();
+                    jQuery(".vegetablelist").append(string);
+                }
+                if (id == 1 || id == 184) {
+                    jQuery(".fruitlist").empty();
+                    jQuery(".fruitlist").append(string);
+                    console.log("append"+string);
+                }
+                if (id == 26 || id == 154) {
+                    jQuery(".oillist").empty();
+                    jQuery(".oillist").append(string);
+                    console.log("append"+string);
+                }
+                if (id == 3 || id == 140) {
+                    jQuery(".meatlist").empty();
+                    jQuery(".meatlist").append(string);
+                }
+            },
+        });
+    }
+});
+}
+
+
+
+/* 首先需要被加载的函数  */
+function loaded() {
+navigationJudge();
+var screenHeight = jQuery(window).height();
+var screenWidth = jQuery(window).width();
+jQuery("#container").css("height", screenHeight);
+jQuery("#container").css("width", screenWidth);
+// console.log("浏览器的搜索的参数：" + location.search);
+var id = Number(location.search.substring(1));
+if (id != 0) {
+    if (id == 2) {
+        jQuery(".vegetable_image").attr("src", "../images/productType/vegetable-huan.png");
+        jQuery("#fruit_img").attr("src", "../images/productType/fruit.png");
+        jQuery("#oil_img").attr("src", "../images/productType/liangyou.png");
+        jQuery("#meat_img").attr("src", "../images/productType/meat.png");
+        jQuery(".vegetablelist").show();
+    }
+    if (id == 1) {
+        jQuery(".vegetable_image").attr("src", "../images/productType/vegetables.png");
+        jQuery("#fruit_img").attr("src", "../images/productType/fruit-huan.png");
+        jQuery("#meat_img").attr("src", "../images/productType/meat.png");
+        jQuery("#oil_img").attr("src", "../images/productType/liangyou.png");
+        jQuery(".fruitlist").show();
+    }
+    if (id == 26) {
+        jQuery(".vegetable_image").attr("src", "../images/productType/vegetables.png");
+        jQuery("#fruit_img").attr("src", "../images/productType/fruit.png")
+        jQuery("#meat_img").attr("src", "../images/productType/meat.png")
+        jQuery("#oil_img").attr("src", "../images/productType/liangyou-huan.png")
+        jQuery(".oillist").show();
+    }
+    jQuery.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+        data: {
+            "parentId": id,
+            "pageNum": 1,
+            "pageSize": 20
+        },
+        dataType: "json",
+        success: function(data) {
+            console.log("进入的时候加载的数据");
+            setProductPage(id, data.content.allPages);
+            // createListOnload(id, data);
+        },
+        error: function(data) {
+            alert("加载数据失败！");
+        }
+    });
+
+} else {
+    jQuery(".vegetable_image").attr("src", "../images/productType/vegetable-huan.png");
+    jQuery(".vegetablelist").show();
+    jQuery.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+        data: {
+            "parentId": 2,
+            "pageNum": 1,
+            "pageSize": 20
+        },
+        dataType: "json",
+        success: function(data) {
+            setProductPage(2, data.content.allPages);
+            // createListOnload(id, data);
+        },
+        error: function(data) {
+            alert("加载数据失败！");
+        }
+    });
+
+}
+
+}
+
+
+function getProductType(id) {
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    data: {
+        "parentId": id,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    dataType: "json",
+    success: function(data) {
+        console.log(data);
+        createList(data, id);
+    },
+    error: function(data) {
+        alert("加载数据失败！");
+    }
+});
+}
+
+
+
+/**
+* 查看商品二级分类
+*/
+function getSubChildType(id, type) {
+var productType = Number(type);
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goods/getGoodsList",
+    data: {
+        typeIdChild: id,
+        pageNum: 1,
+        pageSize: 20,
+    },
+    dataType: "json",
+    success: function(data) {
+        console.log(data);
+        var str = JSON.stringify(data['content']['goodsList']);
+        var allPages = data.content.allPages;
+        var currentPage = data.content.currentPage;
+        console.log(str);
+        localStorage.setItem("id", id);
+        localStorage.setItem("pageNum", allPages);
+        localStorage.setItem("currentPage", currentPage)
+        localStorage.setItem("productListSecond", str);
+        var urlString = "productTypeSecond.html?" + productType;
+        window.location.href = urlString;
+    },
+});
+}
+
+
+
+//自加载时 加载的第二级分类的商品数据（蔬菜、水果等第一级商品的类别分类） 函数
+function createListOnload(id, data) {
+// console.log(data);
+localStorage.setItem("productID", id);
+var i = 0;
+var length = data.content.albumList.length;
+if (1 < length < 5) {
+    jQuery("#contentDetailInfo_div").height(520);
+}
+// console.log("传输长度：" + length);
+var string = "";
+for (i = 0; i < length; i++) {
+    string += "<li onclick='getSubChildType(" + data.content.childTypeList[i].id + "," + id + ")'> <div  id='imgDiv'><img src='" + data.content.childTypeList[i].picture + "' class='productImg' /></div>";
+    string += "<p id ='productInfo'><span id = 'productInfo_span'> " + data.content.childTypeList[i].name + "</span></p>";
+    string += " </li>";
+}
+if (id == 2 || id == 0) {
+    jQuery(".vegetablelist").append(string);
+}
+if (id == 1 || id == 184) {
+    jQuery(".fruitlist").append(string);
+}
+if (id == 26 || id == 154) {
+    jQuery(".oillist").append(string);
+}
+setUserInfo();
+}
+
+
+
+function createProductList(data, type) {
+var string = "";
+var length = data.content.albumList.length;
+for (var i = 0; i < length; i++) {
+    console.log(i);
+    string += "<li onclick='getSubChildType(" + data.content.childTypeList[i].id + "," + type + ")'> <div  id='imgDiv'><img src='" + data.content.childTypeList[i].picture + "' class='productImg' /></div>";
+    // string += "<img class='picture' src='" + data.content[i].picture + "' />";
+    string += "<p id ='productInfo'>" + data.content.childTypeList[i].name + "</p>";
+    string += " </li>";
+}
+switch (type) {
+    case 1:
+        jQuery(".fruitlist").append(string);
+        break;
+    case 184:
+        jQuery(".fruitlist").append(string);
+        break;
+    case 2:
+        jQuery(".vegetablelist").append(string);
+        break;
+    case 188:
+        jQuery(".vegetablelist").append(string);
+        break;
+    case 3:
+        jQuery(".meatlist").append(string);
+        break;
+    case 140:
+        jQuery(".meatlist").append(string);
+        break;
+    case 26:
+        jQuery(".oillist").append(string);
+        break;
+    case 154:
+        jQuery(".oillist").append(string);
+        break;
+    case 44:
+        jQuery(".flourlist").append(string);
+        break;
+    case 97:
+        jQuery(".juhualist").append(string);
+        break;
+}
+}
+
+
+
+function Vegetablelist() {
+jQuery(".vegetable_image").attr("src", "../images/productType/vegetable-huan.png");
+jQuery("#fruit_img").attr("src", "../images/productType/fruit.png");
+jQuery("#oil_img").attr("src", "../images/productType/liangyou.png");
+jQuery("#meat_img").attr("src", "../images/productType/meat.png");
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    dataType: "json",
+    data: {
+        "parentId": 188,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    success: function(data) {
+        jQuery(".vegetablelist").empty();
+        jQuery(".oillist").empty();
+        jQuery(".fruitlist").empty();
+        jQuery(".meatlist").empty();
+        console.log("蔬菜: ");
+        console.log(data);
+        setProductPage(188, data.content.allPages);
+    },
+    error: function(data) {
+        alert("加载数据失败！");
+    }
+});
+}
+
+function Meatlist() {
+jQuery(".vegetable_image").attr("src", "../images/productType/vegetables.png");
+jQuery("#fruit_img").attr("src", "../images/productType/fruit.png");
+jQuery("#oil_img").attr("src", "../images/productType/liangyou.png");
+jQuery("#meat_img").attr("src", "../images/productType/meat-huan.png");
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    dataType: "json",
+    data: {
+        "parentId": 140,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    success: function(data) {
+        jQuery(".meatlist").empty();
+        jQuery(".oillist").empty();
+        jQuery(".vegetablelist").empty();
+        jQuery(".fruitlist").empty();
+        console.log("肉类: ");
+        console.log(data);
+        setProductPage(140, data.content.allPages);
+    },
+    error: function(data) {
+        alert("加载数据失败！");
+    }
+});
+}
+
+function Fruitlist() {
+jQuery(".vegetable_image").attr("src", "../images/productType/vegetables.png");
+jQuery("#fruit_img").attr("src", "../images/productType/fruit-huan.png");
+jQuery("#meat_img").attr("src", "../images/productType/meat.png");
+jQuery("#oil_img").attr("src", "../images/productType/liangyou.png");
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    dataType: "json",
+    data: {
+        "parentId": 184,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    success: function(data) {
+        jQuery(".fruitlist").empty();
+        jQuery(".oillist").empty();
+        jQuery(".vegetablelist").empty();
+        jQuery(".meatlist").empty();
+        console.log("水果: ");
+        var str=JSON.stringify(data);
+        console.log(str);;
+        setProductPage(184, data.content.allPages);
+    },
+    error: function(data) {
+        alert("加载数据失败！");
+    }
+});
+}
+
+function Oillist() {
+jQuery(".vegetable_image").attr("src", "../images/productType/vegetables.png");
+jQuery("#fruit_img").attr("src", "../images/productType/fruit.png")
+jQuery("#meat_img").attr("src", "../images/productType/meat.png")
+jQuery("#oil_img").attr("src", "../images/productType/liangyou-huan.png")
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    dataType: "json",
+    data: {
+        "parentId": 154,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    success: function(data) {
+        jQuery(".oillist").empty();
+        jQuery(".vegetablelist").empty();
+        jQuery(".fruitlist").empty();
+        jQuery(".meatlist").empty();
+        console.log("粮油: ");
+        console.log(data);
+        // createProductList(data, 26);
+        setProductPage(154, data.content.allPages);
+    },
+    error: function(data) {
+        alert("加载数据失败！");
+    }
+});
+}
+
+function titleShoppingCard() {
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    dataType: "json",
+    data: {
+        "parentId": 26,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    success: function(data) {
+        jQuery(".oillist").empty();
+        jQuery(".vegetablelist").empty();
+        jQuery(".fruitlist").empty();
+        jQuery(".meatlist").empty();
+        console.log("购物卡: " + data);
+        // createProductList(data, 26);
+        setProductPage(26, data.content.allPages);
+    },
+    error: function(data) {
+        alert("加载数据失败！");
+    }
+});
+}
+
+
+
+function productDetailListLoaded() {
+var screenHeight = jQuery(window).height();
+var screenWidth = jQuery(window).width();
+jQuery("#container").css("height", screenHeight);
+jQuery("#container").css("width", screenWidth);
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goodsType/getChildGoodsTypeList",
+    data: {
+        "parentId": 2,
+        "pageNum": 1,
+        "pageSize": 20
+    },
+    dataType: "json",
+    success: function(data) {
+        var array = new Array();
+        var array_length = 0;
+        console.log("首先加载得到的：");
+        for (var id in data.content) {
+            console.log(data.content.albumList[id].id);
+            array[array_length++] = data.content.albumList[id].id;
+        }
+        //    console.log("数组长度："+array+array.length);
+        //    console.log(data.content[0,data.content.length-1].id);
+        console.log(data.content.albumList.length);
+        console.log(array);
+        console.log(array_length);
+        // console.log(data.content[0, data.content.length - 1].id);
+        createGoodList(array.length - 1, array);
+    },
+    error: function(data) {
+        console.log("加载数据失败！");
+    }
+});
+}
+
+function createGoodList(len, array) {
+console.log(len);
+console.log(array);
+for (var id in array) {
+    jQuery.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goods/getGoodsList",
+        data: {
+            typeIdChild: id,
+            pageNum: 1,
+            pageSize: 12,
+        },
+        dataType: "json",
+        success: function(data) {
+            // console.log(data);
+            // var str = JSON.stringify(data['content']['goodsList']);
+            // console.log(str);
+            // localStorage.setItem("productListSecond", str);
+            // var proId = val['id'];
+            var string = '<li><div  id="imgDiv"><img' +
+                '<img class="full" src="' + val['picture'] + '">' +
+                '<div class="show-font"><p><span class="title-1">' + val['name'] + '</span></p>' +
+                '<p><span class="title-2" title="' + val['title'] + '">' + val['title'] + '</span></p>' +
+                '<p><span class="title-price">¥' + val['price'] + '/' + val['unit'] + '</span></p>' +
+                '</div></li>';
+            jQuery("#contentDetailInfo").append(string);
+        },
+    });
+}
+}
+
+
+
+//function createProductList(data) {
+
+//}
+
+
+function createProductListdetail(data) {
+jQuery.ajax({
+    type: "POST",
+    url: "http://127.0.0.1:8080/SmartyAgriculture/interface/goods/getGoodsList",
+    data: {
+        typeIdChild: id,
+        pageNum: 1,
+        pageSize: 12,
+    },
+    dataType: "json",
+    success: function(data) {
+        console.log(data);
+        var str = JSON.stringify(data['content']['goodsList']);
+        console.log(str);
+        localStorage.setItem("productListSecond", str);
+        window.location.href = "productTypeSecond.html";
+    },
+});
+
+}
+
+
+function signOut() {
+localStorage.clear();
+window.location.reload();
+}
+</script>
+    
+    
+    
+</body>
+
+</html>

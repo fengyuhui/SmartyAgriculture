@@ -1,0 +1,25 @@
+package cn.bupt.smartyagl.service;
+
+import java.util.List;
+
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrder;
+
+/**
+ * 参观农场订单管理接口
+ * @author TMing
+ *
+ */
+
+public interface IFarmVisitOrderService {
+	
+	boolean createOrder(FarmVisitOrder farmVisitOrder);
+	boolean deleteorder(int id);
+	FarmVisitOrder getOrderByID(int id);
+	List<FarmVisitOrder> getAllOrders();
+	boolean updateOrder(FarmVisitOrder farmVisitOrder);
+	
+	/**
+	 * 支付完成订单
+	 */
+	boolean payOrder( Integer orderId,String tradeNumber );
+}

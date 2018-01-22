@@ -1,0 +1,91 @@
+<!---->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中远农庄</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <link rel="stylesheet" href="css/login&register/retrieve.css" media="screen" />
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script type="text/javascript" src="js/jquery.poshytip.js"></script>
+    <!--<script type="text/javascript" src="js/jq.validate.js"></script>-->
+    <script type="text/javascript" src="js/retrieve.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/tip-yellowsimple.css" />
+    <script src="js/md5-min.js" type="text/javascript"></script>
+</head>
+<body>
+<!--找回密码功能-->
+    <div class="main-container">
+        <div class="main-header">
+            <br/>
+            <span class="main-header-title">中远农庄</span>
+        </div>
+        <div class="main-wrapper">
+            <div class="main-wrapper-left">
+                <img src="images/login-left.jpg" width="600px" height="600px">
+            </div>
+            <div class="main-wrapper-right">
+                <div class="retrieve-info">
+                	<form>
+                    <ul>
+                        <li class="retrieve-line">
+                            <div class="sub-title">
+                                <span>密码找回</span>
+                            </div>
+                        </li>                 
+                        <li>
+                            <div class="sub-retrieve" id="sub-retrieve">
+                                <span>手机号：&nbsp&nbsp</span>
+                           <!--<input  id="phone" name="phone" type="tel" placeholder="请输入手机号" valType="MOBILE" msg="<font color=red>*</font>手机格式不正确"  style="border: 0px solid white;width: 180px;">-->
+                          <input  id="phone" name="phone" class="form-validation" type="tel" placeholder="请输入手机号">
+                          <span id="phones"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sub-retrieve" id="sub-retrieve">
+                                <span>验证码：&nbsp&nbsp</span>
+                                <input id="randomCode" type="password" class="form-validationyanz" placeholder="请输入验证码">
+                                <span id="" class="password-hq" onclick="createCode()">获取</span>
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="sub-retrieve" id="sub-retrieve">
+                                <span>新密码：&nbsp&nbsp</span>
+                                <input type="password" name="passwd" id="pw1" class="form-validation"  placeholder="输入登录密码">
+                                <!--<input type="password" name="passwd" id="pw1"  placeholder="输入新密码" valType="required" msg="<font color=red>*</font>密码不能为空"   style="border: 0px solid white;width: 180px;">-->
+                            </div>
+                        </li>
+                         <li>
+                        	<div class="sub-retrieve" id="sub-retrieve">
+                                <span>确认密码：</span>
+                                <!--<input type="password" name="passwd" id="pw2" onkeyup="validate()"  placeholder="确认新密码" valType="required" msg="<font color=red>*</font>密码不能为空"    style="border: 0px solid white;width:180px;">-->
+                                <input type="password" id="pw2" class="form-validation" placeholder="输入登录密码">
+                                <span id="tishi"></span>
+                            </div>
+                        </li>
+
+                        <li>
+                        	<div class="sub-retrieve">
+                        		<div class="retrieve-forget-sm">
+                        		    <span> &#12288; 绑 定 手 机 不 收 取 任 何 费 用 , 一 个 手 机 只 能 绑 定 一 个 账 号 , 若 需 修 改 或 解 除 已 绑 定 的 手 机,请 联 系 智 慧 农 业 客 服。</span>
+                        		</div>
+                        	</div>
+                        </li>
+                        <li>
+                            <div id="retrieve-btn" class="retrieve-btn" onclick="retrieve()" >
+                            	 <input class="retrieve-btn" type="button" value="提交" /> 
+                            </div>
+                       </li>
+                    </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

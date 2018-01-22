@@ -1,0 +1,30 @@
+/**
+ * 分页
+ */
+function dividePage(allPages, currentPage, flag) {
+	if (flag == "next") {
+		if (allPages != currentPage) {
+			var src = "/SmartyAgriculture/farmMessage/index/" + allPages + "/"
+					+ currentPage + "/" + flag;
+			var status = $("#status_search").val();
+			var saleStatus = $("#saleStatus_search").val();
+			var farmMessageName = $("#name-search-input").val();
+			if (farmMessageName == null || farmMessageName == "") {
+				farmMessageName = 1;
+			}
+			parent.changeIframe(src);
+		} else {
+			alert("已到达最后一页");
+		}
+	} else {
+		var src = "/SmartyAgriculture/farmMessage/index/" + allPages + "/"
+				+ currentPage + "/" + flag;
+		var status = $("#status_search").val();
+		var saleStatus = $("#saleStatus_search").val();
+		var farmMessageName = $("#name-search-input").val();
+		if (farmMessageName == null || farmMessageName == "") {
+			farmMessageName = 1;
+		}
+		parent.changeIframe(src);
+	}
+}

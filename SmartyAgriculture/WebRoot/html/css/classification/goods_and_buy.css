@@ -1,0 +1,308 @@
+/********************************
+
+
+        created  by  zhangqiang
+
+
+********************************/
+
+
+/************header  style   start**********/
+
+body {
+    background-color: #E9e9e9;
+}
+
+#icon_collect {
+    float: right;
+    margin-right: 25px !important;
+}
+
+li {
+    cursor: pointer;
+}
+
+img {
+    cursor: pointer;
+}
+
+
+/*.container{
+    height:70px;
+}*/
+
+.user-Info {
+    float: right;
+}
+
+
+/*user-Info li {
+    float: right;
+    margin-right: 44px;
+    }*/
+
+#collect_img {
+    width: 40%;
+    height: 50%;
+}
+
+#login {
+    display: inline-block;
+}
+
+#register {
+    display: inline-block;
+}
+
+#product {
+    border-bottom: 2px solid #fff;
+}
+
+.four-columns {
+    width: 720px !important;
+    /*visibility: visible;*/
+    /*display: block;*/
+}
+
+.nav-bd {
+    padding-top: 3px;
+}
+
+
+/*************header  style   end************/
+
+
+/************* body container start ************/
+
+.info_content_div {
+    float: left;
+    width: 100%;
+    margin: 0px 0 0 0;
+    position: relative;
+    background: #ffffff;
+}
+
+#content-icon-table {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    /*min-height:1000px; */
+    position: relative;
+}
+
+#content {
+    float: left;
+    width: 100%;
+    height: 195px !important;
+    margin: 0px 0 0 0;
+    position: relative;
+    margin-top: 30px;
+    background: #ffffff;
+    padding: 10px 0px 15px 0px !important;
+}
+
+.content-icon-tabname {
+    margin: 0 auto;
+    width: 1100px;
+    position: relative;
+    /*background-color:#ffffff;*/
+}
+
+.content-icon-tabname-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.content-product-div {
+    position: relative;
+    width: 100%;
+    float: left;
+    height: auto;
+    background: #f4f4f4;
+    z-index: 5;
+    padding-bottom: 45px;
+}
+
+
+/* 分页控件样式代码  开始 */
+
+#page {
+    position: relative;
+    clear: both;
+    margin: 0 auto;
+    width: 1100px !important;
+    top: 15px;
+}
+
+.pagebar {
+    float: right;
+}
+
+
+/* 分页控件样式代码  结束*/
+
+.tabimg_div {
+    float: left;
+    width: 15%;
+    margin-top: 0px;
+    margin-left: 7%;
+    height: auto;
+}
+
+.img_Div {
+    height: 100px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.tabimg_div img {
+    max-width: 60%;
+}
+
+.productName {
+    max-width: 100%;
+    margin-top: 12px !important;
+    text-align: center;
+    /*margin-top: 40px;*/
+    font-size: 20px;
+    color: #62c98d;
+}
+
+#contentDetailInfo_div {
+    position: relative;
+    clear: left;
+    height: auto;
+    top: 30px;
+    width: 1100px !important;
+    margin: 0 auto;
+    bottom: 0px;
+    width: 100%;
+    font-family: Microsoft Yahei;
+    font-size: 100%;
+    padding-bottom: 30px;
+}
+
+#contentDetailInfo {
+    width: 100%;
+}
+
+#contentDetailInfo li {
+    position: relative;
+    border: 1px solid #ffffff;
+    float: left;
+    background-color: #ffffff;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    width: 207px;
+    height: 230px;
+}
+
+#imgDiv {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 200px;
+}
+
+.productImg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    /*left:5px;*/
+}
+
+#productInfo {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    top: 205px;
+    bottom: 0px;
+    height: 25px;
+    line-height: 25px;
+    color: #131313;
+    font-size: 15px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid #f8f8f8;
+}
+
+#productInfo_span {
+    margin: 0 auto;
+}
+
+#productTitle {
+    width: 160px;
+    position: absolute;
+    top: 237px;
+    bottom: 0px;
+    height: 25px;
+    line-height: 25px;
+    color: #626262;
+    border-bottom: 2px solid #f8f8f8;
+    left: 33px;
+}
+
+#buyNum {
+    width: 160px;
+    position: absolute;
+    top: 261px;
+    bottom: 0px;
+    padding-top: 7px;
+    height: 25px;
+    line-height: 25px;
+    color: #626262;
+    left: 33px;
+}
+
+#price {
+    position: absolute;
+    width: 40px;
+    top: 273px;
+    bottom: 0px;
+    background: #fab31a;
+    border: 1px solid #fab31a;
+    color: #ffffff;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    right: 70px;
+}
+
+
+/*************body container  end ************/
+
+.footer {
+    position: relative;
+    clear: left;
+    /*top: 30px;*/
+}
+
+
+/*.footer {
+    height: auot;*/
+
+
+/*top:20px;    */
+
+
+/*    position: relative;
+    bottom: 0px;
+    clear: left;
+    left: 0px;
+    width: 100%;
+}*/
+
+
+/*.footer .container {
+    height: 55px !important;
+}
+*/
+
+
+/*#scrolltotop {
+    margin-bottom: 0px !important;
+}*/

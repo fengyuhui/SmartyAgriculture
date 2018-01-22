@@ -1,0 +1,40 @@
+
+//分页
+function dividePage(allPages, currentPage, flag) {
+	if (flag == "next") {
+		if (allPages != currentPage) {
+			var src = "/SmartyAgriculture/user/index/" + allPages + "/"
+					+ currentPage + "/" + flag;
+			var userName = $("#userName-search-input").val();
+			var phoneNumber = $("#phoneNumber-search-input").val();
+			
+			if (userName == null || userName == "") {
+				userName = 1;
+			}
+			
+			if (phoneNumber == null || phoneNumber == "") {
+				phoneNumber = 1;
+			}
+			src = src + "/" + userName + "/" + phoneNumber;
+			parent.changeIframe(src);
+		} else {
+			alert("已到达最后一页");
+		}
+	} else {
+		var src = "/SmartyAgriculture/user/index/" + allPages + "/"
+				+ currentPage + "/" + flag;
+		var userName = $("#userName-search-input").val();
+		var phoneNumber = $("#phoneNumber-search-input").val();
+		
+		if (userName == null || userName == "") {
+			userName = 1;
+		}
+		
+		if (phoneNumber == null || phoneNumber == "") {
+			phoneNumber = 1;
+		}
+		src = src + "/" + userName + "/" + phoneNumber;
+		parent.changeIframe(src);
+	}
+}
+

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>智慧农业</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="images/favicon.gif" />
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <link rel="stylesheet" href="css/responsive.css" media="screen" />
+    <!-- RESPONSIVE CSS FILE -->
+    <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen" />
+    <!-- DEFAULT BLUE COLOR CSS FILE -->
+    <link href='http//fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
+    <!-- ROBOTO FONT FROM GOOGLE CSS FILE -->
+    <link rel="stylesheet" href="css/prettyPhoto.css" media="screen" />
+    <!--PRETTYPHOTO CSS FILE -->
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.min.css" media="screen" />
+    <!-- FONT AWESOME ICONS CSS FILE -->
+    <link rel="stylesheet" href="css/layer-slider.css" media="screen" />
+    <!-- LAYER SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/flexslider.css" media="screen" />
+    <!-- FLEX SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/revolution-slider.css" media="screen" />
+    <!-- REVOLUTION SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/onsale.css" media="screen" />
+    <!--onsale HTML CSS FILE-->
+    <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- JQUERY JS FILE -->
+    <script type="text/javascript" src="http//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!-- JQUERY UI JS FILE -->
+    <script type="text/javascript" src="js/flex-slider.min.js"></script>
+    <!-- FLEX SLIDER JS FILE -->
+    <script type="text/javascript" src="js/navigation.min.js"></script>
+    <!-- MAIN NAVIGATION JS FILE -->
+    <script type="text/javascript" src="js/jquery.layerslider.js"></script>
+    <!-- LAYER SLIDER JS FILE -->
+    <script type="text/javascript" src="js/layerslider.transitions.js"></script>
+    <!-- LAYER SLIDER TRANSITIONS JS FILE -->
+    <script type="text/javascript" src="js/map.min.js"></script>
+    <!-- GOOGLE MAP JS FILE -->
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <!-- CAROUSEL SLIDER JS -->
+    <script type="text/javascript" src="js/jquery.theme.plugins.min.js"></script>
+    <!-- REVOLUTION SLIDER PLUGINS JS FILE -->
+    <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
+    <!-- REVOLUTION SLIDER JS FILE -->
+    <script type="text/javascript" src="js/flickr.js"></script>
+    <!-- FLICKR WIDGET JS FILE -->
+    <script type="text/javascript" src="js/instagram.js"></script>
+    <!-- INSTAGRAM WIDGET JS FILE -->
+    <script type="text/javascript" src="js/jquery.twitter.js"></script>
+    <!--TWITTER WIDGET JS FILE -->
+    <script type="text/javascript" src="js/prettyPhoto.min.js"></script>
+    <!-- PRETTYPHOTO JS FILE -->
+    <script type="text/javascript" src="js/jquery.tooltips.min.js"></script>
+    <!-- TOOLTIPS JS FILE -->
+    <script type="text/javascript" src="js/isotope.min.js"></script>
+    <!--ISOTOPE JS FILE -->
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <!-- SCROLL TO TOP JS PLUGIN -->
+    <script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+    <!-- EASY PIE JS FILE -->
+    <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+    <!-- TRANSITION JS FILE -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <!-- CUSTOM JAVASCRIPT JS FILE -->
+</head>
+
+<body>
+    <div id="container">
+        <!-- main container starts-->
+        <div id="wrapp">
+            <!-- main wrapp starts-->
+            <header id="header">
+                <!--header starts -->
+                <div id="header-links">
+                    <div class="container">
+                        <div class="one-half">
+                            <ul class="contact-links">
+                                <!-- header social links starts-->
+                                <li><a href="#"><i class="icon-home"></i>5 tomato,Some City </a></li>
+                                <li><a href="#"><i class="icon-phone"></i>+987 654 321 </a></li>
+                                <li><a href="#"><i class="icon-map-marker"></i>北京市</a></li>
+                            </ul>
+                        </div>
+                        <div class="one-half">
+                            <ul class="social-links">
+                                <!-- header social links starts-->
+                                <!--<li><a href="#" class="tooltip" title="Some Title"><i class="icon-twitter"></i></a></li>
+						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-facebook"></i></a></li>
+						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-linkedin"></i></a></li>
+						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-google-plus"></i></a></li>
+						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-skype"></i></a></li>
+						<li><a href="#" class="tooltip" title="Some Title"><i class="icon-dribbble"></i></a></li>-->
+                                <li><a href="login.html" class="tooltip" title="Some Title">登陆</a></li>
+                                <li><a href="register.html" class="tooltip" title="Some Title">注册</a></li>
+                            </ul>
+                            <!--header social links ends -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="head-wrapp">
+                        <a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>
+                        <!--your logo-->
+                        <nav class="top-search">
+                            <!-- search starts-->
+                            <form action="404-error.html" method="get">
+                                <button class="search-btn"></button>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Search';" onfocus="if(this.value=='Search')this.value='';" value="Search" />
+                            </form>
+                        </nav>
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li>
+                                <a href="index.html" id="current">首页</a>
+                                <!-- Second Level / Start -->
+                                <!-- Second Level / End -->
+                            </li>
+                            <li><a href="#">产品分类</a>
+                                <!-- Mega Menu / Start -->
+                                <ul class="four-columns">
+                                    <li class="one">
+                                        <h5>春季菜</h5>
+                                        <ol>
+                                            <li><a href="about-us.html"><i class="icon-group"></i>菠菜</a></li>
+                                            <li><a href="services.html"><i class="icon-cog"></i>卷心菜</a></li>
+                                            <li><a href="faq.html"><i class="icon-question-sign"></i>韭菜</a></li>
+                                            <li><a href="team-member.html"><i class="icon-user"></i>小油菜</a></li>
+                                        </ol>
+                                    </li>
+                                    <li class="one">
+                                        <h5>夏季菜</h5>
+                                        <ol>
+                                            <li><a href="left-sidebar.html"><i class="icon-circle-arrow-left"></i>西红柿</a></li>
+                                            <li><a href="right-sidebar.html"><i class="icon-circle-arrow-right"></i>茄子</a></li>
+                                            <li><a href="404-error.html"><i class="icon-warning-sign"></i>黄瓜</a></li>
+                                            <li><a href="clients.html"><i class="icon-quote-left"></i>空心菜</a></li>
+                                        </ol>
+                                    </li>
+                                    <li class="one">
+                                        <h5>秋季菜</h5>
+                                        <ol>
+                                            <li><a href="elements.html"><i class=" icon-cogs"></i>扁豆</a></li>
+                                            <li><a href="icons.html"><i class="icon-th-large"></i>芹菜</a></li>
+                                            <li><a href="pricing-tables.html"><i class=" icon-table"></i>青菜</a></li>
+                                            <li><a href="typography.html"><i class="icon-text-height"></i>胡萝卜</a></li>
+                                        </ol>
+                                    </li>
+                                    <li class="one">
+                                        <h5>冬季菜</h5>
+                                        <ol>
+                                            <li><a href="portfolio-2.html"><i class=" icon-lightbulb"></i>白菜</a></li>
+                                            <li><a href="portfolio-3.html"><i class=" icon-suitcase"></i>白萝卜</a></li>
+                                            <li><a href="portfolio-4.html"><i class="icon-heart"></i>冬瓜</a></li>
+                                            <li><a href="single-project-small.html"><i class="icon-zoom-in"></i>土豆</a></li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                                <!-- Mega Menu / End -->
+                            </li>
+
+                            <li><a href="hotsale.html">热销产品</a></li>
+                            <li><a href="#">促销活动</a></li>
+                            <li><a href="#">企业文化</a></li>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="contact.html">联系客服</a></li>
+                        </ul>
+                        <!-- main navigation ends-->
+                        <div class="after-nav-info">
+                            <h4>联系电话: +987 654 321 000</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <!-- header ends-->
+            <div id="layerslider">
+                <!--layer slider starts-->
+                <div class="slider-shadow-top">
+                </div>
+                <div class="slider-shadow-bottom">
+                </div>
+
+                <div class="ls-layer" style="slidedirection: top; slidedelay: 6000; durationin: 1500; durationout: 1500; delayout: 500;">
+
+                    <img src="images/slider/layer/3/on-sale.jpg" class="ls-bg" alt="">
+
+                </div>
+                <div class="ls-layer" style="slidedirection: right; slidedelay: 5000; durationin: 1500; durationout: 1500;">
+                    <img src="images/slider/layer/3/on-sale.jpg" class="ls-bg" alt="">
+
+                </div>
+                <div class="ls-layer" style="slidedirection: right; slideoutdirection : top; slidedelay: 5000; durationin: 1500; durationout: 1500; delayout: 500;">
+                    <img src="images/slider/layer/3/on-sale.jpg" class="ls-bg" alt="">
+
+                </div>
+                <div class="ls-layer" style="slidedirection: top; slideoutdirection : top; slidedelay: 5000; durationin: 1500; durationout: 1500; delayout: 500;">
+                    <img src="images/slider/layer/3/on-sale.jpg" class="ls-bg" alt="">
+
+                </div>
+            </div>
+            <!--layer slider ends-->
+            <div id="content">
+                <div class="intro-features">
+                    <!-- intro features panel starts -->
+                    <div class="container">
+                        <ul id="filterable">
+                            <li><a data-categories="*">全部类别</a></li>
+                            <li><a data-categories="vegetable">促销蔬菜</a></li>
+                            <li><a data-categories="fruit">促销水果</a></li>
+                            <!--<li><a data-categories="illustration">Illustration</a></li>
+					<li><a data-categories="photography">Photography</a></li>-->
+                            <li><a data-categories="meat">促销肉类</a></li>
+                        </ul>
+					<ul id="portfolio-container" class="four-columns">
+					<li class="isotope-item" data-categories="vegetable">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/tomato.jpg" data-rel="prettyPhoto" class="item-preview"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/tomato.jpg" alt="" width="80px" height="50px"/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">西红柿</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="vegetable">
+							<div class="item-wrapp">
+								<div class="flexslider portfolio-items-slider slide">
+									<ul class="slides">
+										<li><img src="images/portfolio/cucumber.jpg" /></li>
+										<li><img src="images/portfolio/cucumber.jpg" /></li>
+										<li><img src="images/portfolio/cucumber.jpg" /></li>
+									</ul>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">黄瓜</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="vegetable">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-5.jpg" data-rel="prettyPhoto" class="item-preview"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/potato.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">土豆</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="vegetable">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-6.jpg" data-rel="prettyPhoto" class="item-preview"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/chili.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">大辣椒</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="vegetable">
+						<div class="item-wrapp">
+								<div class="flexslider portfolio-items-slider slide">
+									<ul class="slides">
+										<li><img src="images/portfolio/rabit.jpg" alt=""/></li>
+										<li><img src="images/portfolio/portfolio-item-9.jpg" alt=""/></li>
+										<li><img src="images/portfolio/rabit.jpg" alt=""/></li>
+									</ul>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">萝卜</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="vegetable">
+							<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-9" class="item-preview" data-rel="prettyPhoto"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/eggplant.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">茄子</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="fruit">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-10.jpg" class="item-preview" data-rel="prettyPhoto"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/watermelon.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">西瓜</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="fruit">
+						<div class="item-wrapp">
+								<div class="flexslider portfolio-items-slider slide">
+									<ul class="slides">
+										<li><img src="images/portfolio/mango.jpg" alt=""/></li>
+										<li><img src="images/portfolio/portfolio-item-12.jpg" alt=""/></li>
+										<li><img src="images/portfolio/mango.jpg" alt=""/></li>
+									</ul>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">芒果</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="fruit">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-12.jpg" class="item-preview" data-rel="prettyPhoto"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/grape.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">葡萄</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="fruit">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-13.jpg" class="item-preview" data-rel="prettyPhoto"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/pineapple.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">菠萝</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item" data-categories="meat">
+						<div class="item-wrapp">
+								<div class="flexslider portfolio-items-slider slide">
+									<ul class="slides">		
+										<li><img src="images/portfolio/pork.jpg" alt=""/></li>
+										<li><img src="images/portfolio/pork.jpg" alt=""/></li>
+									</ul>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">猪肉</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+					<li class="isotope-item " data-categories="meat">
+						<div class="item-wrapp">
+								<div class="portfolio-item">
+									<a href="single-project-small.html" class="item-permalink"><i class="icon-link"></i></a>
+									<a href="images/portfolio/portfolio-item-16.jpg" class="item-preview" data-rel="prettyPhoto"><i class="icon-zoom-in"></i></a>
+									<img src="images/portfolio/beef.jpg" alt=""/>
+								</div>
+								<div class="portfolio-item-title">
+									<a href="single-project-small.html">牛肉</a>
+                                    <p>
+										 健康美味
+									</p>
+								</div>
+							</div>
+					</li>
+				</ul>
+                        <!-- Pagination -->
+                        <nav class="pagination">
+                            <ul>
+                                <li><a href="#">前一页</a></li>
+                                <li><a href="#" class="current">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">后一页</a></li>
+                            </ul>
+
+                        </nav>
+                        <!-- End pagination -->
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <section id="copyrights">
+                <section class="container">
+                    <div class="one-half">
+                        <p>
+                            Copyright &copy; 2016.Company name All rights reserved.
+                        </p>
+                    </div>
+                    <div class="one-half">
+                        <ul class="copyright_links">
+                            <li><a href="#" title="首页">首页</a></li>
+                            <li><a href="#" title="企业文化">企业文化</a></li>
+                            <li><a href="#" title="关于我们">关于我们</a></li>
+                            <li><a href="#" title="回到顶部">回到顶部</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <!-- main wrapp starts-->
+    </div>
+    <!-- main container ends-->
+
+</body>
+
+</html>

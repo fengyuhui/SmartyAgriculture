@@ -1,0 +1,5 @@
+jdbc.driver=com.mysql.jdbc.Driver
+jdbc.url=jdbc\:mysql\://118.190.41.235/smartyagriculture?useUnicode\=true&characterEncoding\=utf8
+#?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+jdbc.username=root
+jdbc.password=Farm+-67998888

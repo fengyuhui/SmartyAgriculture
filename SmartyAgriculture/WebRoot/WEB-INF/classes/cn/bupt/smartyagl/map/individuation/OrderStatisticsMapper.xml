@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bupt.smartyagl.dao.individuation.OrderStatisticsMapper">
+	<sql id="query_order_time">
+		<if test="status==7">
+			AND a.status=#{status}
+		</if>
+		<if test="starttime!=null">
+			AND buyTime>=#{starttime}
+		</if>
+		<if test="endtime!=null">
+			AND buyTime &lt;= #{endtime}
+		</if>
+	</sql>
+	<select id="UserStatistics" resultType="cn.bupt.smartyagl.model.UserStatisticsModel"
+		parameterType="cn.bupt.smartyagl.dao.individuation.OrderQueryVo">
+		<!-- 2个表联合查询 -->
+		SELECT b.id, SUM(a.amount) AS money, name, COUNT(*) AS num
+		FROM
+		orderMaster AS a JOIN user AS b ON a.userId = b.id
+		WHERE userId != ""
+          <include refid="query_order_time"></include>
+		GROUP BY userId
+		ORDER BY SUM(a.amount) DESC
+	</select>
+	<!-- 总销售额统计 -->
+	<select id="totalSalesStatistics" resultType="cn.bupt.smartyagl.model.totalSalesModel"
+		parameterType="cn.bupt.smartyagl.dao.individuation.OrderQueryVo">
+		SELECT DATE_FORMAT( buyTime, "%Y-%m-%d" )as showTime ,SUM(amount)as
+		money ,COUNT(*) as num
+		from orderMaster
+		WHERE userId != ""
+         <if test="status==7">
+			AND status=#{status}
+		</if>
+		<if test="starttime!=null">
+			AND buyTime>=#{starttime}
+		</if>
+		<if test="endtime!=null">
+			AND buyTime &lt;= #{endtime}
+		</if>
+		GROUP BY buyTime
+		ORDER BY buyTime DESC
+	</select>
+	<select id="productStatistics" resultType="cn.bupt.smartyagl.model.totalSalesModel"
+		parameterType="cn.bupt.smartyagl.dao.individuation.OrderQueryVo">
+		SELECT DATE_FORMAT( buyTime, "%Y-%m-%d" )as showTime ,SUM(money)as
+		money ,COUNT(*) as num
+		from OrderView
+		WHERE goodsId=#{productId}
+		<if test="status==7">
+			AND status=#{status}
+		</if>
+		<if test="starttime!=null">
+			AND buyTime>=#{starttime}
+		</if>
+		<if test="endtime!=null">
+			AND buyTime &lt;= #{endtime}
+		</if>
+		GROUP BY buyTime
+		ORDER BY buyTime DESC
+	</select>
+	<select id="typeStatistics" resultType="cn.bupt.smartyagl.model.totalSalesModel"
+		parameterType="cn.bupt.smartyagl.dao.individuation.OrderQueryVo">
+		SELECT DATE_FORMAT( buyTime, "%Y-%m-%d" )as showTime ,SUM(money)as
+		money ,COUNT(*) as num
+		from OrderDetailView
+		WHERE typeIdParent=#{productId}
+		<if test="status==7">
+			AND status=#{status}
+		</if>
+		<if test="starttime!=null">
+			AND buyTime>=#{starttime}
+		</if>
+		<if test="endtime!=null">
+			AND buyTime &lt;= #{endtime}
+		</if>
+		GROUP BY buyTime
+		ORDER BY buyTime DESC
+	</select>
+	<select id="productInputStatics" resultType="cn.bupt.smartyagl.model.inputStatisticsModel"
+		parameterType="cn.bupt.smartyagl.dao.individuation.OrderQueryVo">
+		SELECT DATE_FORMAT( add_time, "%Y-%m-%d" )as showTime ,SUM(num)as
+		num ,COUNT(*) as input_num
+		from inputGoods
+		WHERE goods_id=#{productId}
+			AND status=1
+		<if test="starttime!=null">
+			AND add_time>=#{starttime}
+		</if>
+		<if test="endtime!=null">
+			AND add_time &lt;= #{endtime}
+		</if>
+		GROUP BY add_time
+		ORDER BY add_time DESC
+	</select>
+
+</mapper>

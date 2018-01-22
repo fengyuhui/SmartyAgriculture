@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+.file {
+	position: absolute;
+	left: 0;
+	width: 250px;
+	top: 0;
+	height: 28px;
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	cursor: pointer
+}
+
+.file1 {
+	float: left;
+	margin-left: 8px;
+	z-index: 1;
+	width: 66px;
+	height: 28px;
+	line-height: 28px;
+	cursor: pointer;
+	background-color: #1E88C7;
+	width: 70px;
+	color: white;
+	font-size: 16px;
+	border-radius: 3px;
+}
+
+.inputstyle {
+	border: 1px solid #BEBEBE;
+	width: 170px;
+	float: left;
+	height: 28px;
+	line-height: 23px;
+	background: #FFF;
+	z-index: 99
+}
+.continuePicture{
+	border: 0px;
+    font-size: 16px;
+    color: white;
+    background-color: #1E88C7;
+    border-radius: 3px;
+    display: none;
+}
+.line{
+	margin-top:10px;
+}
+#tracking{
+	display:none;
+}
+}

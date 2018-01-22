@@ -1,0 +1,9 @@
+diff a/css/login&register/login.css b/css/login&register/login.css	(rejected hunks)
+@@ -78,6 +78,7 @@
+     padding-top:10px;
+     height:60px;
+     color:#ffffff;
++    cursor: pointer;
+ }
+ .register-forget-password{
+     float:right;

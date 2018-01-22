@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SmartyAgriculture"
+  id="myeclipse.1392728712623"
+  context-root="/SmartyAgriculture"
+  j2ee-spec="6.0"
+  archive="SmartyAgriculture.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

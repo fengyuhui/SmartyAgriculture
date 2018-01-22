@@ -1,0 +1,115 @@
+<html class="csstransforms csstransforms3d csstransitions"><head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>生态技术</title>
+    <link rel="stylesheet" href="css/index.css" media="screen">
+    <link rel="stylesheet" href="css/style.css" media="screen">
+    <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen">
+    <link rel="stylesheet" href="css/ecologyHomePage.css">
+    <link rel="stylesheet" href="css/responsive.css" media="screen">
+    <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+    <script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
+    <script src="js/ecologyHomePage.js"></script>
+    <script type="text/javascript" src="js/isotope.min.js"></script>
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <!-- game own JS   -->
+</head>
+
+<body onload="autoadapt()">
+    <div id="container">
+        <div id="wrapp">
+            <div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        <a href="#"><i class="icon-user"></i></a><a href="login.html"><span>登录</span></a><span>&nbsp;/&nbsp;</span><a href="register.html"><span>注册</span></a></p>
+                        <ul class="user-menu">
+                            <li>
+                                <a href="personInfo/infoIndex.html" title="个人消息">
+                                    <img src="images/icon/message.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a a="" href="shoppingCart.html" title="购物车">
+                                    <img src="images/icon/shoppingCart.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a a="" href="personInfo/myCollection.html" title="收藏">
+                                    <img src="images/icon/collection.png">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <a href="search.html"><button class="search-btn" onclick="setSearchinfo()"></button></a>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索">
+                            </nav>
+                        </div>
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html" id="current" style="border-bottom: 0px solid rgb(255, 255, 255);">首  页</a></li>
+                            <li><a href="classification/goods_and_buy.html" id="product" style="border-bottom: 0px solid rgb(255, 255, 255);">产品及订购</a></li>
+                            <li><a href="brandHomePage.html" id="brand" onclick="getHotProduct(0)" style="border-bottom: 0px solid rgb(255, 255, 255);">农场推荐</a></li>
+                            <li><a href="#" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="visitFarm.html" id="visit" style="border-bottom: 0px solid rgb(255, 255, 255);">参观农场</a></li>
+                            <li><a href="organicLife.html" id="life" style="border-bottom: 0px solid rgb(255, 255, 255);">有机生活</a></li>
+                            <li><a href="health.html" id="health" style="border-bottom: 0px solid rgb(255, 255, 255);">营养与健康</a></li>
+                            <li><a href="game.html" id="game" style="border-bottom: 0px solid rgb(255, 255, 255);">积分奖励</a></li>
+                            <!-- main navigation ends-->
+                            <!--<div class="after-nav-info">
+                                        <h4>联系电话: +987 654 321  000</h4>
+                                    </div>-->
+                    </ul></div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <div id="content">
+                <!-- content 内容部分开始 -->
+                <div class="container" id="iframe-container">
+<!--                    <iframe id="innerpage" class="iframe" src></iframe>-->
+                <iframe id="innerpage" src="http://127.0.0.1:8080/SmartyAgriculture/farmMessage/find?id=2" scrolling="no" style="height: 3150px;"></iframe></div>
+
+                <!-- content 内容部分结束 -->
+            </div>
+                <section id="copyrights">
+                    <section class="container">
+                        <div class="one-half">
+                            <p>
+                                Copyright © 2016.Company name All rights reserved.
+                            </p>
+                        </div>
+                        <div class="one-half">
+                            <ul class="copyright_links">
+                                <li><a href="index.html" title="首页">首页</a></li>
+                                <li><a href="#" title="企业文化">企业文化</a></li>
+                                <li><a href="#" title="关于我们">关于我们</a></li>
+                                
+                                <li><a href="#" title="回到顶部">回到顶部</a></li>
+                                <li><a href="http://www.miitbeian.gov.cn">豫ICP备16028092</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+        </div>
+    </div>
+
+
+<div id="topcontrol" title="" style="position: fixed; bottom: 0px; right: 0px; opacity: 1; cursor: pointer;"><div id="scrolltotop"></div></div></body></html>

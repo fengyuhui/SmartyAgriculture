@@ -1,0 +1,55 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
+import cn.bupt.smartyagl.dao.autogenerate.FarmVisitOrderViewMapper;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderView;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderViewExample;
+import cn.bupt.smartyagl.entity.autogenerate.OrderView;
+import cn.bupt.smartyagl.entity.autogenerate.OrderViewExample;
+import cn.bupt.smartyagl.model.OrderViewModel;
+import cn.bupt.smartyagl.service.FarmVisitOrderViewService;
+@Service
+public class FarmVisitOrderViewServiceImpl implements FarmVisitOrderViewService {
+
+	@Autowired
+	FarmVisitOrderViewMapper farmVisitOrderViewMapper;
+	@Override
+	public List<FarmVisitOrderView> getOrderListByUserId(Integer userId) {
+		FarmVisitOrderViewExample fvove = new FarmVisitOrderViewExample();
+		fvove.createCriteria().andUserIdEqualTo(userId);
+		return farmVisitOrderViewMapper.selectByExample(fvove);
+	}
+	@Override
+	public void getOrderList(ModelAndView mv, int pageNumber, int pageSize, String orderBy, Date starttime,
+			Date endtime) {
+		// TODO Auto-generated method stub
+		FarmVisitOrderViewExample orderViewExample = new FarmVisitOrderViewExample();
+		cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderViewExample.Criteria criteria = orderViewExample
+				.createCriteria();
+		if (starttime != null && endtime != null) {
+			criteria.andVisitTimeBetween(starttime, endtime);
+		}
+
+		// 分页
+		Page page = PageHelper.startPage(pageNumber, pageSize, orderBy);
+		List<FarmVisitOrderView> orderView = farmVisitOrderViewMapper
+				.selectByExample(orderViewExample);
+		mv.addObject("orderView", orderView);
+		// 总页数
+		int allPages = page.getPages();
+		mv.addObject("allPages", allPages);
+		// 当前页码
+		int currentPage = page.getPageNum();
+		mv.addObject("currentPage", currentPage);		
+	}
+
+}

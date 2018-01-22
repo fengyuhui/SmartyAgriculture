@@ -1,0 +1,13 @@
+package cn.bupt.smartyagl.entity;
+
+import cn.bupt.smartyagl.entity.autogenerate.CookLeisure;
+
+public class CookLeisureAndHtml extends CookLeisure {
+	private String detailUrl;
+	public void setDetailUrl(String url){
+		this.detailUrl = url;
+	}
+	public String getDetailUrl(){
+		return detailUrl;
+	}
+}

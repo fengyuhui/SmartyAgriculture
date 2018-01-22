@@ -1,0 +1,14 @@
+﻿body {
+}
+.container .four-columns img
+{
+    background-repeat:no-repeat;
+    width:216px !important;
+    height:148.797px !important;
+    }
+.intro-features .container .slidewrap .slider img
+{
+    background-repeat:no-repeat;
+    width:216px !important;
+    height:148.797px !important;
+    }

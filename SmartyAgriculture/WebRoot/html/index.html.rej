@@ -1,0 +1,14 @@
+diff a/index.html b/index.html	(rejected hunks)
+@@ -110,10 +113,8 @@
+                         <!--your logo-->
+                         <nav class="top-search">
+                             <!-- search starts-->
+-                            <form action="404-error.html" method="get">
+-                                <button class="search-btn"></button>
+-                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Search';" onfocus="if(this.value=='Search')this.value='';" value="Search" />
+-                            </form>
++                                <button class="search-btn" onclick="search_btn_click_outsidein()" ></button>
++                                <input class="search-field" type="text" placeholder="Search" />
+                         </nav>
+                         <!--search ends -->
+                     </div>

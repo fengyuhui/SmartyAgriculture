@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>体验预定</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="images/favicon.gif" />
+    <link rel="stylesheet" href="css/index.css" media="screen">
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="css/farmReserve.css" media="screen" />
+    <link rel="stylesheet" href="css/responsive.css" media="screen" />
+    <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
+    <!-- 简易的图片查看放大器 插件 -->
+    <script type="text/javascript" src="js/jquery.simpleGal.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/farmReserve.js"></script>
+    <script type="text/javascript" src="js/isotope.min.js"></script>
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <script type="text/javascript" src="js/search-result.js"></script>
+</head>
+
+<body onload="load()">
+    <div id="container">
+        <!-- main container starts-->
+        <div id="wrapp">
+            <div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        </p>
+                        <ul class="user-menu">
+                            <li>
+                                <a href="personInfo/infoIndex.html" title="个人消息">
+                                    <img src="images/icon/message.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shoppingCart.html" title="购物车">
+                                    <img src="images/icon/shoppingCart.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="personInfo/myCollection.html" title="收藏">
+                                    <img src="images/icon/collection.png"></img>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <!--<a href="index.html" id="logo"><img src="images/logo_new.png" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>-->
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <a href="search.html"><button class="search-btn" onclick="setSearchinfo()"></button></a>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                            </nav>
+                        </div>
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html" id="current">首页</a></li>
+                            <li><a href="classification/goods_and_buy.html" id="product">产品及订购</a></li>
+                            <li><a href="brandHomePage.html" id="brand" onclick="getHotProduct(0)">农场推荐</a></li>
+                            <li><a href="ecologyHomePage.html" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="health.html" id="health">营养与健康</a></li>
+                            <li><a href="game.html" id="game">积分奖励</a></li>
+                        </ul>
+                        <!-- main navigation ends-->
+                        <!--<div class="after-nav-info">
+                            <h4>联系电话: +987 654 321  000</h4>
+                        </div>-->
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <!-- header ends-->
+            <!-- content 内容部分开始 -->
+            <div id="content">
+                <div class="top">
+                    <ul class="goback">
+                        <li class="right">
+                            <a href="" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"><img src="images/share.svg" class="share" onclick="clickShare()" /></a>
+                        </li>
+                        <li class="right">
+                            <a href=""><img src="images/noncollect.svg" class="collect" onclick="clickCollect()" /></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-content">
+                    <div class="main-content-div">
+                        <div class="contentLeft">
+                            <div class="main-image">
+                                <img src="images/personInfo/farmReserve/big1.jpg" alt="Placeholder" class="custom">
+                            </div>
+                            <ul class="thumbnails">
+                                <li>
+                                    <a href="images/personInfo/farmReserve/big1.jpg"><img src="images/personInfo/farmReserve/thumbnail1.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="images/personInfo/farmReserve/big2.jpg"><img src="images/personInfo/farmReserve/thumbnail2.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="images/personInfo/farmReserve/big3.jpg"><img src="images/personInfo/farmReserve/thumbnail3.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="images/personInfo/farmReserve/big4.jpg"><img src="images/personInfo/farmReserve/thumbnail4.jpg" alt=""></a>
+                                </li>
+                                <li>
+                                    <a href="images/personInfo/farmReserve/big5.jpg"><img src="images/personInfo/farmReserve/thumbnail5.jpg" alt=""></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="contentRight">
+                            <div class="contentRightDiv">
+                                <p class="title">园区蔬菜种植地参观</p>
+                                <p class="address">陕西省宝鸡市陈仓区设施蔬菜现代农业科技示范园区</p>
+                                <div class="infoReserve">
+                                    <p class="price">价格&nbsp;&nbsp;&nbsp;<span>¥&nbsp;<span id="priceInfo">0</span>&nbsp;/人</span>
+                                    </p>
+                                    <p class="date">选择参观日期&nbsp;&nbsp;&nbsp;
+                                        <span><input id = "data" type="date" size="4" name="year"></input></span>
+                                    </p>
+                                    <div class="projectChoose classifications">
+                                       <span class="projectChoosexiangmu"> 项目类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                       <div class="projectChooses"></div>
+                                    </div>
+                                    <div class="classification">参观种类&nbsp;&nbsp;&nbsp;
+                                    	<div class="classificationss"></div>
+                                        <!--<span class="left-top" id="1" onclick="leftTop()">半日含餐</span>
+                                        <span class="right-top" id="2" onclick="rightTop()">半日不含餐</span>
+                                    <!--</div>-->
+                                    <!--<div class="classification allday">-->
+                                        <!--<span class="left-bottom" id="3" onclick="leftBottom()">全日含餐</span>
+                                        <span class="right-bottom" id="4" onclick="rightBottom()">全日含餐住宿</span>-->
+                                    </div>
+                                    <div class="visitNum ">选择参观人数&nbsp;&nbsp;&nbsp;
+                                        <img src="images/minus.svg" class="minus-number" />
+                                        <span class="visitor-number">1</span>
+                                        <img src="images/pluse.svg" class="pluse-number" />
+                                        <span class="allNum">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总计 :</span>
+                                        <span>¥&nbsp;<span class="allPrice">0</span>&nbsp;元</span>
+                                    </div>
+
+                                </div>
+                                <div class="rightButton" onclick="submitOrder()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>立即预订</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infoIntroduce ">
+
+                    <div class="infoIntroduceContent ">
+                        <p class="titleIntroduce ">参观活动介绍</p>
+                        <p class="info ">青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年 7月。青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年
+                            7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年 7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年
+                            7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年 7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年
+                            7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年 7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年
+                            7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年 7月。 青岛市蔬菜科技示范园有限公司是海泰生态科技集团有限公司的 核心子公司，位于即墨市经济开发区烟青一级公路立172公里处，示范园区地处中国“麦饭石” 之乡，是青岛市“菜篮子”工程的科技示范龙头企业，直属于青岛市财办，始建于1996年
+                            7月。
+                        </p>
+                    </div>
+
+
+
+                </div>
+
+                <div class="footer">
+                    <section id="copyrights">
+                        <section class="container">
+                            <div class="one-half">
+                                <p>
+                                    Copyright &copy; 2016.Company name All rights reserved.
+                                </p>
+                            </div>
+                            <div class="one-half">|
+                                <ul class="copyright_links">
+                                    <li><a href="index.html" title="首页">首页</a></li>
+                                    <li><a href="#" title="企业文化">企业文化</a></li>
+                                    <li><a href="#" title="关于我们">关于我们</a></li>
+                                    <li><a href="#" title="回到顶部">回到顶部</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- content 内容部分结束 -->
+
+    </div>
+    <!-- main container end-->
+    </div>
+    <script type="text/javascript">
+        var jiathis_config = {
+            data_track_clickback: 'true'
+        };
+    </script>
+</body>
+
+</html>

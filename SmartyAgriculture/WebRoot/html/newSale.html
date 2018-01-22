@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]>
+	<script src="http//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>新品上市</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="css/style.css" media="screen"/><!-- MAIN STYLE CSS FILE -->
+<link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen"/><!-- DEFAULT BLUE COLOR CSS FILE -->
+<link rel="stylesheet" href="css/temp.css" media="screen"/>
+<link rel="stylesheet" href="css/font-awesome/font-awesome.min.css" media="screen"/><!-- FONT AWESOME ICONS CSS FILE -->
+<link rel="stylesheet" href="css/layer-slider.css" media="screen"/><!-- LAYER SLIDER CSS FILE -->
+<link rel="stylesheet" href="css/flexslider.css" media="screen"/><!-- FLEX SLIDER CSS FILE -->
+<link rel="stylesheet" href="css/pro-detail.css" media="screen"/>
+<link rel="stylesheet" href="css/index.css" />
+<link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+<!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script><!-- JQUERY JS FILE -->
+<script type="text/javascript" src="js/flex-slider.min.js"></script><!-- FLEX SLIDER JS FILE -->
+<script type="text/javascript" src="js/navigation.min.js"></script><!-- MAIN NAVIGATION JS FILE -->
+<script type="text/javascript" src="js/jquery.layerslider.js"></script><!-- LAYER SLIDER JS FILE -->
+<script type="text/javascript" src="js/layerslider.transitions.js"></script><!-- LAYER SLIDER TRANSITIONS JS FILE -->
+<script type="text/javascript" src="js/jquery.tooltips.min.js"></script><!-- TOOLTIPS JS FILE -->
+<script type="text/javascript" src="js/isotope.min.js"></script><!--ISOTOPE JS FILE -->
+<script type="text/javascript" src="js/scrolltopcontrol.js"></script><!-- SCROLL TO TOP JS PLUGIN -->
+<script type="text/javascript" src="js/custom.js"></script><!-- CUSTOM JAVASCRIPT JS FILE -->
+<!--各功能模块JS by--Web Team.-->
+<script type="text/javascript" src="js/navigation.js"></script><!--navigation js file-->
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/hotsale.js"></script><!--专题活动（热卖、限时抢购等JS）-->
+<script type="text/javascript" src="js/pro-detail.js"></script><!--商品详情JS-->
+<script type="text/javascript" src="js/detail-buy.js"></script><!--商品详情JS-->
+<script type="text/javascript" src="js/productType.js"></script>
+<script type="text/javascript" src="js/search-result.js"></script>
+
+</head>
+<body onload="HotProductOnload()">
+<div id="container">
+	<!-- main container starts-->
+	<div id="wrapp">
+		<!-- main wrapp starts-->
+		<div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        </p>
+                        <ul class="user-menu">
+                            <li><a href="personInfo/infoIndex.html" title="个人消息"><i class="icon-userMessages"></i></a></li>
+                            <li><a a href="shoppingCart.html" title="购物车"><i class="icon-shoppingCart"></i></a></li>
+                            <li><a a href="personInfo/myCollection.html" title="收藏"><i class="icon-collection"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <form action="search-result.html" method="get">
+                                    <button class="search-btn" onclick="search_btn_click_outsidein()"></button>
+                                    <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                                </form>
+                            </nav>
+                        </div>
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html" id="current">首页</a></li>
+                            <li><a href="classification/goods_and_buy.html">产品及订购</a></li>
+                            <li><a href="javascript:void(0)" onclick="getHotProduct(0)">中远品牌</a></li>
+                            <li><a href="#" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="#">参观农场</a></li>
+                            <li><a href="#">有机生活</a></li>
+                            <li><a href="im.html">营养与健康</a></li>
+                            <li><a href="geme.html">游戏奖励</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+ 
+		<div id="content">
+			<div class="billboard">
+                <img src="images/themes/billboard.jpg">
+                <div class="promotion_label">
+					<span>新品上市</span>
+				</div>
+            </div>
+			<div class="container">
+
+				 <div class="hot-content">
+				 	<div class="search-container">
+				 		                		
+				 	</div>
+				 </div>
+						<nav class="pagination">
+						<ul>
+							<li><a href="#">前一页</a></li>
+							<li><a href="#" class="current">1</a></li>
+							<li><a href="#" >2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">后一页</a></li>
+						</ul>
+						 
+			</div>
+			</div>
+
+			<section id="copyrights">
+                <section class="container">
+                    <div class="one-half">
+                        <p>
+                            Copyright &copy; 2016.Company name All rights reserved.
+                        </p>
+                    </div>
+                    <div class="one-half">
+                        <ul class="copyright_links">
+                            <li><a href="#" title="首页">首页</a></li>
+                            <li><a href="#" title="企业文化">企业文化</a></li>
+                            <li><a href="#" title="关于我们">关于我们</a></li>  
+                            <li><a href="#" title="回到顶部">回到顶部</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+	</div>
+	<!-- main wrapp starts-->
+</div>
+<!-- main container ends-->
+
+</body>
+</html>

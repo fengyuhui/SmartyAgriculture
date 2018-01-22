@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>中远农庄</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="../images/favicon.gif" />
+    <link rel="stylesheet" href="../css/style.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <link rel="stylesheet" href="../css/responsive.css" media="screen" />
+    <!-- RESPONSIVE CSS FILE -->
+    <link rel="stylesheet" id="style-color" href="../css/colors/blue-color.css" media="screen" />
+    <!-- DEFAULT BLUE COLOR CSS FILE -->
+    <link rel="stylesheet" href="../css/font-awesome/font-awesome.min.css" media="screen" />
+    <!-- FONT AWESOME ICONS CSS FILE -->
+    <!--infoIndex专属的css文件-->
+    <link rel="stylesheet" href="../css/personInfo/personIndex.css" media="screen" />
+    <!--payedInfo专属的css文件-->
+    <link rel="stylesheet" href="../css/personInfo/payedInfo.css" media="screen" />
+    <!--editUserInfo专属的css文件-->
+    <link rel="stylesheet" href="../css/personInfo/editUserInfo.css" media="screen" />
+    <link rel="stylesheet" href="../css/index.css" media="screen">
+    <!-- REVOLUTION SLIDER CSS FILE -->
+    <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+    <script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+    <!-- JQUERY JS FILE -->
+
+    <script type="text/javascript" src="../js/personInfo/personInfo.js"></script>
+    <script type="text/javascript" src="../js/personInfo/editUserInfo.js"></script>
+
+    <link href="../js/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="../js/bootstrap-3.3.6-dist/js/bootbox.min.js"></script>
+    <script src="../js/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="../js/md5-min.js"></script>
+    <script src="../js/validate.js"></script>
+</head>
+
+<body onload="setUserInfo()">
+    <div id="container">
+        <!-- main container starts-->
+        <div id="wrapp">
+            <!-- main wrapp starts-->
+            <header id="header">
+                <!--header starts -->
+                <div id="header-links">
+                    <div class="container-title container">
+                        <div class="one-half">
+                            <ul class="contact-links">
+                                <!-- header social links sta ts-->
+                                <li><a href="javascript:void(0)" onclick="reload()"><i class="icon-user"></i><span id="header_username"></span></a></li>
+                                <li class="sign_out_li" style="margin-left: 15px!important;">
+                                    <a href="javascript:void(0);" onclick="signOut()"><i class="icon-signout sign_out_i"></i><span >退出</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="one-half">
+                            <ul class="user-Info">
+                                <li>
+                                    <a href="../personInfo/infoIndex.html" title="个人消息">
+                                        <img src="../images/icon/message.png"></img>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../shoppingCart.html" title="购物车">
+                                        <img src="../images/icon/shoppingCart.png"></img>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="../personInfo/myCollection.html" title="收藏">
+                                        <img src="../images/icon/collection.png"></img>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--header social links ends -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container-web">
+                    <div class="head-wrapp">
+                        <div class="logo-box container">
+                            <a href="../index.html" id="logo-1"><img src="../images/logo.png" width="250px" alt="中远农庄" /></a>
+                            <!--<a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>-->
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <a href="../search.html"><button class="search-btn" onclick="setSearchinfo()"></button></a>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                            </nav>
+                        </div>
+
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="../index.html" id="current">首页</a></li>
+                            <li><a href="../classification/goods_and_buy.html" id="product">产品及订购</a></li>
+                            <li><a href="../brandHomePage.html" id="brand" onclick="getHotProduct(0)">农场推荐</a></li>
+                            <li><a href="../ecologyHomePage.html" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="../visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="../organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="../health.html" id="health">营养与健康</a></li>
+                            <li><a href="../game.html" id="game">积分奖励</a></li>
+                        </ul>
+                        <!-- main navigation ends-->
+                        <!--<div class="after-nav-info">
+                            <h4>联系电话: +987 654 321  000</h4>
+                        </div>-->
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <div class="info_content_div">
+                <div class="content_absolute">
+                    <div class="content">
+                        <div class="left-navigation">
+                            <ul class="person-ul">
+                                <li class="first_li">
+                                    <div class="li_div">
+                                        <div class="div_div">
+                                            <div class="portrait_div"><img src="" style="height:50px;width:50px;" alt="用户头像" id="person_portrait" /></div>
+                                            <div class="userinfo_div">
+                                                <div><span class="username_span" id="username"></span>
+                                                    <img src="../images/personInfo/edit_person_info.png" style="height:20px;width:20px;margin-top:-5px;cursor: pointer;" alt="用户头像" id="person_portrait" onclick="jumpToPersonInfo()" />
+                                                </div>
+                                                <span id="score" class="balance"></span> </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="fourFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="jumpToMyMessage()">我的消息</a>
+
+                                    </div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="fourFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="jumpToAllOrder()">全部订单</a></div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="threeFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="jumpToPayedInfo()">待发货</a></div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="threeFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="jumpToWaitPay()">待付款</a></div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="threeFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="unget()">待收货</a></div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="threeFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="jumpToEvaluateInfo()">待评价</a></div>
+                                </li>
+                                <li class="other_li tag_height">
+                                    <div class="fourFont_div"><a class="whiteFont" href="javascript:void(0)" onclick="jumpToaddressInfo()">地址管理</a></div>
+                                </li>
+
+
+                            </ul>
+                            <div class="table_div">
+                                <form method="post" enctype="multipart/form-data" action="http://121.199.29.178:8080/SmartyAgriculture/interface/user/changeuserInfo">
+                                    <table class="edit_table" id="edit_table">
+                                        <tbody class="content_tbody">
+                                            <tr class="update_portrait_tr">
+                                                <td>当前头像：</td>
+                                                <td>
+                                                    <div class="content_portrait_div">
+                                                        <input name="token" style="display:none" id="token" type="text" value="" />
+                                                        <div class="edit_portrait_div"><img src="" alt="用户头像" class="portrait" /><a href="javascript:;" class="file">编辑头像
+    <input type="file" name="fileName" id="update_portrait" onchange="onchangeFile(this)">
+</a></div>
+                                                    </div>
+                                                    <div class="content_edit_button_div">
+                                                        <input class="edit_button" style=" margin-right: 10px;" type="button" onclick="updatePhone()" value="修改手机号" />
+
+                                                        <input class="edit_button" type="button" onclick="updatePassword()" value="修改密码" style=" margin-right: 10px;" />
+                                                        <input class="edit_button" type="button" onclick="updateEmail()" value="修改邮箱" />
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="update_username_tr">
+                                                <td>昵称：</td>
+                                                <td><input type="text" id="edit_username" /></td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td style="text-align: left;">
+                                                    <input class="button_border" type="submit" value="保 存" /></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </form>
+
+                                <table class="edit_table display_hidden" id="update_phone_1">
+                                    <tbody class="update_tbody">
+                                        <tr>
+                                            <td style="width:100px">原电话：</td>
+                                            <td><input type="text" name="phone" id="oldPhone" placeholder="请输入原手机号" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>密 码：</td>
+                                            <td><input type="password" name="phone" id="password" placeholder="请输入密码" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: left;">
+                                                <input class="button_border" type="button" value="确 定" onclick="validate()" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="edit_table display_hidden" id="update_phone">
+                                    <tbody class="update_tbody">
+                                        <tr>
+                                            <td>新手机号：</td>
+                                            <td><input type="text" id="new-phone" placeholder="请输入新的手机号" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>验证码：</td>
+                                            <td><input type="text" id="validate-code" placeholder="请输入验证码" class="one-input" />
+                                                <input id="btnSendCode" class="validate_button" type="button" value="获取验证码" onclick="createCode()" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: left;">
+                                                <input class="button_border" type="button" value="确 定" onclick="submitChangePhone()" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="edit_table display_hidden" id="change_password">
+                                    <tbody class="update_tbody">
+                                        <tr>
+                                            <td>原密码：</td>
+                                            <td><input type="password" id="old-password" placeholder="请输入原密码" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>新密码：</td>
+                                            <td><input type="password" id="new-password" placeholder="请输入新密码" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>确认密码：</td>
+                                            <td><input type="password" id="confirm-password" placeholder="请确认新密码" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: left;">
+                                                <input class="button_border" type="button" value="确 定" onclick="submitChangePassword()" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="edit_table display_hidden" id="change_eamil">
+                                    <tbody class="update_tbody">
+                                        <tr>
+                                            <td style="width:100px">原邮箱：</td>
+                                            <td><input type="text" name="phone" id="oldEmail" placeholder="请输入原邮箱" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>密 码：</td>
+                                            <td><input type="password" name="phone" id="email_password" placeholder="请输入密码" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: left;">
+                                                <input class="button_border" type="button" value="确 定" onclick="validateMail()" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="edit_table display_hidden" id="change_eamil2">
+                                    <tbody class="update_tbody">
+                                        <tr>
+                                            <td>新邮箱：</td>
+                                            <td><input type="text" id="new-email" placeholder="请输入新的邮箱" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>验证码：</td>
+                                            <td><input type="text" id="validate-code_eamil" placeholder="请输入验证码" class="one-input" />
+                                                <input id="btnSendCode_email" class="validate_button" type="button" value="获取验证码" onclick="createCodeEmail()" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td style="text-align: left;">
+                                                <input class="button_border" type="button" value="确 定" onclick="submitChangeEmail()" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <section id="copyrights">
+                        <section class="container">
+                            <div class="one-half">
+                                <p>
+                                    Copyright &copy; 2016.Company name All rights reserved.
+                                </p>
+                            </div>
+                            <div class="one-half">|
+                                <ul class="copyright_links">
+                                    <li><a href="../index.html" title="首页">首页</a></li>
+                                    <li><a href="#" title="企业文化">企业文化</a></li>
+                                    <li><a href="#" title="关于我们">关于我们</a></li>
+                                    <li><a href="#" title="回到顶部">回到顶部</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+
+            </div>
+            <!-- main wrapp starts-->
+
+        </div>
+    </div>
+    <!-- main container ends-->
+    <!-- content -->
+
+
+</body>
+
+</html>

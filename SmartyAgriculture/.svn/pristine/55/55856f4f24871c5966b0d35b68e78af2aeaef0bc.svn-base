@@ -1,0 +1,95 @@
+package cn.bupt.smartyagl.service;
+
+import java.util.List;
+
+import org.springframework.web.servlet.ModelAndView;
+
+import cn.bupt.smartyagl.entity.GoodsTypeList;
+import cn.bupt.smartyagl.entity.autogenerate.goodsType;
+import cn.bupt.smartyagl.model.GoodsTypeModel;
+import cn.bupt.smartyagl.model.MenuModel;
+
+/**
+ * 
+ *<p>Title:IGoodsType</p>
+ *<p>Description:商品类型服务类</p>
+ * @author waiting
+ *@date 2016年6月2日 上午9:34:47
+ */
+public interface IGoodsTypeService {
+	public void unDo(int id);
+	public void setReviewed(int id);
+	public void removeById(int id);
+	public List<GoodsTypeModel> getUnreviewedTypes();
+	/**********前台调用*************/
+	/**
+	 * 获得商品分类列表 前台调用
+	 * @return
+	 */
+	public List<GoodsTypeList> getGoodsTypeList();
+	
+	/**
+	 * 获得父类商品分类列表 前台调用
+	 */
+	public List<GoodsTypeList> getPartentTypeList();
+	
+	/**
+	 * 获得二级商品分类列表 前台调用
+	 */
+	public List<GoodsTypeList> getChildTypeList(Integer partentId);
+	
+	/*********后台调用**************/
+	/**
+	 * 获取显示菜单 后台调用
+	 * 一级菜单
+	 * @author waiting
+	 * @return
+	 */
+	public List<GoodsTypeModel> getDisplayGoodsType();
+	/**
+	 * 获取子菜单 后台调用
+	 * parentId 
+	 * @author waiting
+	 */
+	public  List<GoodsTypeModel> getSubType(Integer parentId);
+	/**
+	 * 获取商品类型列表
+	 * @param level
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return 
+	 * @author waiting
+	 */
+	public ModelAndView getTypeList(Integer level,Integer parentId, int pageNumber,int pageSize,ModelAndView modelAndView);
+    /**
+     * 添加商品类型
+     * @param goodsType
+     * @return
+     * @author waiting
+     */
+	public boolean addType(goodsType goodsType);
+    /**
+     * 获取商品类型
+     * @author waiting
+     */
+    public goodsType getGoodsTypeById(int id);
+    /**
+     * 更新商品类型
+     * @param goodsType
+     * @return
+     * @author waiting
+     */
+    public boolean updateGoodsType(goodsType goodsType);
+    
+    /**
+     * 修改商品类型是否显示的状态位
+     * @param isdsiplay
+     * @param typeId
+     * @return
+     * @author waiting
+     */
+    public boolean updateGoodsISdisplay(boolean isdisplay,int typeId);
+	
+	
+	
+}

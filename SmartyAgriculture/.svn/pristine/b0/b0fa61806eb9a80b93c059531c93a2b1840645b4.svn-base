@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器,所以<mvc:annotation-driven 
+		/>可省略 -->
+	<mvc:annotation-driven />
+
+	<context:component-scan base-package="cn.bupt.smartyagl.service..*" />
+	<context:component-scan base-package="cn.bupt.smartyagl.controller" />
+	<context:component-scan base-package="cn.bupt.smartyagl.controller.inf" />
+
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/interface/**" />
+			<mvc:mapping path="/publicApp/**" />
+			<mvc:exclude-mapping path="/publicApp/login" />
+			<mvc:exclude-mapping path="/publicApp/register" />
+			<mvc:exclude-mapping path="/publicApp/checkPhoneExist" />
+			<mvc:exclude-mapping path="/interface/goods/getGoodsList" />
+			<mvc:exclude-mapping path="/interface/goods/getGoodsDetail" />
+			<mvc:exclude-mapping path="/interface/goodsType/getGoodsTypeList" />
+			<mvc:exclude-mapping path="/interface/goodsType/getParentGoodsTypeList" />
+			<mvc:exclude-mapping path="/interface/goodsType/getChildGoodsTypeList" />
+			<mvc:exclude-mapping path="/interface/advertise/getAdList" />
+			<mvc:exclude-mapping path="/interface/goods/detailView" />
+			<mvc:exclude-mapping path="/interface/commentApp/getCommentDetail" />
+			<mvc:exclude-mapping path="/interface/commentApp/getCommentNumber" />
+			<mvc:exclude-mapping path="/interface/commentApp/getCommentList" />
+			<mvc:exclude-mapping path="/interface/commentApp/deleteComment" />
+			<mvc:exclude-mapping path="/interface/customerService/getMessage" />
+			<mvc:exclude-mapping path="/interface/AliPay/payMessage" />
+			<mvc:exclude-mapping path="/interface/AliPay/alipayapi" />
+			<mvc:exclude-mapping path="/interface/AliPay/returnURL" />
+			<mvc:exclude-mapping path="/interface/weixin/preToPay" />
+			<mvc:exclude-mapping path="/interface/weixin/notify" />
+			<mvc:exclude-mapping path="/interface/weixinh5/preToPay" />
+			<mvc:exclude-mapping path="/interface/weixinh5/wxPayH5Notify" />
+			<mvc:exclude-mapping path="/interface/weixinNative/getQRCode" />
+			<mvc:exclude-mapping path="/interface/weixinNative/wxPayNativeNotify" />
+			<mvc:exclude-mapping path="/interface/goods/getLikeGoodsList" />
+			<mvc:exclude-mapping path="/interface/goodsCart/getGoodsCartWithoutLog" />
+			<mvc:exclude-mapping path="/publicApp/loginBy" />
+            <mvc:exclude-mapping path="/publicApp/registBy" />
+			<mvc:exclude-mapping path="/publicApp/changepasswd" /> 
+
+			<mvc:exclude-mapping path="/interface/order/addOrderWithoutlog" />
+			<mvc:exclude-mapping path="/interface/goodsCard/payByCard" />
+			<mvc:exclude-mapping path="/interface/goodsCart/payByCard" />
+			<mvc:exclude-mapping path="/interface/farmMessage/detailView" />
+			<mvc:exclude-mapping path="/interface/farmMessage/getFarmMessage" />
+			<mvc:exclude-mapping path="/interface/farmMessage/getFarmMessageDetail" />
+			<mvc:exclude-mapping path="/interface/farmMessage/getFarmPhoto" />
+			<mvc:exclude-mapping path="/interface/order/getOrderDetailToView" />
+			<mvc:exclude-mapping path="/interface/farmVisit/getAllVisitTypes" />
+			<mvc:exclude-mapping path="/interface/camera/getCameraList" />
+			<mvc:exclude-mapping path="/interface/addition/additionMessage"/>
+			<mvc:exclude-mapping path="/interface/addition/additionHtml"/>
+			<mvc:exclude-mapping path="/interface/goodsCart/findCardRemainder" />
+			<mvc:exclude-mapping path="/interface/cookleisure/getCookLeisureMessage"/>
+			<mvc:exclude-mapping path="/interface/cookleisure/detailView"/>
+			<mvc:exclude-mapping path="/CallBackUnionPay/getCallBack" />
+			
+			<!-- 测试页 -->
+			<mvc:exclude-mapping path="/interface/address/addPost" />
+			<bean class="cn.bupt.smartyagl.interceptor.TokenInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/interface/**" />
+			<bean class="cn.bupt.smartyagl.interceptor.XHRInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/public/**" />
+			<mvc:mapping path="/product/**" />
+			<mvc:mapping path="/block/**" />
+			<mvc:mapping path="/order/**" />
+			<mvc:mapping path="/user/**" />
+			<bean class="cn.bupt.smartyagl.interceptor.LogInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/interface/**" />
+			<mvc:exclude-mapping path="/publicApp/**" />
+			<mvc:exclude-mapping path="/public/**" />
+			<!-- 前台接口不用拦截 -->
+			<mvc:exclude-mapping path="/fileUpload/fileUpload2" />
+            <mvc:exclude-mapping path="/publicApp/loginBy" />
+            <mvc:exclude-mapping path="/publicApp/registBy" />
+            <mvc:exclude-mapping path="/publicApp/changepasswd" />
+            <mvc:exclude-mapping path="/search/hotSearch" />
+            <mvc:exclude-mapping path="/accessToken/**" />
+            <mvc:exclude-mapping path="/SDKSendSMS/SendSMS" />
+			<!-- 后台不用拦截详细页面 -->
+			<mvc:exclude-mapping path="/advertise/top" />
+			<mvc:exclude-mapping path="/advertise/judgeDraft" />
+			<mvc:exclude-mapping path="/advertise/deleteRequest" />
+			<mvc:exclude-mapping path="/advertise/rebackDeleteRequest" />
+			<mvc:exclude-mapping path="/accessToken/getToken" />
+			<mvc:exclude-mapping path="/accessToken/getUserInfoByToken" />
+			<mvc:exclude-mapping path="/accessToken/getTokenByCode" />
+			<!-- 后台不用拦截详细页面  添加信息详情-->
+			<mvc:exclude-mapping path="/farmMessage/find" />
+                              <mvc:exclude-mapping path="/getPic/getFirPic" />
+                              <mvc:exclude-mapping path="/getPic/getFirstPic" />
+			<mvc:exclude-mapping path="/user/exportExcelUserStatistics/**" />
+			<mvc:exclude-mapping path="/user/updateUserStatus" />
+			<mvc:exclude-mapping path="/user/detail/**" />
+			
+			
+			<mvc:exclude-mapping path="/statistics/echartsDataTotalSales/**" />
+			<mvc:exclude-mapping path="/goodsCard/generateCards" />
+			<mvc:exclude-mapping path="/goodsCard/exportExcel/*" />
+			<mvc:exclude-mapping path="/goodsCard/doReview" />
+			<mvc:exclude-mapping path="/goodsCard/reviewedDetails" />
+			<mvc:exclude-mapping path="/goodsCard/generateCards" />
+			<mvc:exclude-mapping path="/goodsCard/reviewCards" />
+			<mvc:exclude-mapping path="/goodsCard/doReview" />
+			<mvc:exclude-mapping path="/goodsCard/reviewedDetails" />
+			<mvc:exclude-mapping path="/statistics/exportExcelDataTotalSales/**" />
+			
+			<mvc:exclude-mapping path="/type/parentTypeStatistics/0/1/prvious/0/4/**"/>
+			<mvc:exclude-mapping path="/type/saveTypeEdit"/>
+			<mvc:exclude-mapping path="/type/typeReview"/>
+			
+			<mvc:exclude-mapping path="/product/deleteRequest/**" />
+			<mvc:exclude-mapping path="/product/toProductEdit/**" />
+			<mvc:exclude-mapping path="/product/getProductListByIdList/**" />
+			<mvc:exclude-mapping path="/product/updateProduct/**" />
+			<mvc:exclude-mapping path="/product/auditInputGoods/**" />
+			<mvc:exclude-mapping path="/product/updateGoodsStatus/**" />
+			<mvc:exclude-mapping path="/product/updateFreight/**" />
+			<mvc:exclude-mapping path="/product/updateSaleStatus/**" />
+			<mvc:exclude-mapping path="/product/auditInputGoodsStatus/**" />
+			<mvc:exclude-mapping path="/product/productInputStatistics/**" />
+			<mvc:exclude-mapping path="/product/echartsProductInputStatistics/**" />
+			<mvc:exclude-mapping path="/product/inputproduct/**" />
+			<mvc:exclude-mapping path="/product/inputProductPost/**" />
+			<mvc:exclude-mapping path="/product/addProduct/**" />
+			<mvc:exclude-mapping path="/product/addProductPost/**" />
+			<mvc:exclude-mapping path="/product/productStatistics/**" />
+			<mvc:exclude-mapping path="/product/getProductDetail/**" />
+			<mvc:exclude-mapping path="/product/auditInputGoodsStatus/**" />
+			<mvc:exclude-mapping path="/product/updateProductSalStatusByBath" />
+			<mvc:exclude-mapping path="/product/echartsProductStatistics/**" />
+			<mvc:exclude-mapping path="/product/getProductListByIdList" />
+			<mvc:exclude-mapping path="/product/updateProductSalStatusByBathPrice" />
+			
+			<mvc:exclude-mapping path="/productAudit/updateAuditStatus/**" />
+			<mvc:exclude-mapping path="/productAudit/getProductDetail/**" />
+			<mvc:exclude-mapping path="/productAudit/delete/**" />
+			<mvc:exclude-mapping path="/productAudit/judgePublish/**" />
+			<mvc:exclude-mapping path="/productAudit/judgeDraft/**" />
+			<mvc:exclude-mapping path="/productAudit/rebackDeleteRequest/**" />
+			<mvc:exclude-mapping path="/product/auditInputGoodsStatus/**" />
+			<mvc:exclude-mapping path="/product/exportProductInputStatistics/**" />
+			<mvc:exclude-mapping path="/product/exportProductStatictics/**"/>
+			<mvc:exclude-mapping path="/type/saveTypeEdit" />
+			<mvc:exclude-mapping path="/type/unDo"/>
+			<mvc:exclude-mapping path="/type/doReview"/>
+			<mvc:exclude-mapping path="/addition/chooseEdit"/>
+			<mvc:exclude-mapping path="/addition/saveEdit"/>
+			<mvc:exclude-mapping path="/addition/doReview"/>
+			<mvc:exclude-mapping path="/addition/toDetail"/>
+			<mvc:exclude-mapping path="/addition/unDo"/>
+			<mvc:exclude-mapping path="/goodsCard/cardLogIndex/**" />
+             <mvc:exclude-mapping path="/type/addTypePost/**" />
+             <mvc:exclude-mapping path="/type/saveTypeEdit/**" />
+             <mvc:exclude-mapping path="/type/updateTypeIsdisplay" />
+             <mvc:exclude-mapping path="/type/parentTypeStatistics/**" />
+             <mvc:exclude-mapping path="/type/echartsParentTypeStatistics/**" />
+              <mvc:exclude-mapping path="/type/exportProductStatictics/**" />
+             <mvc:exclude-mapping path="/comment/commentDetail/**" />
+             <mvc:exclude-mapping path="/farmVisits/typeInfo/*"/>
+             <mvc:exclude-mapping path="/farmVisits/getAllOrders/**"/>
+             <mvc:exclude-mapping path="/farmVisits/updateOrderStatus"/>
+             <mvc:exclude-mapping path="/AliH5Pay/processAliH5Pay"/>
+			<mvc:exclude-mapping path="/AliH5Pay/return_url"/>
+			<mvc:exclude-mapping path="/AliH5Pay/prePay"/>
+			<mvc:exclude-mapping path="/order/exportExcelOrder/**"/>
+			<mvc:exclude-mapping path="/order/updateOrderStatus"/>
+			<bean class="cn.bupt.smartyagl.interceptor.AdminAuthInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+	<!-- </mvc:interceptor> -->
+	<!-- <mvc:interceptor> -->
+	<!-- 权限访问拦截器 -->
+	<!-- <mvc:mapping path="/home/*" /> -->
+	<!-- <mvc:mapping path="/menu/*" /> -->
+	<!-- <mvc:mapping path="/employee/*" /> -->
+	<!-- <mvc:mapping path="/customer/*" /> -->
+	<!-- <mvc:mapping path="/employeeGroup/*" /> -->
+	<!-- <mvc:mapping path="/employeeRole/*" /> -->
+	<!-- <mvc:mapping path="/customerRole/*" /> -->
+	<!-- 如果不配置或/*,将拦截所有的Controller -->
+	<!-- <bean class="com.example.interceptor.AuthInterceptor"></bean> -->
+	<!-- </mvc:interceptor> -->
+
+	<!-- 文件上传 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为100MB 1024*1024*100 -->
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property>
+	</bean>
+
+
+	<!--完成请求和注解POJO的映射,json格式的返回值 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/jsp/" p:suffix=".jsp" />
+</beans>

@@ -1,0 +1,9 @@
+diff a/js/personInfo/editUserInfo.js b/js/personInfo/editUserInfo.js	(rejected hunks)
+@@ -28,7 +28,6 @@
+         dataType: "json",
+         success: function (data) {
+            // console.log(data);
+-           
+         },
+     });
+ }

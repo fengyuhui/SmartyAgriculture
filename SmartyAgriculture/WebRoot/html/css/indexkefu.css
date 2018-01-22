@@ -1,0 +1,59 @@
+*{ 
+	margin:0;
+    padding:0; 
+    list-style:none;}
+img{ 
+	border:0;
+	}
+.lanren{ 
+	position:absolute; 
+	right:0; 
+	top:150px;
+	z-index: 100;
+	}
+.lanren .slide_min{ 
+	width:28px; 
+	height:112px; 
+	/*background:url(images/slide_min.jpg) no-repeat;*/ 
+	cursor:pointer;
+	position: absolute;
+	right: 0px;
+
+	}
+.lanren .slide_box{ 
+	width:154px; 
+	height:auto; 
+	overflow:hidden; 
+	background:#EEEEEE repeat-y; 
+	font-size:12px; 
+	text-align:center; 
+	line-height:130%; 
+	color:#666; 
+	border:2px solid #76A20D;
+	position:absolute;
+	right: 0px;
+
+
+	}
+.lanren .slide_box .weixin{ 
+	margin-bottom:5px;
+	}
+.lanren .slide_box img{ 
+	cursor:pointer;
+	}
+.lanren .slide_box p{ 
+	text-align:center; 
+	padding:5px; 
+	margin:5px;
+	border-bottom:1px solid #ddd;
+	}
+.lanren .slide_box span{ 
+	padding:5px 10px; 
+	display:block;
+	}
+.lanren .slide_box span a{ 
+	color:#76A20C;
+	}
+.slide_box h2{
+	margin-top:0px ;
+}	

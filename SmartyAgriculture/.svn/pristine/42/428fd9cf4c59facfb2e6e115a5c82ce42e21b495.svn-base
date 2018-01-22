@@ -1,0 +1,80 @@
+package cn.bupt.smartyagl.controller.inf;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisits;
+import cn.bupt.smartyagl.entity.autogenerate.Project;
+import cn.bupt.smartyagl.service.impl.FarmVisitsServiceImpl;
+import cn.bupt.smartyagl.service.impl.ProjectServiceImpl;
+import cn.bupt.smartyagl.util.NetDataAccessUtil;
+import cn.bupt.smartyagl.util.ProjectDataUtil;
+
+/**
+ * 农场参观相关的方法
+ * @author TMing
+ *
+ */
+@Controller
+@RequestMapping("/interface/farmVisit")
+public class FarmVisitsInfoController {
+	
+//	@Autowired
+//	private ProjectServiceImpl farmVisitsService;
+	
+	@Autowired ProjectServiceImpl projectService;
+	
+	@RequestMapping("/getAllVisitTypes")
+	@ResponseBody
+	public Object getAllVisitTypes() {
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		List<ProjectDataUtil> projectDataList = new ArrayList<ProjectDataUtil>();
+		List<Project> projectList = projectService.getAllType();
+		ObjectMapper mapper = new ObjectMapper();
+		
+		for (Project project: projectList) {
+			ProjectDataUtil pdu = new ProjectDataUtil();
+			pdu.setId(project.getId());
+			pdu.setProjectTitle(project.getTitle());
+			pdu.setCreateTime(project.getCreateTime());
+			pdu.setDetail(project.getDetail());
+			String typeIdStr = project.getTypes();
+			String imgPathStr = project.getImages();
+			System.out.println(imgPathStr);
+			List<Integer> typeIdList = new ArrayList<Integer>();
+			List<String> imgPahtList = new ArrayList<String>();
+			
+			try {
+				typeIdList = mapper.readValue(typeIdStr, new TypeReference<List<Integer>>() {});
+				imgPahtList = mapper.readValue(imgPathStr, new TypeReference<List<String>>() {});
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			List<Project> typeList = projectService.getFarmVisitTypesBatch(typeIdList);
+			pdu.setTypeList(typeList);
+			pdu.setImgList(imgPahtList);
+			projectDataList.add(pdu);
+		}
+		List<Project> list = projectService.getFarmVisitTypes();
+		nau.setContent(projectDataList);
+		nau.setResult(1);
+		if (null == list)
+			
+			nau.setResultDesp("没有类型信息");
+		else 
+			nau.setResultDesp("查询成功");
+		return nau;
+	}
+	
+}
+	
+	

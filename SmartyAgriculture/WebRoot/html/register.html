@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中远农庄</title>
+    <!-- Latest compiled and minified CSS -->
+    
+    <!--<link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.6-dist/css/bootstrap.min.css">-->
+    <!-- Optional theme -->
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <link rel="stylesheet" href="css/login&register/register.css" media="screen" />
+    <!--<link rel="stylesheet" href="css/validationEngine.jquery.css">-->
+    <!--<script src="js/jquery.validationEngine-zh_CN.js"></script>-->
+    <!--<script src="js/jquery.validationEngine.js"></script>-->
+    <link rel="stylesheet" href="js/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <script src="js/jquery-2.0.0.min.js"></script>
+    <script  src="js/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.poshytip.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/tip-yellowsimple.css" />
+    <script type="text/javascript" src="js/register.js"></script>
+    <script src="js/md5-min.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="main-header">
+            <br/>
+            <span class="main-header-title">中远农庄</span>
+        </div>
+        <div class="main-wrapper">
+            <div class="main-wrapper-left">
+                <img src="images/login-left.jpg" width="600px" height="600px">
+            </div>
+            <div class="main-wrapper-right">
+                <div class="register-info">
+                	<form>
+                    <ul>
+                        <li class="register-line">
+                            <div class="sub-title">
+                                <span>账户注册</span>
+                            </div>
+                        </li>                 
+                        <li>
+                            <div class="sub-login" id="sub-login">
+                                <span>帐号：&#12288;&#12288;</span>
+                                <input  id="phone" name="phone" class="form-validation" type="tel" placeholder="邮箱/手机号" style="border: 0px solid white;width: 70%;">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sub-login" id="sub-login">
+                                <span>验证码：&#12288;</span>
+                                <input id="randomCode"  type="password" class="form-validationyz" placeholder="请输入验证码"  style="border: 0px solid white; width: 150px;">
+                                <!--<span id="codes" class="password-hq" type="button" onClick="createCode()">获取</span>-->
+                                <!--<input class="password-hq" type="submit" style="border-radius:7px 7px 7px 7px;" value="获取">--> 
+                                <span id="" class="password-hq" onclick="createCode()">获取</span>
+                                <!--<input id="randomCodes" class="password-hq" type="button" value="获取" onclick="createCode()"/>-->
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="sub-login" id="sub-login">
+                                <span>设置密码：</span>
+                                <input type="password" name="passwd" id="pw1" class="form-validation"  placeholder="输入登录密码" style="border: 0px solid white;width: 70%;">
+                            </div>
+                        </li>
+                         <li>
+                        	<div class="sub-login" id="sub-login">
+                                <span>确认密码：</span>
+                                <input type="password" id="pw2" class="form-validation" placeholder="输入登录密码"  style="border: 0px solid white;width:70%;">
+                            </div>
+                        </li>
+                       
+                        <li>
+                            <div class="sub-login">
+                                <input type="checkbox" checked="checked" id="checkbox_input" class="checkbox-style" >
+                                <span class="register-forget-agree1">同意</span>
+                                <span class="register-forget-agree" data-toggle="modal" data-target="#myModal">《智慧农业协议》</span>                     
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                   <div class="modal-dialog">
+                                       <div class="modal-content" style="width: 120%;">
+        	                                <div class="modal-header" style="padding-left: 300px">
+        	                                    <button type="button" class="close"   data-dismiss="modal" aria-hidden="true" style="font-size: 40px;">
+                                                    &times;
+                                                </button>
+        	                                	<h4 class="modal-title" id="myModalLabel">协议内容</h4>
+        	                                </div>
+        	                                <!--下面的div是协议的内容-->
+        	                                <div class="modal-body" style="width: 670px;height: 400px;overflow: auto; ">
+        	                                	<h4>你好</h4>
+        	                                </div>
+        	                                <div class="modal-footer" style="padding-right: 300px">
+        	                                	<a href="register.html">
+        	                                		<button type="button" class="btn btn-primary" style="text-align:center;">
+                                                                                                               同意并继续
+                                                    </button>
+                                                 </a>
+        	                                </div>
+                                        </div>
+                                   </div>
+                                </div> 
+<!--                                <input type="text" valType="required" msg="<font color=red>*</font>请阅读并同意智慧农业协议" id="checkbox_input" value="test" class="checkbox-style" style="width:0px;height:0px;border:0px">
+-->                                <div class="register-forget-password">
+                                    <input class="register-forget-reset" type="reset"  name="button"  value="重置"/>
+                                    <!--<span class="register-forget-zc" type="reset" value="重置" style="width: 30px;height: 50px;" ></span></a>-->	
+                                 </div>
+                            </div>
+                        </li>
+                        <li>
+                        	<div class="sub-login">
+                        		<div class="register-forget-sm">
+                        		    <span> &#12288; 绑 定 手 机 不 收 取 任 何 费 用 , 一 个 手 机 只 能 绑 定 一 个 账 号 , 若 需 修 改 或 解 除 已 绑 定 的 手 机,请 联 系 智 慧 农 业 客 服。</span>
+                        		</div>
+                          	</div>
+                        </li>
+                        <li>
+                            <div id="register-btn" class="register-btn" onclick="register()">
+                            	 <input class="register-btn" type="button" value="注册" /> 
+                            </div>
+                       </li>
+                    </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

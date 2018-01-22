@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]>
+	<script src="http//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <title>Shifter - Responsive HTML5 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="images/favicon.gif" />
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <link rel="stylesheet" href="css/responsive.css" media="screen" />
+    <!-- RESPONSIVE CSS FILE -->
+    <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen" />
+    <!-- DEFAULT BLUE COLOR CSS FILE -->
+    <link href='http//fonts.googleapis.com/css?family=Roboto:400,300,700,500' rel='stylesheet' type='text/css'>
+    <!-- ROBOTO FONT FROM GOOGLE CSS FILE -->
+    <link rel="stylesheet" href="css/prettyPhoto.css" media="screen" />
+    <link rel="stylesheet" href="css/temp.css" media="screen" />
+    <link rel="stylesheet" href="css/font-awesome/font-awesome.min.css" media="screen" />
+    <!-- FONT AWESOME ICONS CSS FILE -->
+    <link rel="stylesheet" href="css/layer-slider.css" media="screen" />
+    <!-- LAYER SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/flexslider.css" media="screen" />
+    <!-- FLEX SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/revolution-slider.css" media="screen" />
+    <!-- 产品分类专有类型 -->
+    <link rel="stylesheet" href="css/productType.css" media="screen" />
+    <!-- REVOLUTION SLIDER CSS FILE -->
+    <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- JQUERY JS FILE -->
+    <script type="text/javascript" src="http//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!-- JQUERY UI JS FILE -->
+    <script type="text/javascript" src="js/flex-slider.min.js"></script>
+    <!-- FLEX SLIDER JS FILE -->
+    <script type="text/javascript" src="js/navigation.min.js"></script>
+    <!-- MAIN NAVIGATION JS FILE -->
+    <script type="text/javascript" src="js/jquery.layerslider.js"></script>
+    <!-- LAYER SLIDER JS FILE -->
+    <script type="text/javascript" src="js/layerslider.transitions.js"></script>
+    <!-- LAYER SLIDER TRANSITIONS JS FILE -->
+    <script type="text/javascript" src="js/map.min.js"></script>
+    <!-- GOOGLE MAP JS FILE -->
+    <script type="text/javascript" src="js/carousel.js"></script>
+    <!-- CAROUSEL SLIDER JS -->
+    <script type="text/javascript" src="js/jquery.theme.plugins.min.js"></script>
+    <!-- REVOLUTION SLIDER PLUGINS JS FILE -->
+    <script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
+    <!-- REVOLUTION SLIDER JS FILE -->
+    <script type="text/javascript" src="js/flickr.js"></script>
+    <!-- FLICKR WIDGET JS FILE -->
+    <script type="text/javascript" src="js/instagram.js"></script>
+    <!-- INSTAGRAM WIDGET JS FILE -->
+    <script type="text/javascript" src="js/jquery.twitter.js"></script>
+    <!--TWITTER WIDGET JS FILE -->
+    <script type="text/javascript" src="js/prettyPhoto.min.js"></script>
+    <!-- PRETTYPHOTO JS FILE -->
+    <script type="text/javascript" src="js/jquery.tooltips.min.js"></script>
+    <!-- TOOLTIPS JS FILE -->
+    <script type="text/javascript" src="js/isotope.min.js"></script>
+    <!--ISOTOPE JS FILE -->
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <!-- SCROLL TO TOP JS PLUGIN -->
+    <script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
+    <!-- EASY PIE JS FILE -->
+    <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+    <!-- TRANSITION JS FILE -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <!-- CUSTOM JAVASCRIPT JS FILE -->
+     <script type="text/javascript" src="js/productType.js"></script>
+</head>
+
+<body onload="ptoductTypeOnload()">
+    <div id="container">
+        <!-- main container starts-->
+        <div id="wrapp">
+            <!-- main wrapp starts-->
+            <header id="header">
+                <!--header starts -->
+                <div id="header-links">
+                    <div class="container">
+                        <div class="one-half">
+                            <ul class="contact-links">
+                                <!-- header social links starts-->
+                                <li><a href="#"><i class="icon-home"></i>5 tomato,Some City </a></li>
+                                <li><a href="#"><i class="icon-phone"></i>+987 654 321 </a></li>
+                                <li><a href="#"><i class="icon-map-marker"></i>北京市</a></li>
+                            </ul>
+                        </div>
+                        <div class="one-half">
+                            <ul class="social-links">
+                                <!-- header social links starts-->
+                                <li><a href="login.html" class="tooltip" title="Some Title">登陆</a></li>
+                                <li><a href="register.html" class="tooltip" title="Some Title">注册</a></li>
+                            </ul>
+                            <!--header social links ends -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="head-wrapp">
+                        <a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>
+                        <!--your logo-->
+                        <nav class="top-search">
+                            <!-- search starts-->
+                            <form action="404-error.html" method="get">
+                                <button class="search-btn"></button>
+                                <input class="search-field" type="text" onblur="if(this.value=='')this.value='Search';" onfocus="if(this.value=='Search')this.value='';" value="Search" />
+                            </form>
+                        </nav>
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html">首页</a>
+                                <!-- Second Level / Start -->
+                                <!-- Second Level / End -->
+                            </li>
+                            <li><a href="#">产品分类</a>
+                                <!-- Mega Menu / Start -->
+                                <ul class="four-columns">
+                                    <li class="one">
+                                        <a href="about-us.html"><img src="images/productType/vegetable.png" /><span class="product_type_font">蔬菜</span></a>
+
+                                    </li>
+                                    <li class="one">
+
+                                        <a href="about-us.html"><img src="images/productType/fruit.png" /><span class="product_type_font">水果</span></a>
+                                    </li>
+                                    <li class="one">
+                                        <a href="about-us.html"><img src="images/productType/meat.png" /><span class="product_type_font">肉类</span></a>
+                                    </li>
+                                </ul>
+                                <!-- Mega Menu / End -->
+                            </li>
+                            <li><a href="hotsale.html" id="current">热销产品</a></li>
+                            <li><a href="#">促销活动</a></li>
+                            <li><a href="#">企业文化</a></li>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="contact.html">联系客服</a></li>
+
+                        </ul>
+                        <!-- main navigation ends-->
+                        <div class="after-nav-info">
+                            <h4>联系电话: +987 654 321 000</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+            <!-- header ends-->
+
+            <div id="content">
+                <div id="breadcrumb">
+                    <!-- breadcrumb starts-->
+
+                </div>
+                <!--breadcrumbs ends -->
+                <div class="container">
+                    <ul id="portfolio-container" class="four-columns" style="background-color: #f8f8f8;">
+            
+                    </ul>
+
+
+                    <!-- Pagination -->
+                    <!--		<nav class="pagination">
+						<ul>
+							<li><a href="#">前一页</a></li>
+							<li><a href="#" class="current">1</a></li>
+							<li><a href="#" >2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">后一页</a></li>
+						</ul>
+						 
+						</nav>
+                        -->
+                    <!-- End pagination -->
+                </div>
+            </div>
+
+            <section id="copyrights">
+                <section class="container">
+                    <div class="one-half">
+                        <p>
+                            Copyright &copy; 2016.Company name All rights reserved.
+                        </p>
+                    </div>
+                    <div class="one-half">
+                        <ul class="copyright_links">
+                            <li><a href="#" title="首页">首页</a></li>
+                            <li><a href="#" title="企业文化">企业文化</a></li>
+                            <li><a href="#" title="关于我们">关于我们</a></li>
+                            <li><a href="#" title="回到顶部">回到顶部</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <!-- main wrapp starts-->
+    </div>
+    <!-- main container ends-->
+
+</body>
+
+</html>

@@ -1,0 +1,355 @@
+package cn.bupt.smartyagl.controller.inf;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import redis.clients.jedis.Jedis;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import cn.bupt.smartyagl.constant.Constants;
+import cn.bupt.smartyagl.entity.AccessToken;
+import cn.bupt.smartyagl.entity.UserInfoByToken;
+import cn.bupt.smartyagl.service.IAccessTokenService;
+import cn.bupt.smartyagl.util.NetDataAccessUtil;
+import cn.bupt.smartyagl.util.RedisUtil;
+import cn.bupt.smartyagl.util.UserUtil;
+
+@Controller
+@RequestMapping("/accessToken")
+public class AccessTokenController {
+
+	@Autowired
+	IAccessTokenService accessTokenService;
+	String openid;
+	
+	@RequestMapping("/getToken")
+	@ResponseBody
+	public Object getToken(HttpServletRequest request) {
+		// String access_token= "";
+		Jedis redis = RedisUtil.getJedis();
+		// redis.set(access_token,Constants.APPID);
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		// long seconds=7190;
+		// 如果时间超过两小时，则删除key
+		/*
+		 * if (seconds>7190){ redis.del(access_token);
+		 * Redis/Util.returnResource(redis); }
+		 */
+
+		String access_token = redis.get(Constants.USERAPPID);
+		// System.out.println(access_token+"55555555555");
+		// 先判断有没有access_token,如果没有access_token，则从url中获取
+		// 如果时间超过两小时，则删除key
+		redis.expire(Constants.USERAPPID, 7190);
+		/*
+		 * if(redis.expire(Constants.APPID,7190)); { redis.del(Constants.APPID);
+		 * RedisUtil.returnResource(redis); }
+		 */
+//		String expires_in;
+		if (!redis.exists(Constants.USERAPPID)) {
+			String jsonString = accessTokenService.sendGet(
+					"https://api.weixin.qq.com/cgi-bin/token",
+					"grant_type=client_credential&appid=" + Constants.USERAPPID
+							+ "&secret=" + Constants.USERAPPSECERT);
+			// String
+			// jsonString="{\"access_token\":\"mh7tSltJ4MY74yMtLGaQ_E_1\",\"expires_in\":7200}";
+			ObjectMapper mapper = new ObjectMapper();
+			try {
+				// System.out.println(access_token+"999999999");
+				AccessToken accessTokenbean = mapper.readValue(jsonString,
+						new TypeReference<AccessToken>() {
+						});
+				// 获取jsonString中的access_token
+//				expires_in=accessTokenbean.getExpires_in();
+				access_token = accessTokenbean.getAccess_token();
+				RedisUtil.set(Constants.USERAPPID, access_token);
+				access_token = redis.get(Constants.USERAPPID);
+				// System.out.println(access_token+"8333");
+				if (access_token == null) {
+					nau.setContent(jsonString);
+					nau.setResult(0);
+					nau.setResultDesp("getToken失败");
+				} else {
+					// System.out.println(access_token+"934346");
+//				    nau.setContent(jsonString);
+				    Map<String, Object> map = new HashMap<String, Object>();
+		            map.put("expires_in", accessTokenbean.getExpires_in());
+		            map.put("access_token", accessTokenbean.getAccess_token());
+				    nau.setContent(map);
+//					nau.setContent(redis.get(Constants.USERAPPID));
+					nau.setResult(1);
+					nau.setResultDesp("getToken成功");
+				}
+
+			} catch (JsonParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// 如果已有access_token,则发送 GET请求,直接从redis取出
+		} else {
+//		    nau.setContent(accessTokenbean.getExpires_in());
+			nau.setContent(redis.get(Constants.USERAPPID));
+			nau.setResult(2);
+			nau.setResultDesp("getToken成功");
+		}
+		return nau;
+	}
+	
+	@RequestMapping("/getTokenByCode")
+    @ResponseBody
+    public Object getTokenByCode(HttpServletRequest request, String code) {
+        // String access_token= "";
+        Jedis redis = RedisUtil.getJedis();
+        // redis.set(access_token,Constants.APPID);
+        NetDataAccessUtil nau = new NetDataAccessUtil();
+
+        String accessToken = redis.get(code);
+        redis.expire(code, 296);
+        System.out.println(redis.get(code));
+        if (!redis.exists(code)) {
+                    String jsonString = accessTokenService.sendGet(
+                    "https://api.weixin.qq.com/sns/oauth2/access_token",
+                    "appid="+ Constants.APPID+"&secret="
+                    +Constants.APPSECERT+"&code="+code+"&grant_type=authorization_code");
+
+//            String  jsonString= "{\"access_token\":\"xu0roL6_zg3KjZ1CMATLk_mrfa0dHUNJuoIM-vbA-3qBZ9jykoYp3sNd2QhgwkN4Gla3oyq88gOGu4QOJQa7uGGvFuwzkl2zb8cULixbB6s\",\"expires_in\":7200, \"refresh_token\":\"Yc9dPKnrRQPMgqvtpqqivjmps2-yZvbeM5kMFAuiUiQsLqKljJlkBplGlMUCXz59Fls2tswgMfhPSur6SRQoEIw7TocumLmpk-mJn-lFDv4\",\"openid\":\"oA_rRw7pbflsX6NKx8gaGE-FU39A\",\"scope\":\"snsapi_userinfo\"}";
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                 System.out.println(accessToken+"999999999");
+                AccessToken accessTokenBean = mapper.readValue(jsonString,
+                        new TypeReference<AccessToken>() {
+                        });
+                // 获取jsonString中的access_token
+                accessToken = accessTokenBean.getAccess_token();
+//                openid=accessTokenBean.getOpenid();
+                RedisUtil.set(code, accessToken);
+                accessToken = redis.get(code);
+                // System.out.println(access_token+"8333");
+                if (accessToken == null) {
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("errcode", accessTokenBean.getErrcode());
+                    map.put("errmsg", accessTokenBean.getErrmsg());                 
+                    nau.setContent(map);
+                    nau.setResult(0);
+                    nau.setResultDesp("getToken失败");
+                } else {
+                    // System.out.println(access_token+"934346");
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("access_token", accessTokenBean.getAccess_token());
+                    map.put("openid", accessTokenBean.getOpenid());
+                    map.put("refresh_token", accessTokenBean.getRefresh_token());
+                    map.put("expires_in", accessTokenBean.getExpires_in());
+                    map.put("scope", accessTokenBean.getScope());
+                    nau.setContent(map);
+                    nau.setResult(1);
+                    nau.setResultDesp("getToken成功");
+                }
+
+            } catch (JsonParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("getToken失败1");
+            } catch (JsonMappingException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("code错误，getToken失败");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("getToken失败3");
+            }
+
+            // 如果已有access_token,则发送 GET请求,直接从redis取出
+        } else {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("access_token", redis.get(code));
+//            map.put("openid", AccessToken.getOpenid());
+            nau.setContent(map);
+            nau.setResult(2);
+            nau.setResultDesp("getToken成功");
+        }
+        return nau;
+    }
+	
+	@RequestMapping("/getUserInfoByToken")
+    @ResponseBody
+    public Object getUserInfoByToken(HttpServletRequest request, String openid, String access_token) throws UnsupportedEncodingException {
+//	    String code;
+        Jedis redis = RedisUtil.getJedis();
+        NetDataAccessUtil nau = new NetDataAccessUtil();
+//        RedisUtil.set(Constants.APPID, "skdjfhksdhfsdfu");//测试
+//        System.out.println(redis.get(code));
+        if (access_token !=null) {
+            
+            String jsonString = accessTokenService.sendGet(
+                    "https://api.weixin.qq.com/sns/userinfo",
+                    "access_token="+access_token+"&openid="+openid+"&lang=zh_CN");
+//            String  jsonString="{\"openid\":\"oA_rRw7pbflsX6NKx8gaGE-FU39A\",\"nickname\":\"陈佳明\",\"sex\":1,\"language\":\"zh_CN\",\"city\":\"海淀\",\"province\":\"北京\",\"country\":\"中国\",\"headimgurl\":\"http://wx.qlogo.cn/mmopen/Q3auHgzwzM7RPlbLOXujjl8riad8hXnjcC440pasVQTcaVwFRwtPfHS8CrDKqhAcZbVWFoq980JEOticpWgXpwHQ/0\",\"privilege\":[\"PRIVILEGE1\",\"PRIVILEGE2\"],\"unionid\": \"o6_bmasdasdsad6_2sgVt7hMZOPfL\"}";
+
+            ObjectMapper mapper = new ObjectMapper();
+//            System.out.println(redis.get(code));
+            try {             
+                UserInfoByToken userInfoByTokenBean = mapper.readValue(jsonString,
+                        new TypeReference<UserInfoByToken>() {
+                        });
+                
+                if(redis.get(Constants.APPID)==null){
+                    System.out.println(userInfoByTokenBean.getNickname()+"sdgf");
+                }
+//                userInfoByTokenBean.getNickname()="8475";
+//                System.out.println(userInfoByTokenBean.getOpenid()+"888777");
+                if(userInfoByTokenBean.getNickname()!=null){//redis.get(Constants.APPID)
+                         System.out.println(access_token+"934346");
+//                         System.out.println(redis.get(Constants.APPID)+"888777");
+                         Map<String, Object> map = new HashMap<String, Object>();
+                         map.put("openId", userInfoByTokenBean.getOpenid());
+                         map.put("nickname", userInfoByTokenBean.getNickname());
+                         map.put("sex", userInfoByTokenBean.getSex());
+                         map.put("language", userInfoByTokenBean.getLanguage());
+                         map.put("province", userInfoByTokenBean.getProvince());
+                         map.put("city", userInfoByTokenBean.getCity());
+                         map.put("country", userInfoByTokenBean.getCountry());
+                         map.put("headimgurl", userInfoByTokenBean.getHeadimgurl());
+                         map.put("privilege", userInfoByTokenBean.getPrivilege());
+//                         expires_in=accessTokenBean.getExpires_in();
+//                         openid = accessTokenBean.getOpenid();
+                         nau.setContent(map);
+                         nau.setResult(1);
+                         nau.setResultDesp("获取用户信息成功");                        
+                        
+                }  else if(userInfoByTokenBean.getErrmsg()!=null) {                       
+                        Map<String, Object> map = new HashMap<String, Object>();
+                        map.put("errcode", userInfoByTokenBean.getErrcode());
+                        map.put("errmsg", userInfoByTokenBean.getErrmsg());   
+//                        map.put("nickname", userInfoByTokenBean.getNickname());
+                        nau.setContent(map);
+                        nau.setResult(0);
+                        nau.setResultDesp("获取用户信息失败");
+                } else{
+//                    nau.setContent(map);
+                    nau.setResult(0);
+                    nau.setResultDesp("获取用户信息失败");
+                }
+
+            } catch (JsonParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("获取用户信息失败1");
+            } catch (JsonMappingException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("token或openid错误，获取用户信息失败");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("获取用户信息失败3");
+            }
+        }
+        else{
+            nau.setContent("access_token与openid不能为空");
+            nau.setResult(0);
+            nau.setResultDesp("获取用户信息失败");
+        }
+            // 如果access_token已经失效
+          
+            //        } else {
+//            Map<String, Object> map = new HashMap<String, Object>();
+////            map.put("expires_in", expires_in);
+////            map.put("access_token", redis.get(Constants.APPID));
+//            map.put("openId", openid);
+//            nau.setContent(map);
+//            nau.setResult(2);
+//            nau.setResultDesp("获取用户信息成功");
+//        }
+        return nau;
+	}
+	
+	
+	@RequestMapping("/getTokenByCodeForVote")
+    @ResponseBody
+    public Object getTokenByCodeForVote(HttpServletRequest request, String code) {
+//        Jedis redis = RedisUtil.getJedis();
+        NetDataAccessUtil nau = new NetDataAccessUtil();
+        String accessToken = null;
+//        redis.expire(code, 296);
+        String jsonString = accessTokenService.sendGet(
+        "https://api.weixin.qq.com/sns/oauth2/access_token",
+        "appid="+ Constants.APPID+"&secret="
+        +Constants.APPSECERT+"&code="+code+"&grant_type=authorization_code");
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                AccessToken accessTokenBean = mapper.readValue(jsonString,
+                        new TypeReference<AccessToken>() {
+                        });
+                // 获取jsonString中的access_token
+                accessToken = accessTokenBean.getAccess_token();
+                if (accessToken == null) {
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("errcode", accessTokenBean.getErrcode());
+                    map.put("errmsg", accessTokenBean.getErrmsg());                 
+                    nau.setContent(map);
+                    nau.setResult(0);
+                    nau.setResultDesp("getToken失败");
+                } else {
+                    Map<String, Object> map = new HashMap<String, Object>();
+                    map.put("access_token", accessTokenBean.getAccess_token());
+                    map.put("openid", accessTokenBean.getOpenid());
+                    map.put("refresh_token", accessTokenBean.getRefresh_token());
+                    map.put("expires_in", accessTokenBean.getExpires_in());
+                    map.put("scope", accessTokenBean.getScope());
+                    nau.setContent(map);
+                    nau.setResult(1);
+                    nau.setResultDesp("getToken成功");
+                }
+
+            } catch (JsonParseException e) {
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("getToken失败1");
+            } catch (JsonMappingException e) {
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("code错误，getToken失败");
+            } catch (IOException e) {
+                e.printStackTrace();
+                nau.setResult(0);
+                nau.setResultDesp("getToken失败3");
+            }
+            // 如果已有access_token,则发送 GET请求,直接从redis取出
+        return nau;
+    }
+}

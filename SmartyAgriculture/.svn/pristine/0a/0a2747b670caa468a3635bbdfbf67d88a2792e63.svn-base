@@ -1,0 +1,152 @@
+package cn.bupt.smartyagl.controller.inf;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.Valid;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrder;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisits;
+import cn.bupt.smartyagl.entity.autogenerate.Project;
+import cn.bupt.smartyagl.entity.autogenerate.user;
+import cn.bupt.smartyagl.service.impl.FarmVisitOrderServiceImpl;
+import cn.bupt.smartyagl.service.impl.FarmVisitsServiceImpl;
+import cn.bupt.smartyagl.service.impl.ProjectServiceImpl;
+import cn.bupt.smartyagl.service.impl.UserServiceImpl;
+import cn.bupt.smartyagl.util.NetDataAccessUtil;
+
+/**
+ * 参观农场订单下单信息
+ * @author TMing
+ *
+ */
+
+@Controller
+@RequestMapping("/interface/farmVisitOrder")
+public class FarmVisitOrderInfoController {
+	
+	@Autowired
+	private UserServiceImpl userService;
+	
+	@Autowired
+	FarmVisitsServiceImpl farmVisitsService;
+	
+	@Autowired
+	private FarmVisitOrderServiceImpl farmVisitOrderService;
+	
+	@RequestMapping("/createOrder")
+	@ResponseBody
+	public Object createOrder(HttpServletRequest request, @Valid FarmVisitOrder farmVisitOrder, BindingResult result, 
+								@Valid @Length(min=10, max=10)String visit_time, BindingResult result2) {	
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+
+		// 对num、visitId、visit_time，验证是否空、是否错误类型、是否错误格式（比如长度、精度）
+		// 验证异常和格式错误
+		if (result.hasErrors()) {		
+			/*Hibernate校验，校验人数num和visitId
+			 * num：1-99999，包括边界，超过报错
+			 * visitId：0和Integer最大值之间，包括边界 
+			 */
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();    
+	        Validator validator = factory.getValidator();
+	        Set<ConstraintViolation<FarmVisitOrder>> constraintViolations = validator.validate(farmVisitOrder); 
+	        // 一些输入类型错误
+	        if (constraintViolations.size() == 0) {
+	        	System.out.println("输入数据类型错误！");
+	        	
+	        	nau.setResult(0);
+	        	nau.setResultDesp("输入数据类型错误！");
+	        	return nau;
+	        }
+	        // 数据类型没有问题，可能格式不满足规范
+	        StringBuilder sb = new StringBuilder();
+	        for (ConstraintViolation<FarmVisitOrder> constraintViolation : constraintViolations) { 
+	        	sb.append(constraintViolation.getPropertyPath() + ":");
+	        	sb.append(constraintViolation.getMessage() + ";");  
+	        } 
+			 
+	        nau.setResult(0);
+	        nau.setResultDesp(sb.toString());
+	        return nau;
+		}
+		
+		if (result2.hasErrors()) {
+			nau.setResult(0);
+			nau.setResultDesp("时间输入错误");
+		}
+		
+		// 验证VisitId是否为空，验证有无该参观类型
+		Integer id = farmVisitOrder.getVisitId();
+		if (id == null) {
+			nau.setResult(0);
+			nau.setResultDesp("参观类型id为空！");
+			return nau;
+		}
+		FarmVisits farmVisits = farmVisitsService.getFarmVisitTypeById(id);
+		if (farmVisits == null) {
+			nau.setResult(0);
+			nau.setResultDesp("没有该参观类型！");
+			return nau;
+		}	
+		
+		// 验证num是够为空，生成订单金额
+		Integer num = farmVisitOrder.getNum();
+		if (num == null) {
+			nau.setResult(0);
+			nau.setResultDesp("人数不能为空！");
+			return nau;
+		}
+		Double price = farmVisits.getPrice();
+		double money = price*num;
+		farmVisitOrder.setMoney(money);
+		farmVisitOrder.setOrderStatus(1);
+		
+		// 参观时间	
+		long time = Long.parseLong(visit_time);
+		if (time < 0L || time > 4102415999L) {
+			nau.setResult(0);
+			nau.setResultDesp("时间超出范围！");
+			return nau;
+		}
+		long timeStamp = (time)*1000;
+		Date visitTime = new Date(timeStamp);
+		farmVisitOrder.setVisitTime(visitTime);		
+
+		// 购买时间
+		Date buyTime = new Date();
+		farmVisitOrder.setBuyTime(buyTime);
+		
+		// 用户信息
+		Integer userId = (Integer)request.getAttribute("userId");
+		user User = userService.getUserInfoById(userId);
+		farmVisitOrder.setName(User.getName());
+		farmVisitOrder.setPhone(User.getPhone());
+		
+		boolean isDone = farmVisitOrderService.createOrder(farmVisitOrder);
+		
+		nau.setContent(farmVisitOrder);
+		if (isDone) {
+			nau.setResult(1);
+			nau.setResultDesp("下单成功");			
+		} else {
+			nau.setResult(0);
+			nau.setResultDesp("下单失败");
+		}
+		return nau;
+
+	}
+
+
+}

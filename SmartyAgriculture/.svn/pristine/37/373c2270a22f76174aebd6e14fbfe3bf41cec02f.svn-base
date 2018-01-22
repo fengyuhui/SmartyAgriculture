@@ -1,0 +1,43 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.Page;
+
+import cn.bupt.smartyagl.constant.ConstantsSql;
+import cn.bupt.smartyagl.dao.autogenerate.GoodsListMapper;
+import cn.bupt.smartyagl.entity.autogenerate.GoodsList;
+import cn.bupt.smartyagl.entity.autogenerate.GoodsListExample;
+import cn.bupt.smartyagl.service.IGoodsService;
+import cn.bupt.smartyagl.service.IQRCodeService;
+import cn.bupt.smartyagl.util.pinyin4jUtil;
+@Service
+public class QRCodeServiceImpl implements IQRCodeService {
+
+	@Autowired
+	GoodsListMapper goodsListMapper;
+	@Override
+	public List<GoodsList> getQRcodeGoodsList() {
+		GoodsListExample ge = new GoodsListExample();
+		cn.bupt.smartyagl.entity.autogenerate.GoodsListExample.Criteria ctr = ge.createCriteria();
+		//默认搜索上架商品
+		ctr.andStatusEqualTo( ConstantsSql.ONSALE );
+		/**
+		 * 搜索的只能是发布成功商品
+		 */
+		List<Integer> authList = new ArrayList<Integer>();
+		authList.add( ConstantsSql.Audit_Finish );
+		authList.add( ConstantsSql.Audit_Finish_hasDraft );
+//		authList.add( ConstantsSql.Audit_WaitDelete );
+		ctr.andAuditStatusIn(authList);
+		//只搜索有扫码价格的商品
+		ctr.andHasVipPriceEqualTo(true);
+		//查询
+		List<GoodsList> goodsList = goodsListMapper.selectByExample(ge);
+		return goodsList;
+	}
+}

@@ -1,0 +1,68 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.bupt.smartyagl.dao.autogenerate.FarmVisitOrderMapper;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrder;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderExample;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitsExample;
+import cn.bupt.smartyagl.service.IFarmVisitOrderService;
+
+/**
+ * 参观农场订单管理业务逻辑
+ * @author TMing
+ *
+ */
+
+@Service
+public class FarmVisitOrderServiceImpl implements IFarmVisitOrderService{
+	@Autowired 
+	private FarmVisitOrderMapper farmVisitOrderMapper;
+
+	@Override
+	public boolean createOrder(FarmVisitOrder farmVisitOrder) {
+		int i = farmVisitOrderMapper.insert(farmVisitOrder);
+		if (0 != i)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean deleteorder(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public FarmVisitOrder getOrderByID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<FarmVisitOrder> getAllOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateOrder(FarmVisitOrder farmVisitOrder) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean payOrder(Integer orderId,String tradeNumber) {
+		FarmVisitOrder fo = new FarmVisitOrder();
+		fo.setId(orderId);
+		fo.setTradeNumber(tradeNumber);
+		fo.setOrderStatus(2);
+		farmVisitOrderMapper.updateByPrimaryKeySelective(fo);
+		return true;
+	}
+
+}

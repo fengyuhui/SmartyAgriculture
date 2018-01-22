@@ -1,0 +1,54 @@
+.add_address_div{
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+       margin-top: 25px;
+    margin-right: 20px;
+}
+.black_a{
+    color: #363636!important
+}
+td{
+    min-width:100px;
+    font-size: 16px;
+    max-width: 150px;
+}
+.set_default{
+    background-color: #FFA500;
+    border: none;
+    color: white;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 3px;
+    display: block;
+    margin-left: 15px;
+}
+.not_default{
+   display:none;
+}
+.not_default_td:hover .not_default{
+    display:block !important;
+}
+.province{
+    display:block;
+}
+table_a{
+    font-size: 16px;
+}
+.add_address_table{
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 200px;
+}
+.update_tbody >tr >td {
+    padding-bottom: 30px!important;
+}
+select{
+    display: inline;
+    height: 30px;
+}
+/*#header-links{
+    margin-bottom:0px !important;
+}*/

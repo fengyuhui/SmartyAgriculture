@@ -1,0 +1,43 @@
+package cn.bupt.smartyagl.service;
+
+import java.util.List;
+
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisits;
+import cn.bupt.smartyagl.entity.autogenerate.Project;
+
+public interface IProjectService {
+	
+	boolean addType(Project project);
+	
+	Project getType(int id);
+	
+	List<Project> getAllType();
+	
+	boolean updateType(int id);
+	
+	List<Project> getAllByStatus(Integer status);
+	
+	boolean updateStatus(Integer id, Integer status);
+	
+	boolean deleteType(Integer id);
+	
+	Integer getSourceIdById(Integer id);
+	
+	Integer getAuditStatusById(Integer id);
+	
+	boolean deleteFarmVisitTypeById(int id);
+	
+	Project getFarmVisitTypeById(int id);
+	
+	List<Project> getFarmVisitTypes();
+	
+	boolean updateFarmVisitType(Project farmVisits);
+	
+	boolean addFarmVisitBatch(List<Project> list);
+	
+	List<Project> getFarmVisitTypesBatch(List<Integer> list);
+	
+	boolean deleteFarmVisitTypeBatch(List<Integer> list);
+	
+	boolean batchUpdate(List<Project> list);
+}

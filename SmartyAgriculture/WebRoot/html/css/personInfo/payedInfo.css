@@ -1,0 +1,37 @@
+.table_div{
+    width: 840px;
+    float: left;
+    background-color: white;
+            height: 455px;
+}
+.right_table{
+    width:100%;
+    text-align:center;
+    vertical-align:middle;
+  font-family: Microsoft Yahei;
+}
+.title_thead{
+    background-color:#605750;
+    color: white;
+}
+.title_thead >tr{
+    height: 30px;
+    font-size: 16px;
+}
+td{
+   vertical-align:middle;
+ 
+}
+.content_tbody >tr{
+    height:106px;
+    font-size:20px;
+}
+.fenhang{
+    display: block;
+}
+.jianju{
+    margin-top:10px;
+}
+.fenhang a{
+   color: black;
+} 

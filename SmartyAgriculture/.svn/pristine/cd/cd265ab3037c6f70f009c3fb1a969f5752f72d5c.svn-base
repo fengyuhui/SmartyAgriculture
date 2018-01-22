@@ -1,0 +1,41 @@
+package cn.bupt.smartyagl.model;
+
+import cn.bupt.smartyagl.entity.autogenerate.block;
+/**
+ * 
+ *<p>Title:BlockModel</p>
+ *<p>Description:土地视图 </p>
+ * @date 2016-7-7上午9:18:46
+ * @author lz_w
+ */
+public class BlockModel {
+    public String dateString;
+    public block block;
+    public String adminName;
+    public int status;
+    
+    public String getAdminName() {
+        return adminName;
+    }
+    public void setAdminName(String adminName) {
+        this.adminName = adminName;
+    }
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    public String getDateString() {
+        return dateString;
+    }
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
+    }
+    public block getBlock() {
+        return block;
+    }
+    public void setBlock(block block) {
+        this.block = block;
+    }
+}

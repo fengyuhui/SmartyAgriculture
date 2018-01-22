@@ -1,0 +1,373 @@
+/****************************
+ 
+ * created by zhangqiang at 2016/10/9
+
+ ***************************/
+
+
+/*  我的收藏页面（myCollection.html) 内容区 content 样式设置 */
+
+#wrapp {
+    background-color: #FFFFFF !important;
+    position: relative;
+    font-family: Microsoft YaHei;
+}
+
+#header {
+    position: relative !important;
+}
+
+.collection {
+    clear: left;
+    height: auto;
+    width: 100%;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+#collection-table {
+    width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    height: auto;
+}
+
+#collection-tabtitle {
+    width: 100%;
+    height: 100%;
+}
+
+#collection-tab-left {
+    height: 100%;
+    width: 50%;
+    float: left;
+    padding-top: 20px;
+}
+
+#collection-tab-right {
+    height: 100%;
+    width: 50%;
+    float: right;
+    padding-top: 20px;
+}
+
+.span-all {
+    float: left;
+    margin-left: 25px;
+    font-size: 19px;
+    color: #888888;
+}
+
+.allnum {
+    margin-left: 5px !important;
+}
+
+.span-collection {
+    float: left;
+    margin-left: 50px;
+    font-size: 19px;
+    color: #fab319;
+}
+
+.collectionNum {
+    margin-left: 5px;
+}
+
+.span-allchecked {
+    float: right;
+    margin-left: 25px;
+    font-size: 15px;
+    color: #888888;
+    display: none;
+}
+
+.span-allNotChecked {
+    float: right;
+    margin-left: 25px;
+    font-size: 15px;
+    color: #888888;
+    display: none
+}
+
+.span-delete {
+    float: right;
+    margin-left: 25px;
+    font-size: 15px;
+    color: #888888;
+    display: none;
+}
+
+.span-guanli {
+    float: right;
+    margin-left: 25px;
+    font-size: 15px;
+    color: #888888;
+    margin-right: 15px
+}
+
+.span-quxiaoguanli {
+    float: right;
+    margin-left: 25px;
+    font-size: 15px;
+    color: #888888;
+    margin-right: 15px;
+    display: none;
+}
+
+#am-checkbox {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    height: 22px;
+    width: 22px;
+}
+
+#am-checkbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    border: 0 none;
+    cursor: pointer;
+    display: none;
+}
+
+#span-guanli a {
+    cursor: pointer;
+}
+
+#span-quxiaoguanli a {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}
+
+
+/*-----------------------------
+    收藏商品展示
+------------------------------*/
+
+#contentDetailInfo_div {
+    width: 1170px;
+    margin: 0 auto;
+    height: auto;
+    position: relative;
+    top: 30px;
+}
+
+#contentDetailInfo {
+    width: 100%;
+    height: auto;
+    clear: left;
+    float: left;
+}
+
+#contentDetailInfo li {
+    position: relative;
+    border: 1px solid #ffffff;
+    float: left;
+    background-color: #ffffff;
+    margin-left: 22px;
+    margin-bottom: 30px;
+    width: 160px;
+    height: 230px;
+}
+
+#imgDiv {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    border: 1px solid #fab319
+}
+
+.productImg {
+    /*border: 1px solid #fab319 !important;*/
+    width: 157px;
+    height: 105px;
+}
+
+#productInfo {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    top: 120px;
+    bottom: 0px;
+    height: 25px;
+    line-height: 25px;
+    color: #131313;
+    font-size: 18px;
+    padding-bottom: 2px;
+    /*border-bottom: 2px solid #f8f8f8;*/
+}
+
+#productPacket {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    top: 150px;
+    bottom: 0px;
+    height: 25px;
+    font-size: 15px;
+    color: #626262;
+}
+
+#price {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    top: 180px;
+    bottom: 0px;
+    color: #fab319;
+    font-size: 16px;
+}
+
+#price_command {
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    vertical-align: baseline;
+    color: #fab319;
+    font-size: 16px;
+}
+
+
+/*****************
+
+ empty Collection 
+
+****************/
+
+.empty-cart {
+    top: 20px;
+    width: 100%;
+    height: 260px;
+    text-align: center;
+    /*display: none;*/
+}
+
+.empty-picture {
+    padding-top: 100px;
+    margin-right: 50px;
+}
+
+.empty-font {
+    font-size: 18px;
+    color: #cacaca;
+    vertical-align: -70px;
+}
+
+#infoCommand {
+    position: absolute;
+    top: 180px;
+    bottom: 0px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 6px;
+    text-align: center;
+    vertical-align: middle;
+    text-indent: 10px;
+}
+
+#infoCommand span {
+    color: #636363;
+}
+
+#guessYouLike {
+    position: relative;
+    top: 10px;
+    height: auto;
+    width: 1170px;
+    margin: 0 auto;
+}
+
+#guess-content {
+    width: 1170px;
+    margin: 0 auto;
+    height: 250px;
+    position: relative;
+    clear: left;
+    top: 20px;
+}
+
+.guessContentDiv {
+    width: 1170px;
+    margin: 0 auto;
+    height: 250px;
+    position: relative;
+    clear: left;
+    top: 20px;
+}
+
+#wrapper1 {
+    height: 300px;
+    width: 100%;
+}
+
+
+/*.htmleaf-container {
+    position: relative;
+    width:1170px;
+    margin:0 auto;
+}*/
+
+#guesscontent {
+    width: 100%;
+    height: auto;
+    clear: left;
+    float: left;
+}
+
+#guess-content li {
+    position: relative;
+    border: 1px solid #ffffff;
+    float: left;
+    background-color: #ffffff;
+    margin-left: 22px;
+    /*margin-bottom: 30px;*/
+    width: 160px;
+    height: 230px;
+}
+
+#fivequan {
+    height: 29px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    float: left;
+}
+
+#fivequan img {
+    width: auto;
+    height: 15px;
+    line-height: 100%;
+}
+
+.footer {
+    position: relative;
+    top: 42px !important;
+    float: left;
+    clear: left;
+}
+
+
+#contentDetailInfo li{
+    cursor:pointer;
+}
+
+#guesscontent li{
+    cursor:pointer;
+}
+    

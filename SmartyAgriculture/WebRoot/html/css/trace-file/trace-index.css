@@ -1,0 +1,19 @@
+
+[class*="trace-info-"] ol{
+    text-indent: 4em !important;
+}
+[class*="trace-info-"] h2{
+    color: #5BB2FB !important;
+}
+[class*="trace-info-"] h4{
+    color: #5BB2FB !important;
+}
+.tarce-info{
+    padding-top: 10px !important;
+    padding-left: 10px !important;
+    
+}
+
+#footer{
+    margin-top: 0px !important;
+}

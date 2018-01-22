@@ -1,0 +1,332 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
+import cn.bupt.smartyagl.constant.ConstantsSql;
+import cn.bupt.smartyagl.dao.autogenerate.goodsMapper;
+import cn.bupt.smartyagl.dao.autogenerate.goodsTypeMapper;
+import cn.bupt.smartyagl.entity.GoodsTypeList;
+import cn.bupt.smartyagl.entity.autogenerate.goodsExample;
+import cn.bupt.smartyagl.entity.autogenerate.goodsType;
+import cn.bupt.smartyagl.entity.autogenerate.goodsTypeExample;
+import cn.bupt.smartyagl.entity.autogenerate.goodsTypeExample.Criteria;
+import cn.bupt.smartyagl.model.GoodsTypeModel;
+import cn.bupt.smartyagl.service.IGoodsTypeService;
+
+@Service
+public class GoodsTypeServiceImpl implements IGoodsTypeService {
+
+	@Autowired
+	goodsTypeMapper goodsTypeMapper;
+	@Override
+	public void unDo(int id) {
+		goodsType gt = goodsTypeMapper.selectByPrimaryKey(id);
+		if(gt.getModifyid() == -1) {
+			goodsTypeMapper.deleteByPrimaryKey(id);
+		}
+		else {
+			goodsType gto = goodsTypeMapper.selectByPrimaryKey(gt.getModifyid());
+			gto.setStatus(0);
+			goodsTypeMapper.deleteByPrimaryKey(id);
+			goodsTypeMapper.updateByPrimaryKey(gto);
+		}
+	}
+	@Override
+	public void setReviewed(int id) {
+		goodsType gt = goodsTypeMapper.selectByPrimaryKey(id);
+		if(gt.getModifyid() == -1) {
+			gt.setStatus(0);
+			gt.setIsdisplay(true);
+			goodsTypeMapper.updateByPrimaryKey(gt);
+		}
+		else {
+			goodsType goodsTypeOld = goodsTypeMapper.selectByPrimaryKey(gt.getModifyid());
+			goodsTypeOld.setName(gt.getName());
+			goodsTypeOld.setPicture(gt.getPicture());
+			goodsTypeOld.setStatus(0);
+			goodsTypeMapper.updateByPrimaryKey(goodsTypeOld);
+			goodsTypeMapper.deleteByPrimaryKey(id);
+		}
+	}
+	@Override
+	public List<GoodsTypeModel> getUnreviewedTypes() {
+		List<GoodsTypeModel> ans = new ArrayList<GoodsTypeModel>();
+		goodsTypeExample gte = new goodsTypeExample();
+		gte.createCriteria().andStatusBetween(1, 2);
+		List<goodsType> list = goodsTypeMapper.selectByExample(gte);
+		for(goodsType gt:list) {
+			GoodsTypeModel gtm = new GoodsTypeModel();
+			gtm.setId(gt.getId());
+			gtm.setName(gt.getName());
+			gtm.setPicture(gt.getPicture());
+			gtm.setLevel(gt.getLevel());
+			gtm.setStatus(gt.getStatus());
+			if(gt.getParentid() == -1)
+				gtm.setParentName("无");
+			else {
+				goodsType par = goodsTypeMapper.selectByPrimaryKey(gt.getParentid());
+				gtm.setParentName(par.getName());
+			}
+			ans.add(gtm);
+		}
+		return ans;
+	}
+
+	@Override
+	public List<GoodsTypeModel> getDisplayGoodsType() {
+		// TODO Auto-generated method stub
+		List<GoodsTypeModel> goodsTypeList = null;
+		Integer parentId = -1;// 一级菜单类型
+		goodsTypeList = this.getSubType(parentId);
+		List<GoodsTypeModel> subGoodsTypeModels = null;
+		for (GoodsTypeModel goodsTypeModel : goodsTypeList) {
+			parentId = goodsTypeModel.getId();
+			subGoodsTypeModels = this.getSubType(parentId);
+			goodsTypeModel.setSubGoodsTypeList(subGoodsTypeModels);
+		}
+		return goodsTypeList;
+	}
+
+	/**
+	 * 查找子类型
+	 */
+	@Override
+	public List<GoodsTypeModel> getSubType(Integer parentId) {
+		// TODO Auto-generated method stub
+		goodsTypeExample GoodsTypeExample = new goodsTypeExample();
+		cn.bupt.smartyagl.entity.autogenerate.goodsTypeExample.Criteria criteria = GoodsTypeExample.createCriteria();
+		criteria.andParentidEqualTo(parentId);
+		criteria.andIsdisplayEqualTo(ConstantsSql.GoodType_Display);
+		List<goodsType> GoodsTypeList = goodsTypeMapper
+				.selectByExample(GoodsTypeExample);
+		List<GoodsTypeModel> goodsTypeModelList = new ArrayList<GoodsTypeModel>();
+		for (goodsType goodsType : GoodsTypeList) {
+			GoodsTypeModel goodsTypeModel = new GoodsTypeModel();
+			goodsTypeModel.setId(goodsType.getId());
+			goodsTypeModel.setName(goodsType.getName());
+			goodsTypeModel.setLevel(goodsType.getLevel());
+			goodsTypeModel.setParentid(goodsType.getParentid());
+			//goodsTypeModel.setStatus(goodsType.getStatus());
+			goodsTypeModelList.add(goodsTypeModel);
+			// goodsType.get
+		}
+		return goodsTypeModelList;
+	}
+
+	@Override
+	public List<GoodsTypeList> getGoodsTypeList(HttpServletRequest request) {
+		List<GoodsTypeList> goodsTypeLists = this.getPartentTypeList();
+		for (GoodsTypeList goodsTypeList : goodsTypeLists) {// 查找子菜单
+			List<GoodsTypeList> tmpList = this.getChildTypeList(goodsTypeList
+					.getId());
+			for(GoodsTypeList aa:tmpList) {
+				aa.setPicture("http://www.zhongyuanfarm.cn"  +":"+request.getLocalPort()+aa.getPicture());
+			}
+			goodsTypeList.setChildList(tmpList);
+		}
+		return goodsTypeLists;
+	}
+
+	@Override
+	public List<GoodsTypeList> getPartentTypeList() {
+		goodsTypeExample ge = new goodsTypeExample();
+		cn.bupt.smartyagl.entity.autogenerate.goodsTypeExample.Criteria criteria = ge.createCriteria();
+		criteria.andParentidEqualTo(ConstantsSql.parentGoodsTypeId);
+		criteria.andIsdisplayEqualTo(ConstantsSql.GoodType_Display);
+		
+		List<goodsType> goodsTypes = goodsTypeMapper.selectByExample(ge);
+
+		List<GoodsTypeList> gyls = this
+				.convertGoodsTypeToGoodsTypeListAll(goodsTypes);
+//		 for (GoodsTypeList goodsTypeList : gyls) {
+//		 List<GoodsTypeList> childTypeList =
+//		 getChildTypeList(goodsTypeList.getId());
+//		 goodsTypeList.setChildList(childTypeList);
+//		 }
+		return gyls;
+	}
+
+	@Override
+	public List<GoodsTypeList> getChildTypeList(Integer parentId) {
+		goodsTypeExample ge = new goodsTypeExample();
+		cn.bupt.smartyagl.entity.autogenerate.goodsTypeExample.Criteria criteria = ge.createCriteria();
+		criteria.andParentidEqualTo(parentId);
+		criteria.andIsdisplayEqualTo(ConstantsSql.GoodType_Display);
+		List<goodsType> goodsTypes = goodsTypeMapper.selectByExample(ge);
+		List<GoodsTypeList> gyls = this
+				.convertGoodsTypeToGoodsTypeListAll(goodsTypes);
+		return gyls;
+	}
+
+	/**
+	 * 将数据库表类型变为接口可用类型
+	 * 
+	 * @param goodsType
+	 * @return
+	 */
+	public List<GoodsTypeList> convertGoodsTypeToGoodsTypeListAll(
+			List<goodsType> goodsTypes) {
+		List<GoodsTypeList> goodsTypeLists = new ArrayList<GoodsTypeList>();
+		for (goodsType goodsType : goodsTypes) {
+			GoodsTypeList gtl = this.convertGoodsTypeToGoodsTypeList(goodsType);
+			goodsTypeLists.add(gtl);
+		}
+		return goodsTypeLists;
+	}
+
+	/**
+	 * 将数据库表类型变为接口可用类型
+	 * 
+	 * @param goodsType
+	 * @return
+	 */
+	public GoodsTypeList convertGoodsTypeToGoodsTypeList(goodsType goodsType) {
+		GoodsTypeList goodsTypeList = new GoodsTypeList();
+		goodsTypeList.setId(goodsType.getId());
+		goodsTypeList.setLevel(goodsType.getLevel());
+		goodsTypeList.setName(goodsType.getName());
+		goodsTypeList.setParentid(goodsType.getParentid());
+		goodsTypeList.setPicture(goodsType.getPicture());
+		return goodsTypeList;
+	}
+
+	@Override
+	/**
+	 * 产品类别列表
+	 * @auto waiting
+	 */
+	public ModelAndView getTypeList(Integer level, Integer parentId,int pageNumber,
+			int pageSize, ModelAndView modelAndView) {
+		// TODO Auto-generated method stub
+		goodsTypeExample goodsTypeExample = new goodsTypeExample();
+		cn.bupt.smartyagl.entity.autogenerate.goodsTypeExample.Criteria criteria = goodsTypeExample
+				.createCriteria();
+		if (level != 0) {
+			criteria.andLevelEqualTo(level);
+		}
+		if(parentId!=0){
+			criteria.andParentidEqualTo(parentId);
+		}
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(0);
+		list.add(3);
+		criteria.andStatusIn(list);
+		// 分页
+		@SuppressWarnings("rawtypes")
+		Page page = PageHelper.startPage(pageNumber, pageSize, "");
+		List<goodsType> goodsTypeList=goodsTypeMapper.selectByExample(goodsTypeExample);
+		List<GoodsTypeModel> goodsTypeModelList=this.formatGoodsTypeList(goodsTypeList);
+		modelAndView.addObject("goodsTypeList", goodsTypeModelList);
+		// 总页数
+		int allPages = page.getPages();
+		modelAndView.addObject("allPages", allPages);
+		// 当前页码
+		int currentPage = page.getPageNum();
+		modelAndView.addObject("currentPage", currentPage);
+		return modelAndView;
+	}
+	/**
+	 * 格式化返回数据
+	 * @param goodsTypeList
+	 * @return
+	 */
+	private List<GoodsTypeModel> formatGoodsTypeList(List<goodsType> goodsTypeList){
+		List<GoodsTypeModel> goodsTypeModelList=new ArrayList<GoodsTypeModel>();
+		for (goodsType goodsType : goodsTypeList) {
+			GoodsTypeModel goodsTypeModel=new GoodsTypeModel();
+			goodsTypeModel.setId(goodsType.getId());
+			goodsTypeModel.setName(goodsType.getName());
+			goodsTypeModel.setPicture(goodsType.getPicture());
+			goodsTypeModel.setLevel(goodsType.getLevel());
+			goodsTypeModel.setIsdisplay(goodsType.getIsdisplay());
+			goodsTypeModel.setStatus(goodsType.getStatus());
+			goodsType parentGoodsType=goodsTypeMapper.selectByPrimaryKey(goodsType.getParentid());
+			if(parentGoodsType!=null){
+				goodsTypeModel.setParentName(parentGoodsType.getName());
+			}
+			else{
+				goodsTypeModel.setParentName("无");
+			}
+			goodsTypeModelList.add(goodsTypeModel);
+		}
+		return goodsTypeModelList;
+	}
+    /**
+     * 添加商品类型
+     */
+	@Override
+	public boolean addType(goodsType goodsType) {
+		if(goodsType.getLevel()==1){
+			goodsType.setParentid(-1);
+		}
+		int i=goodsTypeMapper.insert(goodsType);
+		if (i==1) {
+			return true;
+		}
+		else{
+			return false;
+		}
+
+	}
+
+	@Override
+	public goodsType getGoodsTypeById(int id) {
+		// TODO Auto-generated method stub
+		goodsType goodsType=goodsTypeMapper.selectByPrimaryKey(id);
+		return goodsType;
+	}
+
+	@Override
+	public boolean updateGoodsType(goodsType goodsType) {
+		// TODO Auto-generated method stub
+		int i=goodsTypeMapper.updateByPrimaryKey(goodsType);
+		if (i==1) {
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateGoodsISdisplay(boolean isdisplay, int typeId) {
+		// TODO Auto-generated method stub
+		goodsType goodsType=goodsTypeMapper.selectByPrimaryKey(typeId);
+		goodsType.setIsdisplay(isdisplay);
+		//代表是1级菜单类别，需要修改
+		if (goodsType.getLevel()==1) {
+
+		 goodsTypeExample goodsTypeExample=new goodsTypeExample();
+		 Criteria criteria=goodsTypeExample.createCriteria();
+		 criteria.andParentidEqualTo(goodsType.getId());
+		 List<goodsType> goodsTypelList=goodsTypeMapper.selectByExample(goodsTypeExample);
+		 for (goodsType goodsType2 : goodsTypelList) {
+			 goodsType2.setIsdisplay(isdisplay);
+			 this.updateGoodsType(goodsType2); 
+		 }	
+		}
+		return this.updateGoodsType(goodsType);
+	}
+
+	@Override
+	public void removeById(int id) {
+		goodsTypeMapper.deleteByPrimaryKey(id);
+	}
+
+
+
+
+
+
+		
+}

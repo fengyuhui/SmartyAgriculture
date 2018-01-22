@@ -1,0 +1,269 @@
+body{
+	
+}
+a{
+    cursor: pointer;
+}
+.m-text{
+    font-size: 18px;
+    font-family: "Microsoft Yahei";
+}
+.l-text{
+    font-size: 24px;
+    font-family: "Microsoft Yahei";
+}
+.middle{
+    text-align: center;
+}
+/*支付成功 ↓↓↓*/
+.msg-panel{
+	width:100%;
+	float: left;
+	padding-left: 160px;
+	margin-bottom: 0;
+}
+.symbol-success img{
+	width:350px;
+	height: 350px;
+	background-repeat: no-repeat;
+}
+.symbol-success{
+	float: left;
+}
+.success-msg{
+	width:350px;
+	float: left;
+	margin-top:140px;
+}
+.success-msg h1{
+	font-size: 30px;
+	color: #FAB319;
+}
+.guess-ulike{
+	
+}
+.success-msg h3,.guess-ulike h1{
+	color:#626262;
+}
+.guess-ulike .isotope-item{
+    margin-right: 20px;
+    float:left;
+}
+.guess-ulike .isotope-item img{
+	height:170px;
+    width: 215px;
+    background-repeat: no-repeat;
+}
+.item-name{
+	font-weight: 500;
+	color: #131313;
+	font-size: 12px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.test{
+	overflow: hidden;
+}
+.guess-ulike .slidecontrols{
+	margin-bottom: 20px;
+}
+.intro-features{
+	background-color: #FFFFFF !important;
+}
+
+/*支付页
+ * 2016.6.29
+ * 卢照旭
+ * ↓↓↓*/
+.full-bottom{
+    height: 580px;
+}
+#wrapp-1{
+    float: left;
+    width: 100%;
+    height: 100%;
+    background: #F4F4F4;
+}
+.right-bg{
+    background-color: #fff;
+}
+.order-thumb{
+	position: relative;
+}
+.o-left{
+	float: left;
+	width: 640px;
+    height: 80px;
+/*	margin-top: 30px;*/
+	padding-left: 30px;
+}
+.order-thumb .o-tips{
+	height: 10px;
+	margin-top: -10px;
+}
+.order-thumb .o-title{
+	line-height: 110%;
+	height: 10px;
+	font-size: 14px;
+}
+.order-thumb .o-deadline{
+	color:#ff5d5b;
+}
+.o-right{
+	margin-left: 30px;
+}
+.drop-down{
+	background: url("../images/dropdown.png") 115% 50% no-repeat;
+}
+#copyrights{
+/*    position:absolute;*/
+    bottom: 0;
+}
+.pay-title{
+    font-size: 1.5em;
+    color: #393939;
+    font-weight: 500;
+}
+.icon-gallery{
+    margin-top: 30px;
+    width: auto;
+    display: block;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+.icon-iso{
+    width: 13%;
+    height: 13%;
+    float: left;
+    margin-right: 5%;
+}
+.icon-iso:hover{
+    border: 1px solid #f4f4f4;
+}
+.icon-iso img{
+    width: 100%;
+    height: 100%;
+}
+/*aliPay style*/
+.aliPaycontent{
+    display: ;
+}
+/**wx_QRcode pay style**/
+#payGallery{
+    display: none;
+    position: absolute;
+    width: 460px;
+    left: 300px;
+    border:3px solid #b1b1b1;
+    background: #fff;
+    z-index: 51;
+}
+.pay-head{
+    height: 36px;
+    padding:15px 20px;
+    background: #4b5b78;
+    overflow: hidden
+}
+.pay-mask{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background: #fff;
+    opacity: .5;
+}
+.h-close{
+    float: right;
+    width: 20px;
+    height: 20px;
+    background: url(../images/icon/close.png) no-repeat;
+    cursor: pointer;
+}
+.p-h-title{
+    float: left;
+    font-size: 18px;
+    margin:0;
+    font-weight: 600;
+    color: #fff;
+}
+.p-body{
+    padding:30px;
+    background: #fff;
+}
+.QR-wrap{
+    margin: 0 auto 8px;
+    height: 188px;
+    width: 188px;
+    border: 1px solid #e4e4e4;
+    padding: 8px;
+}
+.QR-img{
+    height: 170px;
+    width: 170px;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+.QR-img img{
+    opacity: 1;
+}
+.wx-msg{
+    line-height: 20px;
+
+}
+.p-foot{
+    border-top: 1px solid #e4e4e4;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+#QR-retry{
+    display: none;
+}
+.QR-retry{
+    background: url(../images/icon/wx_retry.png) no-repeat;
+    z-index: 52;
+    cursor: pointer;
+    position: absolute;
+    width: 37px;
+    height: 37px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 175px;
+}
+/**购物卡支付**/
+.cardGallery{
+    display: block;
+    position: absolute;
+    width: 460px;
+    left: 300px;
+    border: 3px solid #b1b1b1;
+    background: #fff;
+    z-index: 51;
+}
+.isoLine input{
+    display:inline;
+    color: #000 !important;
+    font-weight: 700 !important;
+}
+#cardId:focus,#cardPswd:focus{
+    border: 1px solid #66afe9 !important;
+}
+.isoLine{
+    padding-top: 20px;
+}
+.card-body{
+    padding: 15px;
+}
+#cardSubmit{
+    margin-top: 15px;
+    float: right;
+}
+.tips-text{
+    font-size: 15px;
+}
+.type-choose img{
+    height: 32px;
+}

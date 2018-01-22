@@ -1,0 +1,11 @@
+diff a/css/pro-detail.css b/css/pro-detail.css	(rejected hunks)
+@@ -847,3 +847,8 @@
+     margin-right: auto;
+     margin-bottom: 150px;
+     }
++
++
++#current{
++    border-bottom: 0px solid #fff !important;
++}
+\ No newline at end of file

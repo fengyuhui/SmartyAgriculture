@@ -1,0 +1,50 @@
+/*-------------------------------
+
+    created by zhangqiang
+    Date:2016.10.19
+
+--------------------------------*/
+
+#content {
+    position: relative;
+    width: 100%;
+}
+
+.line {
+    position: relative;
+    height: auto;
+    width: 1170px;
+    margin: 0 auto;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.line div {
+    width: 100%;
+    height: 100%;
+}
+
+.line div img {
+    width: auto;
+    height: auto;
+}
+
+.footer {
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#visit {
+    border-bottom: 2px solid #fff;
+}
+
+.user-name {
+    /*margin-right: 10px !important;*/
+    display: inline !important;
+}

@@ -1,0 +1,50 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import oracle.sql.ARRAY;
+
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+
+
+import org.springframework.web.servlet.ModelAndView;
+
+import cn.bupt.smartyagl.entity.autogenerate.users;
+import cn.bupt.smartyagl.entity.autogenerate.usersExample;
+import cn.bupt.smartyagl.service.IUsersService;
+
+@Service
+public class UsersServiceImpl implements IUsersService{
+	
+	@Resource
+	cn.bupt.smartyagl.dao.autogenerate.usersMapper usersMapper;
+
+	@Override
+	public List<users> getUsersByUsersExample(usersExample usersEx) {
+		//usersMapper usersMapper=new usersExample();
+		// TODO Auto-generated method stub
+		if (usersMapper==null) {
+			System.out.println("usersMapper是空");
+		}
+		if(usersMapper.selectByExample(usersEx)!=null){
+			return usersMapper.selectByExample(usersEx);
+		}
+		else {
+			return null;
+		}
+		
+	}
+
+	
+
+
+}

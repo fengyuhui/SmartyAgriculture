@@ -1,0 +1,90 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.bupt.smartyagl.dao.autogenerate.BlockManagerViewMapper;
+import cn.bupt.smartyagl.dao.autogenerate.blockMapper;
+import cn.bupt.smartyagl.entity.autogenerate.BlockManagerView;
+import cn.bupt.smartyagl.entity.autogenerate.BlockManagerViewExample;
+import cn.bupt.smartyagl.entity.autogenerate.block;
+import cn.bupt.smartyagl.entity.autogenerate.blockExample;
+import cn.bupt.smartyagl.entity.autogenerate.blockManager;
+import cn.bupt.smartyagl.model.BlockModel;
+import cn.bupt.smartyagl.service.IBlockService;
+import cn.bupt.smartyagl.util.DateTag;
+
+@Service
+public class BlockServiceImpl implements IBlockService {
+	
+	@Autowired
+	blockMapper blockMapper;
+	@Autowired
+	BlockManagerViewMapper blockManagerViewMapper;
+
+	@Override
+	public List<BlockModel> getBlockList() {
+		// TODO Auto-generated method stub
+		blockExample bme=new blockExample();
+		List<block> blockList=blockMapper.selectByExample(bme);
+		
+		List<BlockModel> blockModelList = new ArrayList<BlockModel>();
+		//格式化时间
+		for (int i = 0; i < blockList.size(); i++) {
+		    block tempblock = blockList.get(i);
+		    BlockModel tempblockModel = new BlockModel();
+  		    String dateString =  DateTag.dateTimaFormat(tempblock.getCreateTime());
+  		    tempblockModel.setBlock(tempblock);
+  		    tempblockModel.setDateString(dateString);
+  		    blockModelList.add(tempblockModel);
+		}
+		return blockModelList;
+	}
+    /**
+     * 通过blockId获取blockname
+     */
+	@Override
+	public String getBlockName(int blockId) {
+		// TODO Auto-generated method stub
+		blockExample bme=new blockExample();
+		
+		cn.bupt.smartyagl.entity.autogenerate.blockExample.Criteria criteria=bme.createCriteria();
+		criteria.andIdEqualTo(blockId);
+		
+		block block=blockMapper.selectByPrimaryKey(blockId);
+		if(block==null){
+			return null;
+		}
+		return block.getName();
+	}
+    @Override
+    public Boolean addBlocks(block Block) {
+        int i =blockMapper.insert(Block);
+        if(i!=0)
+            return true;
+        else
+            return false;
+            
+    }
+    @Override
+    public block getBlockByBlockId(int blockId) {
+        block block =blockMapper.selectByPrimaryKey(blockId);
+        return block;
+    }
+    @Override
+    public List<BlockManagerView> getBlockManagerView(int blockId) {
+        BlockManagerViewExample bmve=new BlockManagerViewExample();
+        List<BlockManagerView> blockManagerViewList = new ArrayList<BlockManagerView>();
+        List<BlockManagerView> blockManagerViewList2 = blockManagerViewMapper.selectByExample(bmve);
+        for (BlockManagerView blockManagerView : blockManagerViewList2) {
+            if (blockManagerView.getBlockId()==blockId) {
+                blockManagerViewList.add(blockManagerView);
+            }
+        }
+        return blockManagerViewList;
+    }
+
+}

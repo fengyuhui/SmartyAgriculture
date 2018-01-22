@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+">
+  	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+	<!-- 配置数据源  -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!-- 连接本机数据库  -->
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3307/smartyagriculture3?useUnicode=true&amp;characterEncoding=utf8" />
+        <property name="username" value="root" />
+        <property name="password" value="123456" />
+    </bean>
+
+	<!-- myBatis文件 ,spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="mapperLocations" value="classpath*:cn/bupt/smartyagl/map/autogenerate/*.xml" />
+		<!-- mybatis的配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-configuration.xml" />
+	</bean>
+	
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.bupt.smartyagl.dao.autogenerate" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+	
+	<!-- myBatis文件 ,spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactoryIndividuation" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="mapperLocations" value="classpath*:cn/bupt/smartyagl/map/individuation/*.xml" />
+		<!-- mybatis的配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-configuration.xml" />
+	</bean>
+	
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.bupt.smartyagl.dao.individuation" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryIndividuation" />
+	</bean>
+
+	<!-- 数据的事物管理 开始 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <!-- 配置事务特性 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager" >
+        <tx:attributes>
+        <tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        <tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        <tx:method name="cancle*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        <tx:method name="select*" read-only="true" rollback-for="java.lang.Exception"/>
+        <tx:method name="count*" read-only="true" rollback-for="java.lang.Exception"/>
+        <tx:method name="query*" read-only="true" rollback-for="java.lang.Exception"/>
+       
+       </tx:attributes>
+    </tx:advice>
+    <!-- 配置哪些类的方法需要进行事务管理 -->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.example.service..*.*(..))"/>
+    </aop:config>
+    <!-- 数据的事物管理 结束 -->
+</beans>

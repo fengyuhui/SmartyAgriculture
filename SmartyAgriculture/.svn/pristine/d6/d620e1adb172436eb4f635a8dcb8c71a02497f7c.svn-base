@@ -1,0 +1,83 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.bupt.smartyagl.dao.autogenerate.AdditionMapper;
+import cn.bupt.smartyagl.dao.autogenerate.AdditionViewMapper;
+import cn.bupt.smartyagl.entity.autogenerate.Addition;
+import cn.bupt.smartyagl.entity.autogenerate.AdditionExample;
+import cn.bupt.smartyagl.entity.autogenerate.AdditionView;
+import cn.bupt.smartyagl.entity.autogenerate.AdditionViewExample;
+import cn.bupt.smartyagl.service.IAdditionService;
+
+@Service
+public class AdditionServiceImpl implements IAdditionService {
+	@Autowired
+	AdditionMapper additionMapper;
+	@Autowired
+	AdditionViewMapper additionViewMapper;
+	@Override
+	public boolean save(Addition add) {
+		return  additionMapper.insert(add) == 0 ? false:true;
+	}
+	@Override
+	public Addition getAdditionByTitle(String title) {
+		AdditionExample ae = new AdditionExample();
+		List<Byte> list = new ArrayList<Byte>();
+		list.add((byte)0);
+		list.add((byte)3);
+		ae.createCriteria().andTitleEqualTo(title).andStatusIn(list);
+		return additionMapper.selectByExampleWithBLOBs(ae).get(0);
+	}
+	@Override
+	public void setModified(int id) {
+		Addition ad = additionMapper.selectByPrimaryKey(id);
+		ad.setStatus((byte)3);
+		additionMapper.updateByPrimaryKey(ad);
+	}
+	@Override
+	public List<AdditionView> getUnreviewedMsg() {
+		AdditionViewExample ave = new AdditionViewExample();
+		ave.createCriteria().andStatusEqualTo((byte)2);
+		return additionViewMapper.selectByExample(ave);
+	}
+	@Override
+	public List<Addition> getAllFourAddition() {
+		AdditionExample ae = new AdditionExample();
+		List<String> titList = new ArrayList<String>();
+		titList.add("用户协议");
+		titList.add("关于我们");
+		titList.add("常见问题");
+		titList.add("新闻接口");
+		List<Byte> staList = new ArrayList<Byte>();
+		staList.add((byte)0);
+		staList.add((byte)3);
+		ae.createCriteria().andTitleIn(titList).andStatusIn(staList);
+		return additionMapper.selectByExample(ae);
+	}
+	@Override
+	public Addition getAdditionById(int id) {
+		return additionMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public boolean setReviewed(int id) {
+		Addition add = additionMapper.selectByPrimaryKey(id);
+		Addition par = additionMapper.selectByPrimaryKey(add.getModifyid());
+		par.setContent(add.getContent());
+		par.setStatus((byte)0);
+		par.setOperId(add.getOperId());
+		return additionMapper.updateByPrimaryKeyWithBLOBs(par) == 1 && additionMapper.deleteByPrimaryKey(id) == 1;
+	}
+	@Override
+	public boolean unDo(int id) {
+		Addition add = additionMapper.selectByPrimaryKey(id);
+		Addition par = additionMapper.selectByPrimaryKey(add.getModifyid());
+		par.setStatus((byte)0);
+		return additionMapper.updateByPrimaryKey(par) == 1 && additionMapper.deleteByPrimaryKey(id) == 1;
+	}
+
+}

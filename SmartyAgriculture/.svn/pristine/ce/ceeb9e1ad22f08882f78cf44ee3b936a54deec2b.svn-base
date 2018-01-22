@@ -1,0 +1,400 @@
+package cn.bupt.smartyagl.controller.inf;
+
+import java.io.IOException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import javax.enterprise.inject.spi.Bean;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+
+import org.apache.http.Consts;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.ParseException;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
+import cn.bupt.smartyagl.constant.Constants;
+import cn.bupt.smartyagl.constant.ConstantsSql;
+import cn.bupt.smartyagl.controller.BaseController;
+import cn.bupt.smartyagl.entity.autogenerate.OrderView;
+import cn.bupt.smartyagl.entity.autogenerate.address;
+import cn.bupt.smartyagl.entity.autogenerate.goods;
+import cn.bupt.smartyagl.entity.autogenerate.orderList;
+import cn.bupt.smartyagl.service.IAddressService;
+import cn.bupt.smartyagl.service.IGoodsCartService;
+import cn.bupt.smartyagl.service.IOrderService;
+import cn.bupt.smartyagl.util.NetDataAccessUtil;
+import cn.bupt.smartyagl.util.RedisUtil;
+import cn.bupt.smartyagl.util.picture.JsonConvert;
+import cn.bupt.smartyagl.util.SFUtil;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+/** 
+ * @author  jm E-mail:740869614@qq.com 
+ * @date 创建时间：2016-5-13 下午2:27:15 
+ * @version 1.0 
+ * @parameter  
+ * @since  
+ * @return  
+ */
+@Controller
+@RequestMapping("interface/order")
+public class OrderController extends AppBaseController{
+	@Autowired
+	IOrderService orderService;
+	@Autowired
+	IGoodsCartService goodsCartService;
+	@Autowired
+	IAddressService addressService;
+	
+	//添加订单
+	@RequestMapping("/addOrder")
+	@ResponseBody
+	public Object addOrder(HttpServletRequest request,orderList order,Integer pickUp){
+		Integer userId = (Integer) request.getAttribute("userId");
+		order.setUserId(userId);
+		order.setPick_up(pickUp);
+		boolean rst =  orderService.addOrder(order);
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		if(rst){
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("orderId", order.getId());
+			nau.setContent(map);
+			nau.setResult(1);
+			nau.setResultDesp("添加订单成功");
+		}else{
+			nau.setResult(0 );
+			nau.setResultDesp("添加订单失败");
+		}
+		return nau;
+	}
+	
+	//未登录添加订单
+	@RequestMapping("/addOrderWithoutlog")
+	@ResponseBody
+	public Object addOderWithoutLog(HttpServletRequest request,String orderMessage,String address,String email,String phone) throws JsonParseException, JsonMappingException, IOException{
+		ObjectMapper om = new ObjectMapper();
+		//json转为订单列表
+		List<orderList> orderLists= om.readValue(orderMessage, new TypeReference<List<orderList>>() {} );
+		//json转为地址对象
+		address addressObj = om.readValue(address, address.class);
+		boolean rs = addressService.addAddress(addressObj);
+		//订单列表添加地址id
+		if(!rs){//地址添加失败
+			NetDataAccessUtil nau = new NetDataAccessUtil();
+			nau.setResult(0 );
+			nau.setResultDesp("添加地址失败");
+			return nau;
+		}
+		boolean rst = true;
+		Double all_price = 0.0;//订单总价
+		StringBuffer sb = new StringBuffer();//订单id数组
+		for(orderList tmp : orderLists){//批量插入订单
+			tmp.setUserId(null);
+			tmp.setAddressId(addressObj.getId());
+			boolean tmp_rs = orderService.addOrder(tmp);
+			if(!tmp_rs){
+				rst = false;
+				break;
+			}
+			all_price += tmp.getMoney();
+			sb.append(tmp.getId()+",");
+		}
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		if( orderLists.size()>0 && rst){
+			//删除成功，删除购物车
+			List<Integer> goodsIds = new ArrayList<Integer>();
+			for( orderList tmp : orderLists ){
+				goodsIds.add( tmp.getGoodsId() );
+			}
+//			//清除购物车
+//			goodsCartService.deleteGoodsCartBatch(goodsIds, userId);
+			String orderIds = sb.substring(0,sb.lastIndexOf(","));
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("orderIds", orderIds);
+			map.put("allPrice", all_price);
+			nau.setContent(map);
+			nau.setResult(1);
+			nau.setResultDesp("添加订单成功");
+			/**
+			 * 发送订单号
+			 */
+			if(phone != null || email != null){
+				orderService.sendOrderMessage(phone, email, orderLists, all_price);
+			}
+		}else{
+			nau.setResult(0 );
+			nau.setResultDesp("添加订单失败");
+		}
+		return nau;
+	}
+	
+	//批量增加订单
+	@RequestMapping("/addOrderList")
+	@ResponseBody
+	public Object addOrderList(HttpServletRequest request,String orderMessage) throws JsonParseException, JsonMappingException, IOException{
+		Integer userId = (Integer) request.getAttribute("userId");
+		ObjectMapper om = new ObjectMapper();
+		List<orderList> orderLists= om.readValue(orderMessage, new TypeReference<List<orderList>>() {} );
+		boolean rst = true;
+		Double all_price = 0.0;//订单总价
+		StringBuffer sb = new StringBuffer();//订单id数组
+		for(orderList tmp : orderLists){//批量插入订单
+			tmp.setUserId(userId);
+			boolean tmp_rs = orderService.addOrder(tmp);
+			if(!tmp_rs){
+				rst = false;
+				break;
+			}
+			all_price += tmp.getMoney();
+			sb.append(tmp.getId()+",");
+		}
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		if( orderLists.size()>0 && rst){
+			//删除成功，删除购物车
+			List<Integer> goodsIds = new ArrayList<Integer>();
+			for( orderList tmp : orderLists ){
+				goodsIds.add( tmp.getGoodsId() );
+			}
+			//清除购物车
+			goodsCartService.deleteGoodsCartBatch(goodsIds, userId);
+			String orderIds = sb.substring(0,sb.lastIndexOf(","));
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("orderIds", orderIds);
+			map.put("allPrice", all_price);
+			nau.setContent(map);
+			nau.setResult(1);
+			nau.setResultDesp("添加订单成功");
+		}else{
+			nau.setResult(0 );
+			nau.setResultDesp("添加订单失败");
+		}
+		return nau;
+	}
+	
+	//根据用户id获取订单列表
+	@RequestMapping("/getOrderList")
+	@ResponseBody
+	public Object getOrderList(HttpServletRequest request,orderList orderList,Integer pageSize,Integer pageNum){
+		Integer userId = (Integer) request.getAttribute("userId");
+		orderList.setUserId(userId);
+		if(pageSize == null || pageSize <= 0){//默认一页10个
+			pageSize = 10;
+		}
+		if(pageNum == null || pageNum <= 0){//默认从第10个开始
+			pageNum = 1;
+		}
+		//分页，默认按购买数量排序
+		Page page = PageHelper.startPage(pageNum, pageSize, "id DESC");
+		List<OrderView> rst =  orderService.getOrderList(orderList);
+		for(OrderView order : rst ){
+			order.setPicture( JsonConvert.getOnePicture(order.getPicture(), request) );
+		}
+		// 总页数
+     	int allPages = page.getPages();
+     	int currentPage = page.getPageNum();
+     	Map<String,Object> map = new HashMap<String,Object>();
+     	map.put("currentPage", currentPage);
+     	map.put("allPages", allPages);
+     	map.put("orderList", rst);
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		nau.setContent(map);
+		nau.setResult(1);
+		nau.setResultDesp("获取订单列表成功");
+		return nau;
+	}
+	
+	//获取订单详情
+	@RequestMapping("/getOrderDetail")
+	@ResponseBody
+	public Object getOrderDetail(HttpServletRequest request,Integer orderId){
+		Map map =  orderService.getOrderDetail(orderId);
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		if( map.get("orderView") == null || map.get("address") == null ){
+			nau.setContent(null);
+			nau.setResult(0);
+			nau.setResultDesp("获取订单详情失败");
+		}else{
+			nau.setContent(map);
+			nau.setResult(1);
+			nau.setResultDesp("获取订单详情成功");
+		}
+		return nau;
+	}
+	
+	//更改订单状态
+	@RequestMapping("/changeOrderStatus")
+	@ResponseBody
+	public Object changeOrderStatus(HttpServletRequest request,orderList order){
+		boolean rst =  orderService.updateOrder(order);
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		if(rst){
+			nau.setResult(1);
+			nau.setResultDesp("修改订单成功");
+		}else{
+			nau.setResult(0 );
+			nau.setResultDesp("修改订单失败");
+		}
+		return nau;
+	}
+	
+	//订单查询页以及订单查询结果展示
+	@RequestMapping("/getOrderDetailToView")
+	public ModelAndView getOrderDetailToView(HttpServletRequest request,String orderId){
+		ModelAndView mv = new ModelAndView(Constants.ORDER_FindOrder);
+		if( orderId == null ){
+			mv.setViewName( Constants.ORDER_FindOrder );
+		}else{
+			try{
+				Integer id =  Integer.parseInt( orderId.replace("2151311", "") ); 
+		
+				mv.setViewName( Constants.ORDER_FindOrderDetail );
+				Map<String,Object> map =  orderService.getOrderDetail( id );
+				if( map.get("orderView") != null ){
+					mv.addObject("map",map);
+				}else{
+					mv.setViewName(Constants.ORDER_FindOrder);
+					mv.addObject("message","该订单号不存在");
+				}
+			}
+			catch(Exception e){
+				mv.setViewName(Constants.ORDER_FindOrder);
+				mv.addObject("message","该订单号不存在");
+				e.printStackTrace();
+			}
+		}
+		return mv;
+	}
+	
+	/**
+	 * 订单物流查询
+	 */
+	@RequestMapping("/getOrderLogistics")
+	@ResponseBody
+	public NetDataAccessUtil getOrderLogistics(HttpServletRequest request,Integer orderId){
+		OrderView ov =  orderService.getOrderById(orderId);
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		if( ov == null ||  ov.getTracking() == null){
+			nau.setContent(null);
+			nau.setResult(0);
+			nau.setResultDesp("获取订单物流失败");
+		}else{
+			Map map = orderService.getMap(ov.getTracking());
+			if(map == null){
+				nau.setContent(null);
+				nau.setResult(0);
+				nau.setResultDesp("获取订单物流失败");
+			}else{
+				nau.setContent( map );
+				nau.setResult(1);
+				nau.setResultDesp("获取订单物流情成功");
+			}
+		}
+		return nau;
+	}
+	
+	/**
+	 * 订单物流查询
+	 */
+	@RequestMapping("/getOrderNums")
+	@ResponseBody
+	public NetDataAccessUtil getOrderNums(HttpServletRequest request){
+		NetDataAccessUtil nau = new NetDataAccessUtil();
+		Integer userId = (Integer) request.getAttribute("userId");
+		Map<Integer,Integer> map = orderService.getOrderNums(userId);
+		if(map == null){
+			nau.setContent(null);
+			nau.setResult(0);
+			nau.setResultDesp("获取订单失败");
+		}else{
+			List<Integer> list = new LinkedList<Integer>();
+			for( Integer key : map.keySet() ){
+				list.add( map.get(key) );
+			}
+			nau.setContent( list );
+			nau.setResult(1);
+			nau.setResultDesp("获取订单数量成功");
+		}
+		return nau;
+	}
+	
+	/**
+     * 取消购物卡订单
+     */
+    @RequestMapping("/cancleCardPaySomeOrder")
+    @ResponseBody
+    public NetDataAccessUtil cancleCardPaySomeOrder(String orderIds){
+    	NetDataAccessUtil na = new NetDataAccessUtil();
+    	boolean rs = orderService.cancleCardPaySomeOrder(orderIds);
+    	if(rs){
+    		na.setContent( null );
+			na.setResult(1);
+			na.setResultDesp("取消订单成功");
+    	}else{
+    		na.setContent( null );
+			na.setResult(0);
+			na.setResultDesp("取消订单失败，请确认传入订单状态是否正确");
+    	}
+		return na;
+    }
+    
+	/*//更新订单状态@zxy
+	@RequestMapping("/updateOrderStatus")
+	@ResponseBody
+	public Map<String,String> updateOrderStatus(Integer id,Integer status){
+		NetDataAccessUtil netDataAccessUtil = new NetDataAccessUtil();
+		int flag=orderService.updateOrderStatus(id, status);
+		Map<String, String> resultMap=new HashMap<String, String>();
+		if (flag==3) {
+			resultMap.put("已发货", "修改成功");
+		}
+		else {
+			resultMap.put("msg", "修改失败");
+		}
+		return resultMap;
+	}*/
+}

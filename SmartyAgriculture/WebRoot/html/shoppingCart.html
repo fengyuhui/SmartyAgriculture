@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>购物车</title>
+    <!-- BELONG CSS FILE -->
+    <link rel="stylesheet" type="text/css" id="style-color" href="css/shoppingCart.css" media="screen" />
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">-->
+    <!-- JQUERY JS FILE -->
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <!-- SHOPPING CART INFO JS -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/shoppingCart/shoppingCart.js"></script>
+    <!-- SHOPPING CART INFO JS -->
+    <script src="js/shoppingCart/shoppingCartInfo.js"></script>
+</head>
+
+<body onload="loadInfo()">
+    <div id="container">
+        <div class="headtitle">
+            <div class="left-button">
+                <a href="login.html"><img class="headtitle-picture" src="images/shoppingCart/user.png"></a>
+                <a href="login.html"><span class="headtitle-font-login">登陆</span></a>
+                <a href="register.html"><span class="headtitle-font-register">/&nbsp注册</span></a>
+            </div>
+            <div class="right-button">
+                <a href="personInfo/infoIndex.html"><img class="headtitle-picture" src="images/shoppingCart/info.png"></a>
+                <a href="shoppingCart.html"><img class="headtitle-picture" id="middle-picture" src="images/shoppingCart/cart.png"></a>
+                <a href="personInfo/myCollection.html"><img class="headtitle-picture" src="images/shoppingCart/receive.png"></a>
+            </div>
+        </div>
+        <!-- head title end -->
+        <div class="logo">
+            <div class="left-logo">
+                <img class="logo-picture" src="images/logo.png" onclick="window.location.href='index.html'" />
+            </div>
+            <div class="right-search">
+                <div class="search-picture">
+                    <a class="search-btn" href="search.html" onclick="setSearchinfo()"><img src="images/shoppingCart/search.png" width="25px" height="25px"></a>
+                </div>
+                <div class="search-info">
+                    <input placeholder="Search" class="search-input" />
+                </div>
+            </div>
+        </div>
+        <!-- logo end -->
+        <div class="navigation">
+            <div class="navigation-font">您的位置：&nbsp<a href="index.html">首页&nbsp</a>>&nbsp购物车</div>
+        </div>
+        <div class="catbox">
+            <table id="cartTabletitle">
+                <tr>
+                    <th width="5%">选择</th>
+                    <th width="10%">商品图片</th>
+                    <th width="20%">商品描述</th>
+                    <th width="20%">商品数量</th>
+                    <th width="10%">小计(元)</th>
+                    <th width="20%">操作</th>
+                </tr>
+            </table>
+            <!--meat table-->
+            <table id="cartTableMeat">
+                <thead>
+                    <tr>
+                        <th>
+                            <input class="MeatcheckAll check" type="checkbox" /></th>
+                        <th colspan="5" class="table-title">肉制品</th>
+                    </tr>
+                </thead>
+                <tbody class="cartTableMeat-tbody">
+
+                </tbody>
+            </table>
+            <!--fruit table-->
+            <table id="cartTableFruit">
+                <thead>
+                    <tr>
+                        <th>
+                            <input class="FruitcheckAll check" type="checkbox" /></th>
+                        <th colspan="5" class="table-title">水果</th>
+                    </tr>
+                </thead>
+                <tbody class="cartTableFruit-tbody">
+
+                </tbody>
+            </table>
+            <!--vegetable table-->
+            <table id="cartTableVegetable">
+                <thead>
+                    <tr>
+                        <th>
+                            <input class="VegetablecheckAll check" type="checkbox" /></th>
+                        <th colspan="5" class="table-title">蔬菜</th>
+                    </tr>
+                </thead>
+                <tbody class="cartTableVegetable-tbody">
+
+                </tbody>
+            </table>
+            <!--food table-->
+            <table id="cartTableFood">
+                <thead>
+                    <tr>
+                        <th>
+                            <input class="FoodcheckAll check" type="checkbox" /></th>
+                        <th colspan="5" class="table-title">粮油</th>
+                    </tr>
+                </thead>
+                <tbody class="cartTableFood-tbody">
+
+                </tbody>
+            </table>
+            <div class="foot" id="foot">
+                <label class="fl select-all"><input type="checkbox" class="check-all check"/><span class="checkall-font">全选</span></label>
+                <label class="f1 delete-all "><span class="checkall-font" onclick="deleteSelectShoppingCartGood()">删除</span></label>
+                <!--<a class="fl delete" id="deleteAll" href="javascript:;">删除</a>-->
+                <div class="fr closing" id="pay-bottom" onclick="paySelect()">结 算</div>
+                <div class="fr closing" id="delete-bottom" onclick="deleteSelect()">删 除</div>
+                <input type="hidden" id="cartTotalPrice" />
+                <!--meat total -->
+                <div class="hiddentotal">合计：<span class="symble">¥</span><span id="MeatpriceTotal">0.00</span></div>
+                <div class="hiddenselected" id="selected">已选商品<span id="MeatselectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+                <!--fruit total -->
+                <div class="hiddentotal">合计：<span class="symble">¥</span><span id="FruitpriceTotal">0.00</span></div>
+                <div class="hiddenselected" id="selected">已选商品<span id="FruitselectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+                <!--vegetable total -->
+                <div class="hiddentotal">合计：<span class="symble">¥</span><span id="VegetablepriceTotal">0.00</span></div>
+                <div class="hiddenselected" id="selected">已选商品<span id="VegetableselectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+                <!--food total -->
+                <div class="hiddentotal">合计：<span class="symble">¥</span><span id="FoodpriceTotal">0.00</span></div>
+                <div class="hiddenselected" id="selected">已选商品<span id="FoodselectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+                <!--total -->
+                <div class="fr total" id="total-bottom">合计：<span class="symble">¥</span><span id="priceTotal">0.00</span></div>
+                <div class="fr selected" id="selected">已选商品<span id="selectedTotal">0</span>件<span class="arrow up">︽</span><span class="arrow down">︾</span></div>
+                <div class="selected-view">
+                    <div id="selectedViewList" class="clearfix">
+                        <div><img src="images/1.jpg"><span>取消选择</span></div>
+                    </div>
+                    <span class="arrow">◆<span>◆</span></span>
+                </div>
+            </div>
+            <div class="empty-cart">
+                <img class="empty-picture" src="images/shoppingCart/empty.png" />
+                <span class="empty-font">您还没有添加任何物品</span>
+            </div>
+            <div class="guess">
+                <div class="guess-title">
+                    <span>---------------------------------猜你喜欢---------------------------------</span>
+                </div>
+                <ul class="sale-picture-ul">
+
+                </ul>
+            </div>
+
+        </div>
+        <!-- cartbox end-->
+
+
+    </div>
+</body>
+
+</html>

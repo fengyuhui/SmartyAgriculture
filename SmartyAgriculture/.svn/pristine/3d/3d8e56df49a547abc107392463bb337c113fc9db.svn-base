@@ -1,0 +1,16 @@
+package cn.bupt.smartyagl.util;
+
+import cn.bupt.smartyagl.entity.autogenerate.user;
+import cn.bupt.smartyagl.service.IOrderService;
+import cn.bupt.smartyagl.service.IUserService;
+
+public class UserScoreUtil {
+	public static void addScore(int orderId,IUserService userService,IOrderService orderService) {
+		Integer userId = orderService.getSharerIdByOrderId(orderId);
+		if(userId != null) {
+			user user = userService.getUserInfoById(userId);
+			user.setScore(user.getScore() + 1);
+			userService.updateMyuserInfo(user);
+		}		
+	}
+}

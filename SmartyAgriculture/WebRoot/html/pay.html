@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>确认支付</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <!-- MAIN STYLE CSS FILE -->
+        <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen" />
+        <!-- DEFAULT BLUE COLOR CSS FILE -->
+        <link rel="stylesheet" href="css/layer-slider.css" media="screen" />
+        <!-- LAYER SLIDER CSS FILE -->
+        <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/flexslider.css" media="screen" />
+        <!-- FLEX SLIDER CSS FILE -->
+        <link rel="stylesheet" href="css/revolution-slider.css" media="screen" />
+        <link rel="stylesheet" href="css/index.css" media="screen">
+        <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+        
+        <!-- CUSTOM JAVASCRIPT JS FILE -->
+        <link rel="stylesheet" href="css/pro-detail.css" media="screen">
+        <link rel="stylesheet" href="css/order_pay.css" media="screen" />
+        <!--订单支付css文件-->
+        <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+        
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/bootbox.min.js"></script>
+        <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+        <!-- TRANSITION JS FILE -->
+<!--        <script type="text/javascript" src="js/custom.js"></script>-->
+        <!--各功能模块JS by--Web Team.-->
+        <script type="text/javascript" src="js/time.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/hotsale.js"></script>
+        <script type="text/javascript" src="js/pay/pay.js"></script>
+        <script type="text/javascript" src="js/pay/alipay.js"></script>
+        <script type="text/javascript" src="js/pay/wxpay.js"></script>
+        <script type="text/javascript" src="js/pay/shoppingCard.js"></script>
+	</head>
+	<body onload="getOrder()">
+		<div id="container">
+			<div id="wrapp-1">
+				<div id="farm-nav" role="navigation">
+                    <div class="nav-bd container">
+                        <div class="nav-container">
+                            <p class="login-info">
+                            </p>
+                            <ul class="user-menu">
+                                <li><a href="personInfo/infoIndex.html" title="个人消息"><i class="icon-userMessages"></i></a></li>
+                                <li><a href="shoppingCart.html" title="购物车"><i class="icon-shoppingCart"></i></a></li>
+                                <li><a href="personInfo/myCollection.html" title="收藏"><i class="icon-collection"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+            </div>
+            <!--header social links ends -->
+                <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+                            <!--<a href="index.html" id="logo"><img src="images/logo_new.jpg" width="80px" height="80px" alt="" /><span>基于物联网的生态农业精准控制交易系统</span></a>-->
+                            <!--your logo-->
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <form action="search-result.html" method="get">
+                                    <button class="search-btn" onclick="search_btn_click_outsidein()"></button>
+                                    <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                                </form>
+                            </nav>
+                        </div>
+
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html" id="current">首页</a></li>
+                            <li><a href="classification/goods_and_buy.html" id="product">产品及订购</a></li>
+                            <li><a href="brandHomePage.html" id="brand" onclick="getHotProduct(0)">农场推荐</a></li>
+                            <li><a href="ecologyHomePage.html" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="health.html" id="health">营养与健康</a></li>
+                            <li><a href="game.html" id="game">游戏奖励</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+                </header>
+				<div class="container">
+					<div class="order-thumb">
+						<div class="o-left">
+							<h3 class="o-title">
+								订单提交成功，请您尽快付款！订单号：<em id="orderNo"></em>
+							</h3>
+							<p class="o-tips">请您在提交订单后
+								<span class="o-deadline">24小时</span>
+								内完成支付，否则订单会自动取消
+								<strong class="o-right">订单详情</strong>
+								<a href="" class="drop-down">dropdown</a>
+							</p>
+						</div>
+					</div>
+				</div>
+                <div class="container full-bottom">
+                    <button type="button" onclick="diyAlert()">test</button>
+                    <span class="pay-title">
+                        支付方式：
+                    </span>
+                    <div class="icon-gallery">
+                        <div class="icon-iso">
+                            <a href="javascript:void(0)" onclick="requestUrl()"><img src="images/pay/aliPay.png"></a>
+                        </div>
+                        <div class="icon-iso">
+                            <a href="#"><img src="images/pay/unionpay.png"></a>
+                        </div>
+                        <div class="icon-iso">
+                            <a href="javascript:void(0)" onclick="wx_pay()"><img src="images/pay/wechat_pay@2x.png"></a>
+                        </div>
+                        <div class="icon-iso">
+                            <a href="javascript:void(0)" onclick="card_pay()"><img src="images/pay/shoppingCard.png"></a>
+                        </div>
+                    </div>
+                    <!--微信结算-->
+                    <div id="payGallery">
+                        <div class="pay-head">
+                            <h3 class="p-h-title" id="totalFees"></h3>
+                            <a class="h-close"></a>
+                        </div>
+                        <!--QRcode start-->
+                        <div class="p-body">
+                            <div class="b-title middle">
+                                <span class="l-text">微信扫码支付</span>
+                            </div>
+                            <div class="QR-wrap">
+                                <div class="QR-img">
+                                    <img src="">
+                                    <a href="javascript:void(0)" onclick="wx_pay()" class="QR-retry"></a>
+                                </div>
+                            </div>
+                            <div class="wx-msg middle">
+                                <span id="QR-msg"><em class="wx-countdown"></em></span>
+                                <span id="QR-retry"><a href="#" class="retry" onclick="wx_pay()">请点击重新获取二维码</a></span>
+<!--                                    <div class="wx-retry"><a>点此重获二维码</a></div>-->
+                            </div>
+                        </div>
+                        <div class="p-foot">
+                            <div class="btn-else middle">
+                                选用其它支付方式<a class="pull-right"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pay-mask"></div>
+                    <!--aliPay Form Start-->
+                    <div class="aliPaycontent" style="display: none;">
+                        <form action="http://121.199.29.178:8080/SmartyAgriculture/AliH5Pay/prePay" class="alipayform" method="POST" target="_blank">
+                            <div class="element" style="margin-top:60px;">
+                                <div class="legend">支付宝即时到账交易接口快速通道 </div>
+                            </div>
+                            <div class="element">
+                                <div class="etitle">商户订单号:</div>
+                                <div class="einput"><input type="text" name="WIDout_trade_no" id="out_trade_no" value=""></div>
+                            </div>
+                            <div class="element">
+                                <div class="etitle">商品名称:</div>
+                                <div class="einput"><input type="text" name="WIDsubject" id="tarde_subject" value=""></div>
+                            </div>
+                            <div class="element">
+                                <div class="etitle">付款金额:</div>
+                                <div class="einput"><input type="text" name="WIDtotal_fee" id="total_fee" value=""></div>
+                            </div>
+                            <div class="element">
+                                <div class="etitle">商品描述:</div>
+                                <div class="einput"><input type="text" name="WIDbody" value></div>
+                            </div>
+                            <div class="element">
+                                <input type="hidden" name="m" value="a"/>
+                                <input type="submit" onclick="getAction()" class="alisubmit" value ="确认支付">
+                            </div>
+                        </form>
+                    </div>
+                    <!--cardPay Form Start-->
+                    <div class="cardGallery" style="display:none">
+                        <div class="pay-head">
+                            <h3 class="p-h-title" id="totalFees"></h3>
+                            <a class="h-close"></a>
+                        </div>
+                        <div class="card-body">
+                            <div class="b-title">
+                                <span class="l-text">购物卡支付</span>
+                            </div>
+                            <div class="confirm-form">
+                                <div class="isoLine">
+                                    <label>卡号：</label>
+                                    <input type="text" id="cardId" name="card" placeholder="购物卡号"/>
+                                </div>
+                                <div class="isoLine">
+                                    <label>密码：</label>
+                                    <input type="password" id="cardPswd" name="card" placeholder="密码"/>
+                                </div>
+                                <div class="payTips">
+                                    <div class="tips-text">
+                                        <span><em class="overdueMoney"></em></span>
+                                    </div>
+                                    <div class="type-choose">
+                                        <a href="javascript:void(0)" class="overdue-alipay"><img class="overdue-alipay" src="images/pay/alipay@48.png"></a>
+                                        <a href="javascript:void(0)" class="overdue-wxpay"><img class="overdue-wxpay" src="images/pay/wechat@48.png"></a>
+                                    </div>
+                                </div>
+                                <button id="cardSubmit" type="button" onclick="payAction()">支付</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+			    <section id="copyrights">
+                    <section class="container">
+                        <div class="one-half">
+                            <p>
+                                Copyright &copy; 2016.Company name All rights reserved.
+                            </p>
+                        </div>
+                        <div class="one-half">
+                            <ul class="copyright_links">
+                                <li><a href="#" title="首页">首页</a></li>
+                                <li><a href="#" title="企业文化">企业文化</a></li>
+                                <li><a href="#" title="关于我们">关于我们</a></li>
+                                <li><a href="#" title="回到顶部">回到顶部</a></li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+            </div>
+		</div>
+	</body>
+</html>

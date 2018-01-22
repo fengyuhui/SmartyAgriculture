@@ -1,0 +1,24 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.bupt.smartyagl.dao.autogenerate.FarmVisitOrderViewMapper;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderView;
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderViewExample;
+import cn.bupt.smartyagl.service.FarmVisitOrderViewService;
+@Service
+public class FarmVisitOrderViewServiceImpl implements FarmVisitOrderViewService {
+
+	@Autowired
+	FarmVisitOrderViewMapper farmVisitOrderViewMapper;
+	@Override
+	public List<FarmVisitOrderView> getOrderListByUserId(Integer userId) {
+		FarmVisitOrderViewExample fvove = new FarmVisitOrderViewExample();
+		fvove.createCriteria().andUserIdEqualTo(userId);
+		return farmVisitOrderViewMapper.selectByExample(fvove);
+	}
+
+}

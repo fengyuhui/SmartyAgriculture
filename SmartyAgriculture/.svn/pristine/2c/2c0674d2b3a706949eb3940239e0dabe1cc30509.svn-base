@@ -1,0 +1,54 @@
+package cn.bupt.smartyagl.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
+import cn.bupt.smartyagl.dao.autogenerate.goodsRejectedMapper;
+import cn.bupt.smartyagl.dao.autogenerate.goodsRejectedViewMapper;
+import cn.bupt.smartyagl.entity.autogenerate.goodsRejectedView;
+import cn.bupt.smartyagl.entity.autogenerate.goodsRejectedViewExample;
+import cn.bupt.smartyagl.service.IGoodsRejectedService;
+
+@Service
+public class GoodsRejectedServiceImpl implements IGoodsRejectedService {
+
+	@Autowired
+	goodsRejectedViewMapper goodsRejectedViewMapper;
+	@Autowired
+	goodsRejectedMapper goodsRejectedMapper;
+	
+	@Override
+	public void goodsRejectedIndex(ModelAndView modelAndView, int currentPage,
+			int pageSize) {
+		// TODO Auto-generated method stub
+		goodsRejectedViewExample goodsRejectedViewExample=new goodsRejectedViewExample();
+		Page page = PageHelper.startPage(currentPage, pageSize);
+		List<goodsRejectedView> goodsRejectedViewsList=goodsRejectedViewMapper.selectByExample(goodsRejectedViewExample);
+		modelAndView.addObject("goodsRejectedViewsList", goodsRejectedViewsList);
+		// 总页数
+		int allPages = page.getPages();
+		modelAndView.addObject("allPages", allPages);
+		// 当前页码
+		currentPage = page.getPageNum();
+		modelAndView.addObject("currentPage", currentPage);
+	}
+
+	@Override
+	public boolean deleteRejected(int id) {
+		// TODO Auto-generated method stub
+		int num=goodsRejectedMapper.deleteByPrimaryKey(id);
+		if(num==1){
+			return true;
+		}
+		else{
+			return false;
+		}	
+	}
+
+}

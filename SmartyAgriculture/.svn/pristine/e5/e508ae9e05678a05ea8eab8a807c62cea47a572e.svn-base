@@ -1,0 +1,18 @@
+package cn.bupt.smartyagl.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import cn.bupt.smartyagl.entity.autogenerate.FarmVisitOrderView;
+
+@Service
+public interface FarmVisitOrderViewService {
+	/**
+	 * 根据用户id获取参观农场的订单
+	 * @param userId
+	 * @return
+	 */
+	public List<FarmVisitOrderView> getOrderListByUserId(Integer userId);
+
+}

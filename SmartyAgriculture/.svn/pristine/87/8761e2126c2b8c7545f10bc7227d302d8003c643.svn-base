@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Response service="RouteService">
+<Head>
+	OK
+</Head>
+<Body>
+<RouteResponse mailno="444736831765">
+	<Route remark="顺丰速运 已收取快件" accept_time="2016-08-07 14:43:06" accept_address="深圳市" opcode="50"/>
+	<Route remark="正在派送途中,请您准备签收(派件人:刘爽,电话:687894897)" accept_time="2016-08-07 14:43:06" accept_address="深圳市" opcode="44"/>
+	<Route remark="快件派送不成功(因收方客户拒收快件),待进一步处理" accept_time="2016-08-07 14:43:07" accept_address="深圳市" opcode="70"/>
+	<Route remark="已签收,感谢使用顺丰,期待再次为您服务" accept_time="2016-08-07 14:43:07" accept_address="深圳市" opcode="80"/>
+</RouteResponse>
+</Body>
+</Response>

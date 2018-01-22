@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品DEMO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <!-- MAIN STYLE CSS FILE -->
+    <link rel="stylesheet" id="style-color" href="css/colors/blue-color.css" media="screen" />
+    <!-- DEFAULT BLUE COLOR CSS FILE -->
+    <link rel="stylesheet" href="css/layer-slider.css" media="screen" />
+    <!-- LAYER SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/flexslider.css" media="screen" />
+    <!-- FLEX SLIDER CSS FILE -->
+    <link rel="stylesheet" href="css/revolution-slider.css" media="screen" />
+    <link rel="stylesheet" href="css/index.css" media="screen">
+    <link href="js/bootstrap-3.3.6-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="js/laypage/laypage.css" rel="stylesheet" media="screen">
+    <!--laypage css file-->
+<!--    <link href="css/pro-detail.css" rel="stylesheet" media="screen">-->
+    <!-- CUSTOM JAVASCRIPT JS FILE -->
+    <link rel="stylesheet" href="css/pro-detail.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <!-- All JavaScript Files (FOR FASTER LOADING OF YOUR SITE, REMOVE ALL JS PLUGINS YOU WILL NOT USE)-->
+    <!--<script type="text/javascript" src="js/jquery.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
+    <!-- JQUERY JS FILE -->
+    <script type="text/javascript" src="js/flex-slider.min.js"></script>
+    <!-- FLEX SLIDER JS FILE -->
+    <script type="text/javascript" src="js/navigation.min.js"></script>
+    <!-- MAIN NAVIGATION JS FILE -->
+    <script type="text/javascript" src="js/jquery.layerslider.js"></script>
+    <!-- LAYER SLIDER JS FILE -->
+    <script type="text/javascript" src="js/layerslider.transitions.js"></script>
+    <!-- LAYER SLIDER TRANSITIONS JS FILE -->
+    <!--    <script type="text/javascript" src="js/map.min.js"></script>-->
+    <!-- GOOGLE MAP JS FILE -->
+    <script type="text/javascript" src="js/jquery.theme.plugins.min.js"></script>
+    <!-- REVOLUTION SLIDER PLUGINS JS FILE -->
+    <script type="text/javascript" src="js/prettyPhoto.min.js"></script>
+    <!-- PRETTYPHOTO JS FILE -->
+    <script type="text/javascript" src="js/jquery.tooltips.min.js"></script>
+    <!-- TOOLTIPS JS FILE -->
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <!-- SCROLL TO TOP JS PLUGIN -->
+    <script type="text/javascript" src="js/jquery.transit.min.js"></script>
+    <!-- TRANSITION JS FILE -->
+    <script type="text/javascript" src="js/laypage/laypage.js"></script>
+    <!--laypage js file-->
+    <script type="text/javascript" src="js/jqPaginator.js"></script>
+    <!--icon flay effection js file-->
+    <!--    <script type="text/javascript" src="js/custom.js"></script>-->
+    <!--各功能模块JS by--Web Team.-->
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <!--navigation js file-->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/hotsale.js"></script>
+    <!--专题活动（热卖、限时抢购等JS）-->
+<!--    <script type="text/javascript" src="js/personInfo/myComment.js"></script>-->
+    <script type="text/javascript" src="js/pro-detail.js"></script>
+    <!--商品详情JS-->
+    <script type="text/javascript" src="js/detail-buy.js"></script>
+    <!--商品详情JS-->
+    <!--    <script type="text/javascript" src="js/orderConfirm.js"></script>-->
+    <script type="text/javascript" src="js/productType.js"></script>
+    <script type="text/javascript" src="js/search-result.js"></script>
+    <script type="text/javascript" src="js/favorite.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
+    <script type="text/javascript" src="js/personInfo/test.js"></script>
+</head>
+
+<body onload="productDetailOnload()">
+    <div id="container">
+        <div id="wrapp">
+            <div id="farm-nav" role="navigation">
+                <div class="nav-bd container">
+                    <div class="nav-container">
+                        <p class="login-info">
+                        </p>
+                        <ul class="user-menu">
+                            <li>
+                                <a href="personInfo/infoIndex.html" title="个人消息">
+                                    <img src="images/icon/message.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a a href="shoppingCart.html" title="购物车">
+                                    <img src="images/icon/shoppingCart.png"></img>
+                                </a>
+                            </li>
+                            <li>
+                                <a a href="personInfo/myCollection.html" title="收藏">
+                                    <img src="images/icon/collection.png"></img>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--header social links ends -->
+            <header id="header">
+                <!--header starts -->
+                <div class="container-web container">
+                    <div class="head-wrapp">
+                        <div class="logo-box">
+                            <a href="index.html" id="logo-1">
+                                <img src="images/logo.png" width="250px" alt="中远农庄">
+                            </a>
+
+                            <nav class="top-search">
+                                <!-- search starts-->
+                                <form action="search-result.html" method="get">
+                                    <button class="search-btn" onclick="search_btn_click_outsidein()"></button>
+                                    <input class="search-field" type="text" onblur="if(this.value=='')this.value='搜索';" onfocus="if(this.value=='搜索')this.value='';" value="搜索" />
+                                </form>
+                            </nav>
+                        </div>
+
+                        <!--search ends -->
+                    </div>
+                </div>
+                <div id="main-navigation">
+                    <!--main navigation wrapper starts -->
+                    <div class="container">
+                        <ul class="main-menu">
+                            <li><a href="index.html" id="current">首页</a></li>
+                            <li><a href="classification/goods_and_buy.html" id="product">产品及订购</a></li>
+                            <li><a href="brandHomePage.html" id="brand" onclick="getHotProduct(0)">农场推荐</a></li>
+                            <li><a href="ecologyHomePage.html" id="ecology" onclick="getHotProduct(2)">生态技术</a></li>
+                            <li><a href="visitFarm.html" id="visit">参观农场</a></li>
+                            <li><a href="organicLife.html" id="life">有机生活</a></li>
+                            <li><a href="health.html" id="health">营养与健康</a></li>
+                            <li><a href="game.html" id="game">游戏奖励</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <!--main navigation wrapper ends -->
+            </header>
+        </div>
+
+        <!--商品详情页开始↓↓-->
+        <div class="detail-meta">
+            <div class="goback-icon">
+                <!--
+        		<a href="#"class="gobackArrow">
+        			<img src="images/icon_goback.png">
+        		</a>
+        		<h2 class="goBackLabel">
+        			返回
+        		</h2>
+-->
+                <div class="personal-fuction">
+                    <a href="#" class="icon_collect">
+                        <img id="collect" src="images/noncollect.svg" onclick="favorite_photo_click()">
+                    </a>
+                    <!--<a href="#" class="icon_share">
+        				<img id="share" src="images/icon_share.png">
+        			</a>-->
+                    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"><img id="share" src="images/share.svg"></a>
+                </div>
+            </div>
+            <div class="properity-wrap">
+                <div class="one-half">
+                    <div class="gallery">
+                        <div class="img-booth">
+
+
+                        </div>
+                        <ul class="img-zoomIn" id="imgList">
+                            <!--
+                                <li><img src="images/pay/aliPay.png" onclick="showMe(src)" alt=""></li>
+                                <li><img src="images/pay/shoppingCard.png" onclick="showMe(src)" alt=""></li>
+                                <li><img src="images/pay/unionpay.png" onclick="showMe(src)" alt=""></li>
+                                <li><img src="images/pay/wechat_pay@2x.png" onclick="showMe(src)" alt=""></li>
+-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-wrap">
+                
+            </div>
+
+
+            <!--评价开始-->
+            <div class="review-list">
+                <!--评价栏-->
+                <div class="review-filter">
+                    <span>
+               <!--<p class="review-title">商品评价</p>-->
+                <a href="javascript:void(0)" class="all-rv">全部评价
+                    <em class="all-rv-num"></em>
+                </a>
+                <a href="javascript:void(0)" class="hasPic-rv">
+               		有图
+               		<em class="hasPic-rv-num"></em>
+               </a>
+               <a href="javascript:void(0)" class="good-rv">
+               		好评
+               		<em class="good-rv-num"></em>
+               </a>
+               <a href="javascript:void(0)" class="avg-rv">
+               		中评
+               		<em class="mid-rv-num"></em>
+               </a>
+               <a href="javascript:void(0)" class="bad-rv">
+               		差评
+               		<em class="bad-rv-num"></em>
+               </a>
+            </span>
+                </div>
+                <!--评价内容列表-->
+                <div class="rv-grid" id="123">
+                    <table id="comment-area">
+                        <tbody id="test">
+                            
+            			<tr>
+            				<td class="col-author">
+            					<div class="rv-userInfo">
+            						<span>
+            						<img src="images/portrait_man.png" alt="头像" />
+            						Name
+            						</span>
+            					</div>
+            					<div class="rv-data">16:00</div>
+            				</td>
+            				<td class="col-master">
+            					<div class="rv-content">
+            						<div class="rv-content-fulltxt">
+            							新鲜，物流快，服务好，我将会一直购买。
+            						</div>
+                                    <div class="rv-comment-imgs">
+                                        <ul class="rv-photos-thumb">
+                                            <li class="photo-thumb" id="">
+                                                <img src="images/test/1.jpg" onclick="zoomOut(this)">
+                                            </li>
+                                            <li class="photo-thumb" id="">
+                                                <img src="images/test/2.jpg" onclick="zoomOut(this)">
+                                            </li>
+                                            <li class="photo-thumb" id="">    
+                                                <img src="images/test/3.jpg" onclick="zoomOut(this)">
+                                            </li>
+                                        </ul>
+                                        <div class="rv-photo-viewer">
+                                            <img src="">
+                                        </div>
+                                    </div>
+            					</div>
+            				</td>
+            				<td class="col-meta">
+            					<ul class="parise-reply">
+            						<li>
+            							<a href="javascript:void(0)" class="rv-praise">赞</a>
+            							<em>5</em>
+            						</li>
+            						<li class="rv-reply">
+            							<a href="javascript:void(0)" class="rv-reply" onclick="reply()">回复</a>
+            							<em>23</em>
+            						</li>
+            					</ul>
+            				</td>
+            			</tr>
+
+                        </tbody>
+<!--
+                        <div class="pagebar">
+                            <ul class="pagination"></ul>
+                        </div>
+-->
+                    </table>
+                </div>
+            </div>
+            <!--
+        	作者：183485224@qq.com
+        	时间：2016-06-22
+        	描述：copyright starts！
+        -->
+        </div>
+        <section id="copyrights">
+            <section class="container">
+                <div class="one-half">
+                    <p>
+                        Copyright &copy; 2014.Company name All rights reserved.
+                    </p>
+                </div>
+                <div class="one-half">
+                    <ul class="copyright_links">
+                        <li><a href="#" title="Home">Home</a></li>
+                        <li><a href="#" title="About">About us</a></li>
+                        <li><a href="#" title="Blog">Blog</a></li>
+                        <li><a href="#" title="Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </section>
+        </section>
+    </div>
+    <script type="text/javascript">
+        var jiathis_config = {
+            data_track_clickback: 'true'
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+.button_border{
+       border: none;
+       background-color: #61CA8B;
+       color:white;
+       width:104px;
+       height: 42px;
+       font-size: 22px;
+}
+.portrait{
+    width:100px;
+    margin-left: -50px;
+    position: absolute;
+}
+.edit_portrait_div{
+    width: 100px;
+    height: 100px;
+    border: solid 1px #eeeeee;
+}
+.file {
+    width:100px;
+    position: relative;
+    display: inline-block;
+    
+    padding: 3px 12px;
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    font-size: 18px;
+    margin-left: -50px;
+    margin-top: 74px;
+    position: absolute;
+    background: #626262;
+    text-decoration: none;
+    opacity: 0.6;
+    color:white;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #626262;
+    text-decoration: none;
+    opacity: 0.6;
+    color:white;
+}
+.edit_table{
+    width: 80%;
+    margin: 0px auto;
+    margin-top: 100px;
+    text-align: center;
+    margin-left: 200px;
+}
+.edit_button{
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fab419;
+    color: white;
+}
+.content_portrait_div{
+   width: 100px;
+    display: inline-block;
+    float: left;
+}
+.content_edit_button_div{
+        float: left;
+    margin-left: 30px;
+    margin-top: 70px;
+}
+.display_hidden{
+    display: none;
+}
+/*
+.update_tbody >tr{
+    height:60px;
+}
+*/
+.update_tbody >tr >td{
+    font-size:25px;
+    height: 40px;
+    padding-bottom: 45px;
+}
+.one-input{
+    display: inline-block!important;
+    float: left;
+}
+.validate_button{
+        border: none;
+    float: left;
+    margin-left: 20px;
+    margin-top: 5px;
+    background-color: #fab419;
+    color: white;
+}
